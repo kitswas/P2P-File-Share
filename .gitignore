@@ -1,0 +1,8 @@
+# VSCode config
+.vscode
+
+# The build output directory
+build
+
+# All PDFs
+*.pdf

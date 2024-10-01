@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+      http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <url>
+    <loc>https://kitswas.github.io/C-shell/README_8MD.html</loc>
+  </url>
+  <url>
+    <loc>https://kitswas.github.io/C-shell/client_8cpp.html</loc>
+  </url>
+  <url>
+    <loc>https://kitswas.github.io/C-shell/tracker_8cpp.html</loc>
+  </url>
+  <url>
+    <loc>https://kitswas.github.io/C-shell/dir_6908ff505388a07996d238c763adbdab.html</loc>
+  </url>
+  <url>
+    <loc>https://kitswas.github.io/C-shell/dir_68267d1309a1af8e8297ef4c3efbcdba.html</loc>
+  </url>
+  <url>
+    <loc>https://kitswas.github.io/C-shell/dir_abae130f9471f2a507990a11b6f08446.html</loc>
+  </url>
+  <url>
+    <loc>https://kitswas.github.io/C-shell/index.html</loc>
+  </url>
+  <url>
+    <loc>https://kitswas.github.io/C-shell/doxygen_crawl.html</loc>
+  </url>
+  <url>
+    <loc>https://kitswas.github.io/C-shell/files.html</loc>
+  </url>
+  <url>
+    <loc>https://kitswas.github.io/C-shell/globals.html</loc>
+  </url>
+  <url>
+    <loc>https://kitswas.github.io/C-shell/globals_func.html</loc>
+  </url>
+</urlset>
