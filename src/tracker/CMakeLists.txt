@@ -1,5 +1,5 @@
-set(SOURCES
+set(TRACKER_SOURCES
 	tracker.cpp
 )
 
-add_executable(tracker ${SOURCES}) 
+add_executable(tracker ${TRACKER_SOURCES}) 
