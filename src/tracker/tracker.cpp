@@ -8,11 +8,31 @@
  */
 
 #include <iostream>
+#include <memory>
+#include <thread>
+
+#include "../network/tcp_server.hpp"
 
 void loop()
 {
-	// int socket_fd = create_socket();
+	TCPServer server(2);
+	std::function<void(std::shared_ptr<TCPSocket>)> onConnect = [](std::shared_ptr<TCPSocket> client)
+	{
+		std::cout << "Client connected " << client->get_peer_ip() << ":" << client->get_peer_port() << std::endl;
+	};
+	std::function<void(std::shared_ptr<TCPSocket>)> onDisconnect = [](std::shared_ptr<TCPSocket> client)
+	{
+		std::cout << "Client disconnected " << client->get_peer_ip() << ":" << client->get_peer_port() << std::endl;
+	};
+	std::function<void(std::shared_ptr<TCPSocket>, std::string &)> onData = [](std::shared_ptr<TCPSocket> client, std::string &data)
+	{
+		std::cout << "Data received from " << client->get_peer_ip() << ":" << client->get_peer_port() << " : " << data << std::endl;
+	};
+	server.setOnConnect(onConnect);
+	server.setOnDisconnect(onDisconnect);
+	server.setOnData(onData);
 
+	server.start(0);
 	while (true)
 	{
 		if (std::cin.peek() != EOF) // check if there is input

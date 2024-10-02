@@ -1,11 +1,19 @@
 #pragma once
 
+#include <memory>
 #include <netinet/in.h>
 #include <string>
 #include <sys/socket.h>
 #include <unistd.h>
 #include <vector>
 
+/**
+ * @brief A class representing a TCP socket
+ *
+ * This class is used to create and manage TCP sockets.
+ * A TCPSocket object can only be moved, not copied.
+ *
+ */
 class TCPSocket
 {
 	friend class TCPServer;
@@ -14,33 +22,36 @@ private:
 	/**
 	 * @brief The file descriptor for this socket
 	 */
-	int socket_fd;
+	int local_fd;
 	/**
 	 * @brief The details of this socket
 	 */
-	struct sockaddr_in socket_address;
+	struct sockaddr_in local_address;
 	/**
-	 * @brief The file descriptor for the client socket
+	 * @brief The file descriptor for the connected peer
 	 */
-	int client_fd;
+	int peer_fd;
 	/**
-	 * @brief The details of the client socket
+	 * @brief The details of the connected peer
 	 */
-	struct sockaddr_in client_address;
+	struct sockaddr_in peer_address;
 	/**
 	 * @brief Listen backlog size
 	 */
-	const int listen_backlog = 3;
+	int listen_backlog = 3;
 
 public:
 	TCPSocket();
 	~TCPSocket();
+	TCPSocket &operator=(const TCPSocket &) = delete;
+	TCPSocket(const TCPSocket &) = delete;
+	TCPSocket(TCPSocket &&src) noexcept;
 
 	/**
 	 * @brief Bind the socket to a port
 	 * @return true on success, false on failure
 	 */
-	bool bind(int port);
+	bool bind(uint16_t port);
 
 	/**
 	 * @brief Listen for incoming connections
@@ -52,13 +63,13 @@ public:
 	 * @brief Accept incoming connection
 	 * @return A new TCPSocket object representing the connection
 	 */
-	TCPSocket accept();
+	std::unique_ptr<TCPSocket> accept();
 
 	/**
 	 * @brief Connect to a server at a given ip and port
 	 * @return true on success, false on failure
 	 */
-	bool connect(const std::string &ip, int port);
+	bool connect(const std::string &ip, uint16_t port);
 
 	/**
 	 * @brief Disconnect from whatever the socket is connected to
@@ -70,11 +81,40 @@ public:
 	 * @brief Send data over the socket
 	 * @return The number of bytes sent
 	 */
-	int send_data(const std::string &data);
+	ssize_t send_data(const std::string &data);
 
 	/**
 	 * @brief Receive data from the socket
 	 * @return The received data
 	 */
 	std::string receive_data();
+
+	/**
+	 * @brief Get the IP address of the connected peer
+	 * @return The IP address of the connected peer
+	 */
+	std::string get_peer_ip();
+
+	/**
+	 * @brief Get the port of the connected peer
+	 * @return The port of the connected peer
+	 */
+	int get_peer_port();
+
+	/**
+	 * @brief Get the IP address of the local socket
+	 * @return The IP address of the local socket
+	 */
+	std::string get_local_ip();
+
+	/**
+	 * @brief Get the port of the local socket
+	 * @return The port of the local socket
+	 */
+	int get_local_port();
+
+	friend bool operator==(const TCPSocket &lhs, const TCPSocket &rhs) noexcept
+	{
+		return lhs.peer_fd == rhs.peer_fd;
+	}
 };

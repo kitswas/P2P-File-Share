@@ -1,30 +1,34 @@
+#include <iostream>
+#include <memory>
 #include <thread>
 
+#include "network_error.hpp"
 #include "tcp_server.hpp"
 
-TCPServer::TCPServer(int maxConnections) : maxConnections(maxConnections)
+TCPServer::TCPServer(size_t maxConnections) : maxConnections(maxConnections)
 {
 }
 
-void TCPServer::setOnConnect(std::function<void(TCPSocket)> onConnect)
+void TCPServer::setOnConnect(std::function<void(std::shared_ptr<TCPSocket>)> const &onConnect)
 {
 	this->onConnect = onConnect;
 }
 
-void TCPServer::setOnDisconnect(std::function<void(TCPSocket)> onDisconnect)
+void TCPServer::setOnDisconnect(std::function<void(std::shared_ptr<TCPSocket>)> const &onDisconnect)
 {
 	this->onDisconnect = onDisconnect;
 }
 
-void TCPServer::setOnData(std::function<void(TCPSocket, std::string)> onData)
+void TCPServer::setOnData(std::function<void(std::shared_ptr<TCPSocket>, std::string &)> const &onData)
 {
 	this->onData = onData;
 }
 
-int connectionHandler(TCPSocket client,
-					  std::function<void(TCPSocket)> onConnect,
-					  std::function<void(TCPSocket, std::string)> onData,
-					  std::function<void(TCPSocket)> onDisconnect)
+__attribute__((noreturn)) void connectionHandler(
+	std::shared_ptr<TCPSocket> client,
+	std::function<void(std::shared_ptr<TCPSocket>)> const &onConnect,
+	std::function<void(std::shared_ptr<TCPSocket>, std::string &)> const &onData,
+	std::function<void(std::shared_ptr<TCPSocket>)> const &onDisconnect)
 {
 	if (onConnect)
 	{
@@ -35,28 +39,52 @@ int connectionHandler(TCPSocket client,
 	{
 		try
 		{
-			thread_local std::string data = client.receive_data();
-			if (onData)
+			std::string data = client->receive_data();
+			if (onData && !data.empty())
 			{
 				onData(client, data);
 			}
 		}
-		catch (...)
+		catch (NetworkError &_)
 		{
 			break;
 		}
 	}
-	client.disconnect();
+	client->disconnect();
 
 	if (onDisconnect)
 	{
 		onDisconnect(client);
 	}
 
-	return 0;
+	exit(EXIT_SUCCESS);
 }
 
-bool TCPServer::start(int port)
+__attribute__((noreturn)) void TCPServer::acceptConnections()
+{
+	while (true)
+	{
+		if (clients.size() < maxConnections)
+		{
+			std::shared_ptr<TCPSocket> client = socket.accept();
+			clients.push_back(client);
+
+			std::thread(connectionHandler, client, onConnect, onData,
+						[this](std::shared_ptr<TCPSocket> client)
+						{
+							if (onDisconnect)
+							{
+								onDisconnect(client);
+							}
+							clients.remove(client);
+						})
+				.detach();
+		}
+	}
+	exit(EXIT_SUCCESS);
+}
+
+bool TCPServer::start(uint16_t port)
 {
 	if (!socket.bind(port))
 	{
@@ -68,13 +96,9 @@ bool TCPServer::start(int port)
 		return false;
 	}
 
-	while (clients.size() < maxConnections)
-	{
-		TCPSocket client = socket.accept();
-		clients.push_back(client);
+	std::cout << "Server started on port " << socket.get_local_port() << std::endl;
 
-		std::thread(connectionHandler, client, onConnect, onData, onDisconnect).detach();
-	}
+	std::thread(&TCPServer::acceptConnections, this).detach();
 
 	return true;
 }
@@ -82,8 +106,8 @@ bool TCPServer::start(int port)
 void TCPServer::stop()
 {
 	socket.disconnect();
-	for (auto &client : clients)
+	for (auto const &client : clients)
 	{
-		client.disconnect();
+		client->disconnect();
 	}
 }
