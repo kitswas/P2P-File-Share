@@ -105,9 +105,10 @@ public:
 	 * @brief Start the server.
 	 *
 	 * @param port The port to listen on.
+	 * @param listen_backlog The maximum number of pending connections.
 	 * @return true on success, false on failure.
 	 */
-	bool start(uint16_t port);
+	bool start(uint16_t port, int listen_backlog = 1);
 
 	/**
 	 * @brief Stop the server.

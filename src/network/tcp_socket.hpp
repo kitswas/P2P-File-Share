@@ -35,10 +35,6 @@ private:
 	 * @brief The details of the connected peer
 	 */
 	struct sockaddr_in peer_address;
-	/**
-	 * @brief Listen backlog size
-	 */
-	int listen_backlog;
 
 public:
 	TCPSocket();
@@ -55,9 +51,10 @@ public:
 
 	/**
 	 * @brief Listen for incoming connections
+	 * @param listen_backlog The maximum number of pending connections
 	 * @return true on success, false on failure
 	 */
-	bool listen();
+	bool listen(int listen_backlog);
 
 	/**
 	 * @brief Accept incoming connection
@@ -93,25 +90,25 @@ public:
 	 * @brief Get the IP address of the connected peer
 	 * @return The IP address of the connected peer
 	 */
-	std::string get_peer_ip();
+	std::string get_peer_ip() const;
 
 	/**
 	 * @brief Get the port of the connected peer
 	 * @return The port of the connected peer
 	 */
-	int get_peer_port();
+	int get_peer_port() const;
 
 	/**
 	 * @brief Get the IP address of the local socket
 	 * @return The IP address of the local socket
 	 */
-	std::string get_local_ip();
+	std::string get_local_ip() const;
 
 	/**
 	 * @brief Get the port of the local socket
 	 * @return The port of the local socket
 	 */
-	int get_local_port();
+	int get_local_port() const;
 
 	/**
 	 * @brief Set the socket non-blocking mode

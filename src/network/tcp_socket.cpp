@@ -11,7 +11,7 @@
 #include "network_errors.hpp"
 #include "tcp_socket.hpp"
 
-TCPSocket::TCPSocket() : listen_backlog(0)
+TCPSocket::TCPSocket()
 {
 	local_fd = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
 
@@ -96,7 +96,7 @@ bool TCPSocket::bind(uint16_t port)
 	return true;
 }
 
-bool TCPSocket::listen()
+bool TCPSocket::listen(int listen_backlog)
 {
 	if (::listen(local_fd, listen_backlog) == -1)
 	{
@@ -194,22 +194,22 @@ std::string TCPSocket::receive_data(bool peek)
 	return std::string(buffer, valread);
 }
 
-std::string TCPSocket::get_peer_ip()
+std::string TCPSocket::get_peer_ip() const
 {
 	return inet_ntoa(peer_address.sin_addr);
 }
 
-int TCPSocket::get_peer_port()
+int TCPSocket::get_peer_port() const
 {
 	return ntohs(peer_address.sin_port);
 }
 
-std::string TCPSocket::get_local_ip()
+std::string TCPSocket::get_local_ip() const
 {
 	return inet_ntoa(local_address.sin_addr);
 }
 
-int TCPSocket::get_local_port()
+int TCPSocket::get_local_port() const
 {
 	return ntohs(local_address.sin_port);
 }

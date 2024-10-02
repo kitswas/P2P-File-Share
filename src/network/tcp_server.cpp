@@ -7,7 +7,7 @@
 #include "network_errors.hpp"
 #include "tcp_server.hpp"
 
-TCPServer::TCPServer(size_t maxConnections) : maxConnections(maxConnections)
+TCPServer::TCPServer(size_t maxConnections) : running(false), maxConnections(maxConnections)
 {
 }
 
@@ -125,14 +125,14 @@ void TCPServer::serveRequests(const int wait_time)
 	}
 }
 
-bool TCPServer::start(uint16_t port)
+bool TCPServer::start(uint16_t port, int listen_backlog)
 {
 	if (!socket.bind(port))
 	{
 		return false;
 	}
 
-	if (!socket.listen())
+	if (!socket.listen(listen_backlog))
 	{
 		return false;
 	}
