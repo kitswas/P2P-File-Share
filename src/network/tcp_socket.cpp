@@ -1,16 +1,17 @@
 #include <arpa/inet.h>
 #include <cstring>
 #include <errno.h>
+#include <fcntl.h>
 #include <iostream>
 #include <string>
 #include <sys/socket.h>
 #include <unistd.h>
 #include <vector>
 
-#include "network_error.hpp"
+#include "network_errors.hpp"
 #include "tcp_socket.hpp"
 
-TCPSocket::TCPSocket()
+TCPSocket::TCPSocket() : listen_backlog(0)
 {
 	local_fd = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
 
@@ -129,8 +130,8 @@ std::unique_ptr<TCPSocket> TCPSocket::accept()
 		// 	throw NetworkError("The descriptor socket argument is not a socket");
 		// case EOPNOTSUPP:
 		// 	throw NetworkError("The descriptor socket does not support this operation");
-		// case EWOULDBLOCK:
-		// 	throw NetworkError("The socket is marked non-blocking and no connections are pending");
+		case EWOULDBLOCK:
+			throw WouldBlockError(strerror(errno));
 		default:
 			throw NetworkError(strerror(errno));
 		}
@@ -171,7 +172,7 @@ ssize_t TCPSocket::send_data(const std::string &data)
 	return ::send(peer_fd, data.c_str(), data.size(), 0);
 }
 
-std::string TCPSocket::receive_data()
+std::string TCPSocket::receive_data(bool peek)
 {
 	constexpr size_t buffer_size = 1024;
 	char buffer[buffer_size] = {0};
@@ -179,7 +180,15 @@ std::string TCPSocket::receive_data()
 	if (valread == -1)
 	{
 		std::cerr << "Error: " << strerror(errno) << std::endl;
+		if (errno == EWOULDBLOCK)
+		{
+			throw WouldBlockError(strerror(errno));
+		}
 		throw NetworkError(strerror(errno));
+	}
+	else if (valread == 0)
+	{
+		throw ConnectionClosedError("Peer disconnected");
 	}
 
 	return std::string(buffer, valread);
@@ -203,4 +212,24 @@ std::string TCPSocket::get_local_ip()
 int TCPSocket::get_local_port()
 {
 	return ntohs(local_address.sin_port);
+}
+
+bool TCPSocket::set_non_blocking(bool non_blocking)
+{
+	int flags = fcntl(local_fd, F_GETFL, 0);
+	if (flags == -1)
+	{
+		return false;
+	}
+
+	if (non_blocking)
+	{
+		flags |= O_NONBLOCK;
+	}
+	else
+	{
+		flags &= ~O_NONBLOCK;
+	}
+
+	return fcntl(local_fd, F_SETFL, flags) != -1;
 }

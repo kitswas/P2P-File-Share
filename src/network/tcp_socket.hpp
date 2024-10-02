@@ -38,7 +38,7 @@ private:
 	/**
 	 * @brief Listen backlog size
 	 */
-	int listen_backlog = 3;
+	int listen_backlog;
 
 public:
 	TCPSocket();
@@ -87,7 +87,7 @@ public:
 	 * @brief Receive data from the socket
 	 * @return The received data
 	 */
-	std::string receive_data();
+	std::string receive_data(bool peek = false);
 
 	/**
 	 * @brief Get the IP address of the connected peer
@@ -112,6 +112,12 @@ public:
 	 * @return The port of the local socket
 	 */
 	int get_local_port();
+
+	/**
+	 * @brief Set the socket non-blocking mode
+	 * @return true on success, false on failure
+	 */
+	bool set_non_blocking(bool non_blocking);
 
 	friend bool operator==(const TCPSocket &lhs, const TCPSocket &rhs) noexcept
 	{

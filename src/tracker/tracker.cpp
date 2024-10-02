@@ -15,7 +15,6 @@
 
 void loop()
 {
-	TCPServer server(2);
 	std::function<void(std::shared_ptr<TCPSocket>)> onConnect = [](std::shared_ptr<TCPSocket> client)
 	{
 		std::cout << "Client connected " << client->get_peer_ip() << ":" << client->get_peer_port() << std::endl;
@@ -28,11 +27,13 @@ void loop()
 	{
 		std::cout << "Data received from " << client->get_peer_ip() << ":" << client->get_peer_port() << " : " << data << std::endl;
 	};
+
+	TCPServer server(2);
 	server.setOnConnect(onConnect);
 	server.setOnDisconnect(onDisconnect);
 	server.setOnData(onData);
+	server.start(0); // port 0 means the OS will choose a random port
 
-	server.start(0);
 	while (true)
 	{
 		if (std::cin.peek() != EOF) // check if there is input
@@ -45,7 +46,12 @@ void loop()
 				break;
 			}
 		}
+		// yield the thread
+		std::this_thread::yield();
 	}
+
+	std::cout << "Shutting down server..." << std::endl;
+	server.stop();
 }
 
 /**
