@@ -7,7 +7,10 @@
 #include "network_errors.hpp"
 #include "tcp_server.hpp"
 
-TCPServer::TCPServer(size_t maxConnections) : running(false), maxConnections(maxConnections)
+TCPServer::TCPServer(size_t maxConnections)
+	: running(false),
+	  // Sanitize input
+	  maxConnections(maxConnections >= HARD_CONNECTION_LIMIT ? HARD_CONNECTION_LIMIT - 1 : maxConnections)
 {
 }
 

@@ -145,6 +145,9 @@ bool TCPSocket::connect(const std::string &ip, uint16_t port)
 		{
 		case 0:
 			break;
+		case EINPROGRESS: // Non-blocking mode
+			std::cout << "Connecting..." << std::endl;
+			break;
 		default:
 			throw NetworkError(strerror(errno));
 		}

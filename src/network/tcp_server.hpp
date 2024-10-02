@@ -8,6 +8,8 @@
 
 #include "tcp_socket.hpp"
 
+#define HARD_CONNECTION_LIMIT 256
+
 class TCPServer
 {
 private:
@@ -73,6 +75,7 @@ public:
 	 * @brief Construct a new TCPServer object
 	 *
 	 * @param maxConnections The maximum number of clients the server can handle.
+	 * Will be capped at HARD_CONNECTION_LIMIT.
 	 */
 	explicit TCPServer(size_t maxConnections);
 
