@@ -13,9 +13,9 @@
 
 TCPSocket::TCPSocket()
 {
-	local_fd = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
+	socket_fd = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
 
-	if (local_fd == -1)
+	if (socket_fd == -1)
 	{
 		switch (errno)
 		{
@@ -29,7 +29,6 @@ TCPSocket::TCPSocket()
 	local_address = {};
 	local_address.sin_family = PF_INET;
 
-	peer_fd = -1;
 	peer_address = {};
 }
 
@@ -37,21 +36,15 @@ TCPSocket::~TCPSocket()
 {
 	std::clog << "Destructor called for socket "
 			  << this->get_local_ip() << ":" << this->get_local_port() << std::endl;
-	if (local_fd != -1)
-		close(local_fd);
-	if (peer_fd != -1)
-		close(peer_fd);
+	if (socket_fd != -1)
+		close(socket_fd);
 }
 
 TCPSocket::TCPSocket(TCPSocket &&src) noexcept
 {
 	// Move the local file descriptor
-	local_fd = src.local_fd;
-	src.local_fd = -1;
-
-	// Move the peer file descriptor
-	peer_fd = src.peer_fd;
-	src.peer_fd = -1;
+	socket_fd = src.socket_fd;
+	src.socket_fd = -1;
 
 	// Move the local address
 	local_address = src.local_address;
@@ -71,7 +64,7 @@ bool TCPSocket::bind(uint16_t port)
 	local_address.sin_port = htons(port);
 	socklen_t size = sizeof(local_address);
 
-	if (::bind(local_fd, (struct sockaddr *)&local_address, size) == -1)
+	if (::bind(socket_fd, (struct sockaddr *)&local_address, size) == -1)
 	{
 		switch (errno)
 		{
@@ -82,7 +75,7 @@ bool TCPSocket::bind(uint16_t port)
 		}
 	}
 
-	if (getsockname(local_fd, (struct sockaddr *)&local_address, &size) == -1)
+	if (getsockname(socket_fd, (struct sockaddr *)&local_address, &size) == -1)
 	{
 		switch (errno)
 		{
@@ -98,7 +91,7 @@ bool TCPSocket::bind(uint16_t port)
 
 bool TCPSocket::listen(int listen_backlog)
 {
-	if (::listen(local_fd, listen_backlog) == -1)
+	if (::listen(socket_fd, listen_backlog) == -1)
 	{
 		switch (errno)
 		{
@@ -116,9 +109,9 @@ std::unique_ptr<TCPSocket> TCPSocket::accept()
 {
 	auto client = std::make_unique<TCPSocket>();
 	socklen_t size;
-	client->peer_fd = ::accept(local_fd, (struct sockaddr *)&client->peer_address, &size);
+	client->socket_fd = ::accept(socket_fd, (struct sockaddr *)&client->peer_address, &size);
 
-	if (client->peer_fd == -1)
+	if (client->socket_fd == -1)
 	{
 		switch (errno)
 		{
@@ -142,10 +135,11 @@ std::unique_ptr<TCPSocket> TCPSocket::accept()
 
 bool TCPSocket::connect(const std::string &ip, uint16_t port)
 {
-	local_address.sin_addr.s_addr = inet_addr(ip.c_str());
-	local_address.sin_port = htons(port);
+	peer_address.sin_family = PF_INET;
+	peer_address.sin_addr.s_addr = inet_addr(ip.c_str());
+	peer_address.sin_port = htons(port);
 
-	if (::connect(local_fd, (struct sockaddr *)&local_address, sizeof(local_address)) == -1)
+	if (::connect(socket_fd, (struct sockaddr *)&peer_address, sizeof(peer_address)) == -1)
 	{
 		switch (errno)
 		{
@@ -161,22 +155,32 @@ bool TCPSocket::connect(const std::string &ip, uint16_t port)
 
 bool TCPSocket::disconnect()
 {
-	close(peer_fd);
-	peer_fd = -1;
+	close(socket_fd);
+	socket_fd = -1;
 
 	return true;
 }
 
 ssize_t TCPSocket::send_data(const std::string &data)
 {
-	return ::send(peer_fd, data.c_str(), data.size(), 0);
+	ssize_t sent = ::write(socket_fd, data.c_str(), data.size());
+	if (sent == -1)
+	{
+		std::cerr << "Error: " << strerror(errno) << std::endl;
+		if (errno == EWOULDBLOCK)
+		{
+			throw WouldBlockError(strerror(errno));
+		}
+		throw NetworkError(strerror(errno));
+	}
+	return sent;
 }
 
 std::string TCPSocket::receive_data(bool peek)
 {
 	constexpr size_t buffer_size = 1024;
 	char buffer[buffer_size] = {0};
-	ssize_t valread = ::read(peer_fd, buffer, buffer_size);
+	ssize_t valread = ::recv(socket_fd, buffer, buffer_size, peek ? MSG_PEEK : 0);
 	if (valread == -1)
 	{
 		std::cerr << "Error: " << strerror(errno) << std::endl;
@@ -216,7 +220,7 @@ int TCPSocket::get_local_port() const
 
 bool TCPSocket::set_non_blocking(bool non_blocking)
 {
-	int flags = fcntl(local_fd, F_GETFL, 0);
+	int flags = fcntl(socket_fd, F_GETFL, 0);
 	if (flags == -1)
 	{
 		return false;
@@ -231,5 +235,5 @@ bool TCPSocket::set_non_blocking(bool non_blocking)
 		flags &= ~O_NONBLOCK;
 	}
 
-	return fcntl(local_fd, F_SETFL, flags) != -1;
+	return fcntl(socket_fd, F_SETFL, flags) != -1;
 }

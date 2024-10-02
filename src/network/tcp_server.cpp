@@ -33,7 +33,7 @@ void TCPServer::serveRequests(const int wait_time)
 	fd_set active_fd_set;
 	fd_set read_fd_set;
 	FD_ZERO(&active_fd_set);
-	FD_SET(socket.local_fd, &active_fd_set);
+	FD_SET(socket.socket_fd, &active_fd_set);
 
 	// This is somewhat similar to Node.js's event loop
 	while (running)
@@ -54,7 +54,7 @@ void TCPServer::serveRequests(const int wait_time)
 		{
 			if (FD_ISSET(i, &read_fd_set))
 			{
-				if (i == socket.local_fd)
+				if (i == socket.socket_fd)
 				{
 					// Connection request on original socket
 					auto client = socket.accept();
@@ -64,7 +64,7 @@ void TCPServer::serveRequests(const int wait_time)
 						std::scoped_lock<std::mutex> lock(clients_list_mutex);
 						if (clients.size() < maxConnections)
 						{
-							FD_SET(client->peer_fd, &active_fd_set);
+							FD_SET(client->socket_fd, &active_fd_set);
 							clients.push_back(std::move(client));
 							if (onConnect)
 							{
@@ -81,7 +81,7 @@ void TCPServer::serveRequests(const int wait_time)
 				{
 					std::scoped_lock<std::mutex> lock(clients_list_mutex);
 					auto it = std::find_if(clients.begin(), clients.end(), [i](std::shared_ptr<TCPSocket> const &client)
-										   { return client->peer_fd == i; });
+										   { return client->socket_fd == i; });
 					if (it != clients.end())
 					{
 						auto client = *it;
@@ -99,7 +99,7 @@ void TCPServer::serveRequests(const int wait_time)
 						}
 						catch (ConnectionClosedError &_)
 						{
-							FD_CLR(client->peer_fd, &active_fd_set);
+							FD_CLR(client->socket_fd, &active_fd_set);
 							clients.erase(it);
 							client->disconnect();
 							if (onDisconnect)
@@ -110,7 +110,7 @@ void TCPServer::serveRequests(const int wait_time)
 						catch (NetworkError &e)
 						{
 							std::cerr << "Error: " << e.what() << std::endl;
-							FD_CLR(client->peer_fd, &active_fd_set);
+							FD_CLR(client->socket_fd, &active_fd_set);
 							clients.erase(it);
 							client->disconnect();
 							if (onDisconnect)

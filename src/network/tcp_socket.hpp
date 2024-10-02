@@ -22,15 +22,11 @@ private:
 	/**
 	 * @brief The file descriptor for this socket
 	 */
-	int local_fd;
+	int socket_fd;
 	/**
 	 * @brief The details of this socket
 	 */
 	struct sockaddr_in local_address;
-	/**
-	 * @brief The file descriptor for the connected peer
-	 */
-	int peer_fd;
 	/**
 	 * @brief The details of the connected peer
 	 */
@@ -118,6 +114,6 @@ public:
 
 	friend bool operator==(const TCPSocket &lhs, const TCPSocket &rhs) noexcept
 	{
-		return lhs.peer_fd == rhs.peer_fd;
+		return lhs.socket_fd == rhs.socket_fd;
 	}
 };
