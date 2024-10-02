@@ -34,8 +34,8 @@ TCPSocket::TCPSocket()
 
 TCPSocket::~TCPSocket()
 {
-	std::clog << "Destructor called for socket "
-			  << this->get_local_ip() << ":" << this->get_local_port() << std::endl;
+	// std::clog << "Destructor called for socket "
+	// 		  << this->get_local_ip() << ":" << this->get_local_port() << std::endl;
 	if (socket_fd != -1)
 		close(socket_fd);
 }
@@ -54,8 +54,8 @@ TCPSocket::TCPSocket(TCPSocket &&src) noexcept
 	peer_address = src.peer_address;
 	src.peer_address = {};
 
-	std::clog << "Move constructor called for socket "
-			  << this->get_local_ip() << ":" << this->get_local_port() << std::endl;
+	// std::clog << "Move constructor called for socket "
+	// 		  << this->get_local_ip() << ":" << this->get_local_port() << std::endl;
 }
 
 bool TCPSocket::bind(uint16_t port)
