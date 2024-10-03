@@ -95,15 +95,29 @@ bool process_user_request(std::shared_ptr<TCPSocket> client, std::string_view re
 bool process_group_request(std::shared_ptr<TCPSocket> client, std::string_view request, std::stringstream &datastream)
 {
 	const char *const login_required_warning = "You must be logged in to perform this action\n";
-	if (request == "create_group")
+
+	if (request == "list_groups")
 	{
+		auto groups = groupDB.getGroups();
+		std::string response = "";
+		for (auto const &group : groups)
+		{
+			response += std::to_string(group) + "\n";
+		}
+		client->send_data(response.empty() ? "No users found\n" : response);
+		return true;
+	}
+
+	std::shared_ptr<User> user = nullptr;
+	try
+	{
+		user = logged_in_users.at(client);
 		group_id_t group_id;
 		datastream >> group_id;
-		std::shared_ptr<User> owner = nullptr;
-		try
+		// The following require user login
+		if (request == "create_group")
 		{
-			owner = logged_in_users.at(client);
-			if (groupDB.createGroup(group_id, owner))
+			if (groupDB.createGroup(group_id, user))
 			{
 				client->send_data("Group created\n");
 			}
@@ -112,14 +126,94 @@ bool process_group_request(std::shared_ptr<TCPSocket> client, std::string_view r
 				client->send_data("Group already exists\n");
 			}
 		}
-		catch (std::out_of_range &_)
+		else if (request == "join_group")
 		{
-			client->send_data(login_required_warning);
+			std::shared_ptr<Group> group = groupDB.getGroup(group_id);
+			if (group && !group->has_user(user))
+			{
+				group->add_join_request(user);
+				client->send_data("Join request sent\n");
+			}
+			else
+			{
+				client->send_data("Invalid request\n");
+			}
+		}
+		else if (request == "leave_group")
+		{
+			std::shared_ptr<Group> group = groupDB.getGroup(group_id);
+			if (group && group->remove_user(user))
+			{
+				client->send_data("Left group\n");
+			}
+			else
+			{
+				client->send_data("Invalid request\n");
+			}
+		}
+		else if (request == "list_requests")
+		{
+			std::shared_ptr<Group> group = groupDB.getGroup(group_id);
+			if (group)
+			{
+				auto requests = group->get_join_requests();
+				std::string response = "";
+				for (auto const &request : requests)
+				{
+					response += request->getUsername() + "\n";
+				}
+				client->send_data(response.empty() ? "No pending requests\n" : response);
+			}
+			else
+			{
+				client->send_data("Group does not exist\n");
+			}
+		}
+		else if (request == "accept_request")
+		{
+			std::string username;
+			datastream >> username;
+			std::shared_ptr<Group> group = groupDB.getGroup(group_id);
+			if (group)
+			{
+				if (group->get_owner() != user)
+				{
+					client->send_data("You are not the owner of the group\n");
+				}
+				else
+				{
+					auto requests = group->get_join_requests();
+					bool found = false;
+					for (auto const &request : requests)
+					{
+						if (request->getUsername() == username)
+						{
+							group->add_user(request);
+							group->remove_join_request(request);
+							client->send_data("Request accepted\n");
+							found = true;
+							break;
+						}
+					}
+					if (!found)
+					{
+						client->send_data("This user has not sent a request\n");
+					}
+				}
+			}
+			else
+			{
+				client->send_data("Group does not exist\n");
+			}
+		}
+		else
+		{
+			return false;
 		}
 	}
-	else
+	catch (std::out_of_range &_)
 	{
-		return false;
+		client->send_data(login_required_warning);
 	}
 	return true;
 }
@@ -131,6 +225,6 @@ void process_request(std::shared_ptr<TCPSocket> client, std::string &data)
 	ss >> request;
 	if (!process_user_request(client, request, ss) && !process_group_request(client, request, ss))
 	{
-		client->send_data("Invalid request\n");
+		client->send_data("Unknown request\n");
 	}
 }

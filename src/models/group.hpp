@@ -34,14 +34,14 @@ public:
 		return true;
 	}
 
+	bool has_user(std::shared_ptr<User> user)
+	{
+		return users.find(user) != users.end();
+	}
+
 	bool remove_user(std::shared_ptr<User> user)
 	{
-		if (users.find(user) == users.end())
-		{
-			return false;
-		}
-		users.erase(user);
-		return true;
+		return users.erase(user);
 	}
 
 	bool add_join_request(std::shared_ptr<User> user)
