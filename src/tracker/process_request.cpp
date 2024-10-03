@@ -2,7 +2,9 @@
 #include "userdb.hpp"
 
 #include <sstream>
+#include <unordered_set>
 
+static std::unordered_map<std::shared_ptr<TCPSocket>, std::shared_ptr<User>> logged_in_users;
 static UserDB userDB;
 
 bool process_user_request(std::shared_ptr<TCPSocket> client, std::string_view request, std::stringstream &datastream)
@@ -64,6 +66,33 @@ bool process_user_request(std::shared_ptr<TCPSocket> client, std::string_view re
 			response += username + "\n";
 		}
 		client->send_data(response.empty() ? "No users found\n" : response);
+	}
+	else if (request == "login")
+	{
+		std::string username;
+		std::string password;
+		datastream >> username >> password;
+		auto user = userDB.getUser(username);
+		if (user && logged_in_users.find(client) == logged_in_users.end() && user->checkPassword(password))
+		{
+			logged_in_users.try_emplace(client, user);
+			client->send_data("Login successful\n");
+		}
+		else
+		{
+			client->send_data("Login failed\n");
+		}
+	}
+	else if (request == "logout")
+	{
+		if (logged_in_users.erase(client))
+		{
+			client->send_data("Logout successful\n");
+		}
+		else
+		{
+			client->send_data("Logout failed\n");
+		}
 	}
 	else
 	{
