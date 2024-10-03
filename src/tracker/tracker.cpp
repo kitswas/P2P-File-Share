@@ -22,18 +22,22 @@
 #include <iostream>
 #include <fcntl.h>
 #include <memory>
+#include <sstream>
 #include <sys/stat.h>
 #include <unistd.h>
 #include <thread>
 
 #include "../network/tcp_server.hpp"
+#include "userdb.hpp"
 
 static std::string ip;
 static uint16_t port = 0;
 
+static UserDB userDB;
+
 void load_tracker_info(const char *file, int n)
 {
-	int fd = open(file, O_CREAT | O_RDWR, S_IRUSR | S_IWUSR);
+	int fd = open(file, O_RDONLY);
 	if (fd == -1)
 	{
 		std::cerr << "Error opening file" << strerror(errno) << std::endl;
@@ -61,6 +65,75 @@ void load_tracker_info(const char *file, int n)
 	std::cout << "IP: " << ip << " Port: " << port << std::endl;
 }
 
+void process_request(std::shared_ptr<TCPSocket> client, std::string &data)
+{
+	std::stringstream ss(data);
+	std::string request;
+	ss >> request;
+	if (request == "create_user")
+	{
+		std::string username;
+		std::string password;
+		ss >> username >> password;
+
+		// Create user
+		if (userDB.createUser(username, password))
+		{
+			client->send_data("User created\n");
+		}
+		else
+		{
+			client->send_data("User already exists\n");
+		}
+	}
+	else if (request == "delete_user")
+	{
+		std::string username;
+		ss >> username;
+
+		// Delete user
+		if (userDB.deleteUser(username))
+		{
+			client->send_data("User deleted\n");
+		}
+		else
+		{
+			client->send_data("User does not exist\n");
+		}
+	}
+	else if (request == "get_user")
+	{
+		std::string username;
+		ss >> username;
+
+		// Get user
+		auto user = userDB.getUser(username);
+		if (user)
+		{
+			client->send_data("User found\n");
+		}
+		else
+		{
+			client->send_data("User not found\n");
+		}
+	}
+	else if (request == "list_users")
+	{
+		// Get usernames
+		auto usernames = userDB.getUsernames();
+		std::string response = "";
+		for (auto const &username : usernames)
+		{
+			response += username + "\n";
+		}
+		client->send_data(response);
+	}
+	else
+	{
+		client->send_data("Invalid request\n");
+	}
+}
+
 void loop()
 {
 	std::function<void(std::shared_ptr<TCPSocket>)> onConnect = [](std::shared_ptr<TCPSocket> client)
@@ -74,6 +147,7 @@ void loop()
 	std::function<void(std::shared_ptr<TCPSocket>, std::string &)> onData = [](std::shared_ptr<TCPSocket> client, std::string &data)
 	{
 		std::cout << "Data received from " << client->get_peer_ip() << ":" << client->get_peer_port() << " : " << data << std::endl;
+		process_request(client, data);
 	};
 
 	TCPServer server(2);
@@ -104,13 +178,18 @@ void loop()
 
 int main(int argc, char *argv[])
 {
+	int n = 1;
+	const char *file_path = nullptr;
+
 	// Parse args
 	if (argc != 3)
 	{
 		std::cerr << "Usage: ./tracker tracker_info.txt <tracker_no>" << std::endl;
 		exit(1);
 	}
-	int n = std::stoi(argv[2]);
+	n = std::stoi(argv[2]);
+	file_path = argv[1];
+
 	// Sanitize input
 	if (n != 1 && n != 2)
 	{
@@ -118,7 +197,7 @@ int main(int argc, char *argv[])
 		exit(1);
 	}
 
-	load_tracker_info(argv[1], n);
+	load_tracker_info(file_path, n);
 	loop();
 	return 0;
 }
