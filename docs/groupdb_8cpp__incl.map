@@ -1,0 +1,24 @@
+<map id="src/tracker/groupdb.cpp" name="src/tracker/groupdb.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="18,5,192,31"/>
+<area shape="rect" id="Node000002" href="$groupdb_8hpp.html" title=" " alt="" coords="54,79,156,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,31,108,65,102,65,102,31"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="85,225,162,251"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="78,107,53,120,31,136,18,156,17,166,21,176,44,201,74,218,71,223,40,205,16,179,12,166,13,154,27,133,50,115,75,102"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="254,299,313,324"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="72,106,38,125,23,138,11,153,8,164,12,176,28,207,52,233,81,254,113,271,181,293,241,304,240,309,180,298,111,275,78,258,48,237,24,210,7,178,3,164,7,151,19,134,35,120,69,102"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="30,152,73,177"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="98,106,71,143,66,140,94,103"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="98,152,222,177"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="116,103,145,140,140,143,112,106"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="246,152,308,177"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="134,102,237,144,235,149,132,106"/>
+<area shape="rect" id="Node000008" href="$group_8hpp.html" title=" " alt="" coords="332,152,483,177"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="154,101,346,146,345,151,153,107"/>
+<area shape="poly" id="edge8_Node000008_Node000003" title=" " alt="" coords="363,180,176,226,175,221,361,175"/>
+<area shape="poly" id="edge9_Node000008_Node000004" title=" " alt="" coords="400,180,304,290,300,287,396,176"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="397,225,512,251"/>
+<area shape="poly" id="edge10_Node000008_Node000009" title=" " alt="" coords="418,176,441,212,437,215,413,179"/>
+<area shape="rect" id="Node000010" href="$user_8hpp.html" title=" " alt="" coords="245,225,322,251"/>
+<area shape="poly" id="edge11_Node000008_Node000010" title=" " alt="" coords="389,180,317,221,314,216,386,175"/>
+<area shape="poly" id="edge12_Node000010_Node000004" title=" " alt="" coords="286,251,286,285,281,285,281,251"/>
+</map>

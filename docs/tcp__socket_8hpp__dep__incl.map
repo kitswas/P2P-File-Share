@@ -1,0 +1,18 @@
+<map id="src/network/tcp_socket.hpp" name="src/network/tcp_socket.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="288,5,487,31"/>
+<area shape="rect" id="Node000002" href="$client_8cpp.html" title="The entrypoint to the client." alt="" coords="5,86,153,111"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="330,37,125,89,124,83,329,31"/>
+<area shape="rect" id="Node000003" href="$tcp__server_8hpp.html" title=" " alt="" coords="178,86,375,111"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="361,41,295,88,292,84,358,37"/>
+<area shape="rect" id="Node000006" href="$tcp__socket_8cpp.html" title=" " alt="" coords="400,86,599,111"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="417,37,484,84,481,88,414,41"/>
+<area shape="rect" id="Node000007" href="$process__request_8hpp.html" title=" " alt="" coords="623,79,767,119"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="446,31,624,76,622,82,444,37"/>
+<area shape="rect" id="Node000004" href="$tcp__server_8cpp.html" title=" " alt="" coords="179,174,375,199"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="279,125,279,173,274,173,274,125"/>
+<area shape="rect" id="Node000005" href="$tracker_8cpp.html" title="The tracker." alt="" coords="417,174,582,199"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="321,114,470,171,468,176,319,119"/>
+<area shape="poly" id="edge8_Node000007_Node000005" title=" " alt="" coords="641,127,526,176,524,172,639,122"/>
+<area shape="rect" id="Node000008" href="$process__request_8cpp.html" title=" " alt="" coords="623,167,767,207"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="698,133,698,166,693,166,693,133"/>
+</map>

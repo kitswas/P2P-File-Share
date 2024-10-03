@@ -1,0 +1,41 @@
+<map id="src/network/tcp_server.cpp" name="src/network/tcp_server.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="198,5,394,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,72,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="255,33,86,80,84,75,254,28"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="96,79,176,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="271,33,176,75,174,71,269,28"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="285,225,363,251"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="281,33,259,53,241,80,239,91,241,103,254,135,271,165,306,213,302,216,266,168,249,137,236,105,233,91,236,78,255,49,278,29"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="251,79,341,104"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="299,31,299,65,293,65,293,31"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="460,152,524,177"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="384,28,470,47,505,61,527,77,534,93,532,111,514,142,510,140,527,109,529,94,523,80,502,65,468,52,383,33"/>
+<area shape="rect" id="Node000007" href="$network__errors_8hpp.html" title=" " alt="" coords="366,79,514,104"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="320,28,405,70,403,75,318,33"/>
+<area shape="rect" id="Node000009" href="$tcp__server_8hpp.html" title=" " alt="" coords="637,79,755,104"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="361,28,624,75,623,80,360,33"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="349,152,435,177"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="434,106,410,142,405,139,430,103"/>
+<area shape="poly" id="edge13_Node000009_Node000006" title=" " alt="" coords="664,107,538,150,536,145,662,102"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="780,152,847,177"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="716,102,784,142,781,147,713,106"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="871,152,958,177"/>
+<area shape="poly" id="edge10_Node000009_Node000011" title=" " alt="" coords="732,101,867,145,865,150,730,107"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="983,152,1025,177"/>
+<area shape="poly" id="edge11_Node000009_Node000012" title=" " alt="" coords="755,101,852,121,970,149,969,155,851,126,754,106"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="548,152,612,177"/>
+<area shape="poly" id="edge12_Node000009_Node000013" title=" " alt="" coords="679,106,612,147,609,142,676,102"/>
+<area shape="rect" id="Node000014" href="$tcp__socket_8hpp.html" title=" " alt="" coords="637,152,755,177"/>
+<area shape="poly" id="edge14_Node000009_Node000014" title=" " alt="" coords="699,104,699,138,693,138,693,104"/>
+<area shape="poly" id="edge15_Node000014_Node000004" title=" " alt="" coords="637,180,377,229,376,224,636,175"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="845,225,941,251"/>
+<area shape="poly" id="edge16_Node000014_Node000015" title=" " alt="" coords="729,175,849,218,847,223,727,180"/>
+<area shape="rect" id="Node000016" title=" " alt="" coords="448,225,507,251"/>
+<area shape="poly" id="edge17_Node000014_Node000016" title=" " alt="" coords="662,180,521,225,519,220,660,175"/>
+<area shape="rect" id="Node000017" title=" " alt="" coords="531,225,634,251"/>
+<area shape="poly" id="edge18_Node000014_Node000017" title=" " alt="" coords="679,180,614,220,611,216,676,175"/>
+<area shape="rect" id="Node000018" title=" " alt="" coords="659,225,733,251"/>
+<area shape="poly" id="edge19_Node000014_Node000018" title=" " alt="" coords="699,178,699,212,693,212,693,178"/>
+<area shape="rect" id="Node000019" title=" " alt="" coords="758,225,821,251"/>
+<area shape="poly" id="edge20_Node000014_Node000019" title=" " alt="" coords="713,175,765,215,762,219,709,179"/>
+</map>
