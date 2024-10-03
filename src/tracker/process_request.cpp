@@ -40,22 +40,6 @@ bool process_user_request(std::shared_ptr<TCPSocket> client, std::string_view re
 			client->send_data("User does not exist\n");
 		}
 	}
-	else if (request == "get_user")
-	{
-		std::string username;
-		datastream >> username;
-
-		// Get user
-		auto user = userDB.getUser(username);
-		if (user)
-		{
-			client->send_data("User found\n");
-		}
-		else
-		{
-			client->send_data("User not found\n");
-		}
-	}
 	else if (request == "list_users")
 	{
 		// Get usernames
