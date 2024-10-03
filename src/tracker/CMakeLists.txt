@@ -1,4 +1,5 @@
 set(TRACKER_SOURCES
+	process_request.cpp
 	tracker.cpp
 	userdb.cpp
 )
