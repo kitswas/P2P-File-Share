@@ -2,7 +2,6 @@
 #include "userdb.hpp"
 
 #include <sstream>
-#include <unordered_set>
 
 static std::unordered_map<std::shared_ptr<TCPSocket>, std::shared_ptr<User>> logged_in_users;
 static UserDB userDB;
