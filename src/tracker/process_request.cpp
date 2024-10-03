@@ -102,7 +102,7 @@ bool process_group_request(std::shared_ptr<TCPSocket> client, std::string_view r
 		std::string response = "";
 		for (auto const &group : groups)
 		{
-			response += std::to_string(group) + "\n";
+			response += group + "\n";
 		}
 		client->send_data(response.empty() ? "No users found\n" : response);
 		return true;
@@ -112,7 +112,7 @@ bool process_group_request(std::shared_ptr<TCPSocket> client, std::string_view r
 	try
 	{
 		user = logged_in_users.at(client);
-		group_id_t group_id;
+		std::string group_id;
 		datastream >> group_id;
 		// The following require user login
 		if (request == "create_group")

@@ -6,20 +6,18 @@
 
 #include "user.hpp"
 
-using group_id_t = u_int16_t;
-
 class Group
 {
 private:
-	u_int16_t group_id;
+	std::string group_id;
 	std::shared_ptr<User> owner;
 	std::unordered_set<std::shared_ptr<User>> users;
 	std::unordered_set<std::shared_ptr<User>> join_requests;
 
 public:
-	Group(u_int16_t group_id, std::shared_ptr<User> owner) : group_id(group_id), owner(owner) {};
+	Group(std::string const &group_id, std::shared_ptr<User> owner) : group_id(group_id), owner(owner) {};
 
-	u_int16_t get_group_id() const { return group_id; }
+	std::string get_group_id() const { return group_id; }
 	std::shared_ptr<User> get_owner() const { return owner; }
 	std::unordered_set<std::shared_ptr<User>> get_users() const { return users; }
 	std::unordered_set<std::shared_ptr<User>> get_join_requests() const { return join_requests; }

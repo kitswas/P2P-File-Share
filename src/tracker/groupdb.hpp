@@ -11,7 +11,7 @@
 class GroupDB
 {
 private:
-	std::unordered_map<group_id_t, std::shared_ptr<Group>> groups;
+	std::unordered_map<std::string, std::shared_ptr<Group>> groups;
 
 public:
 	GroupDB() = default;
@@ -19,14 +19,14 @@ public:
 	/**
 	 * @return true if group was created, false if group already exists
 	 */
-	bool createGroup(group_id_t group_id, std::shared_ptr<User> owner);
+	bool createGroup(std::string const &group_id, std::shared_ptr<User> owner);
 	/**
 	 * @return true if group was deleted, false if group does not exist
 	 */
-	bool deleteGroup(group_id_t group_id);
+	bool deleteGroup(std::string const &group_id);
 	/**
 	 * @return nullptr if group does not exist
 	 */
-	std::shared_ptr<Group> getGroup(group_id_t group_id);
-	std::vector<group_id_t> getGroups() const;
+	std::shared_ptr<Group> getGroup(std::string const &group_id);
+	std::vector<std::string> getGroups() const;
 };

@@ -1,6 +1,6 @@
 #include "groupdb.hpp"
 
-bool GroupDB::createGroup(group_id_t group_id, std::shared_ptr<User> owner)
+bool GroupDB::createGroup(std::string const &group_id, std::shared_ptr<User> owner)
 {
 	if (groups.find(group_id) != groups.end())
 	{
@@ -10,7 +10,7 @@ bool GroupDB::createGroup(group_id_t group_id, std::shared_ptr<User> owner)
 	return true;
 }
 
-bool GroupDB::deleteGroup(group_id_t group_id)
+bool GroupDB::deleteGroup(std::string const &group_id)
 {
 	auto it = groups.find(group_id);
 	if (it == groups.end())
@@ -21,7 +21,7 @@ bool GroupDB::deleteGroup(group_id_t group_id)
 	return true;
 }
 
-std::shared_ptr<Group> GroupDB::getGroup(group_id_t group_id)
+std::shared_ptr<Group> GroupDB::getGroup(std::string const &group_id)
 {
 	auto it = groups.find(group_id);
 	if (it == groups.end())
@@ -31,9 +31,9 @@ std::shared_ptr<Group> GroupDB::getGroup(group_id_t group_id)
 	return it->second;
 }
 
-std::vector<group_id_t> GroupDB::getGroups() const
+std::vector<std::string> GroupDB::getGroups() const
 {
-	std::vector<group_id_t> group_ids;
+	std::vector<std::string> group_ids;
 	for (auto const &[group_id, _] : groups)
 	{
 		group_ids.push_back(group_id);
