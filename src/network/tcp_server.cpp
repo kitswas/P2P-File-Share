@@ -14,6 +14,11 @@ TCPServer::TCPServer(size_t maxConnections)
 {
 }
 
+TCPServer::~TCPServer()
+{
+	stop();
+}
+
 void TCPServer::setOnConnect(std::function<void(std::shared_ptr<TCPSocket>)> const &onConnect)
 {
 	this->onConnect = onConnect;
@@ -150,6 +155,9 @@ bool TCPServer::start(uint16_t port, int listen_backlog)
 
 void TCPServer::stop()
 {
+	if (!running)
+		return;
+
 	running = false;
 	service_thread.join();
 	socket.disconnect();

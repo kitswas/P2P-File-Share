@@ -82,6 +82,7 @@ public:
 	TCPServer(const TCPServer &) = delete;
 	TCPServer &operator=(const TCPServer &) = delete;
 	TCPServer(TCPServer &&) = delete;
+	~TCPServer();
 
 	/**
 	 * @brief Set the function to call when a new client connects.
