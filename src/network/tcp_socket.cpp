@@ -58,6 +58,26 @@ TCPSocket::TCPSocket(TCPSocket &&src) noexcept
 	// 		  << this->get_local_ip() << ":" << this->get_local_port() << std::endl;
 }
 
+TCPSocket &TCPSocket::operator=(TCPSocket &&src)
+{
+	// std::clog << "Move assignment called for socket "
+	// 		  << this->get_local_ip() << ":" << this->get_local_port() << std::endl;
+
+	// Move the local file descriptor
+	socket_fd = src.socket_fd;
+	src.socket_fd = -1;
+
+	// Move the local address
+	local_address = src.local_address;
+	src.local_address = {};
+
+	// Move the peer address
+	peer_address = src.peer_address;
+	src.peer_address = {};
+
+	return *this;
+}
+
 bool TCPSocket::bind(uint16_t port)
 {
 	local_address.sin_addr.s_addr = INADDR_ANY;
