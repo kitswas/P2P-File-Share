@@ -129,7 +129,7 @@ bool process_group_request(std::shared_ptr<TCPSocket> client, std::string_view r
 		else if (request == "join_group")
 		{
 			std::shared_ptr<Group> group = groupDB.getGroup(group_id);
-			if (group && !group->has_user(user))
+			if (group && !group->has_member(user))
 			{
 				group->add_join_request(user);
 				client->send_data("Join request sent\n");

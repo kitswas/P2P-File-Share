@@ -32,9 +32,10 @@ public:
 		return true;
 	}
 
-	bool has_user(std::shared_ptr<User> user)
+	bool has_member(std::shared_ptr<User> user)
 	{
-		return users.find(user) != users.end();
+		return (user == owner ||
+				users.find(user) != users.end());
 	}
 
 	bool remove_user(std::shared_ptr<User> user)
