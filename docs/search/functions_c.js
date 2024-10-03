@@ -1,6 +1,10 @@
 var searchData=
 [
-  ['read_5fhistory_5ffrom_5ffile_0',['read_history_from_file',['../history_8c.html#ae7c1377ac39ae5cc14f701b12bbe05e2',1,'read_history_from_file():&#160;history.c'],['../history_8h.html#ae7c1377ac39ae5cc14f701b12bbe05e2',1,'read_history_from_file():&#160;history.c']]],
-  ['read_5fline_1',['read_line',['../terminal_8c.html#acdc51cd121c86fe5a560f1f54f71a64d',1,'read_line(char *buffer, size_t buffer_size):&#160;terminal.c'],['../terminal_8h.html#acdc51cd121c86fe5a560f1f54f71a64d',1,'read_line(char *buffer, size_t buffer_size):&#160;terminal.c']]],
-  ['remove_5fjob_5ffrom_5fstore_2',['remove_job_from_store',['../job__store_8c.html#a1073134d066030fb9d60e1ccca433035',1,'remove_job_from_store(pid_t pgid):&#160;job_store.c'],['../job__store_8h.html#a1073134d066030fb9d60e1ccca433035',1,'remove_job_from_store(pid_t pgid):&#160;job_store.c']]]
+  ['send_5fdata_0',['send_data',['../classTCPSocket.html#a004c59211398062acd9ea674df8d81fe',1,'TCPSocket']]],
+  ['set_5fnon_5fblocking_1',['set_non_blocking',['../classTCPSocket.html#a8163332bb04894dc1813f599a73bacb6',1,'TCPSocket']]],
+  ['setonconnect_2',['setOnConnect',['../classTCPServer.html#a9409c53fbf7a949c80973b183faad352',1,'TCPServer']]],
+  ['setondata_3',['setOnData',['../classTCPServer.html#a2fc46d09a97fb633fdb0f5e96f34de49',1,'TCPServer']]],
+  ['setondisconnect_4',['setOnDisconnect',['../classTCPServer.html#a015f86f12593df209e5a2b3e1a2d0430',1,'TCPServer']]],
+  ['start_5',['start',['../classTCPServer.html#a6ac3e76d7d35b32f99ac749bc7898226',1,'TCPServer']]],
+  ['stop_6',['stop',['../classTCPServer.html#a9c0f55968624ea4dd49467b656e23807',1,'TCPServer']]]
 ];

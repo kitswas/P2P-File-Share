@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['c_5fshell_5ftok_5fdelim_0',['C_SHELL_TOK_DELIM',['../parse_8h.html#a5265362483710299690afd28141ccc09',1,'parse.h']]],
-  ['cls_1',['cls',['../terminal_8h.html#aaece7c73045f420fc5eda905e2861b70',1,'terminal.h']]]
+  ['hard_5fconnection_5flimit_0',['HARD_CONNECTION_LIMIT',['../tcp__server_8hpp.html#a2ead0038ac39a676a7675102b32b8f49',1,'tcp_server.hpp']]]
 ];

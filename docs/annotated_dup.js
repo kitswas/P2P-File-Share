@@ -1,6 +1,13 @@
 var annotated_dup =
 [
-    [ "command", "structcommand.html", "structcommand" ],
-    [ "history_list", "structhistory__list.html", "structhistory__list" ],
-    [ "job", "structjob.html", "structjob" ]
+    [ "ConnectionClosedError", "classConnectionClosedError.html", null ],
+    [ "Group", "classGroup.html", "classGroup" ],
+    [ "GroupDB", "classGroupDB.html", "classGroupDB" ],
+    [ "NetworkError", "classNetworkError.html", null ],
+    [ "TCPServer", "classTCPServer.html", "classTCPServer" ],
+    [ "TCPSocket", "classTCPSocket.html", "classTCPSocket" ],
+    [ "Tracker", "structTracker.html", "structTracker" ],
+    [ "User", "classUser.html", "classUser" ],
+    [ "UserDB", "classUserDB.html", "classUserDB" ],
+    [ "WouldBlockError", "classWouldBlockError.html", null ]
 ];

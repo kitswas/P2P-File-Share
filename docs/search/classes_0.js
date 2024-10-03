@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['command_0',['command',['../structcommand.html',1,'']]]
+  ['connectionclosederror_0',['ConnectionClosedError',['../classConnectionClosedError.html',1,'']]]
 ];

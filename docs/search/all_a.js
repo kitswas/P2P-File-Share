@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['setting_20up_20your_20workspace_0',['Setting up your workspace',['../index.html#setting-up-your-workspace',1,'']]],
-  ['share_1',['P2P-File-Share',['../index.html',1,'']]]
+  ['network_5ferrors_2ehpp_0',['network_errors.hpp',['../network__errors_8hpp.html',1,'']]],
+  ['networkerror_1',['NetworkError',['../classNetworkError.html',1,'']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['main_0',['main',['../main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main.c']]]
+  ['operator_3d_0',['operator=',['../classTCPServer.html#a67c8efa54b6a75d276538b0a78d9f6ad',1,'TCPServer::operator=()'],['../classTCPSocket.html#ada2746f66c27567541588bd9401aea1a',1,'TCPSocket::operator=(const TCPSocket &amp;)=delete'],['../classTCPSocket.html#a9c4342317fac0e940c85aacaddca157d',1,'TCPSocket::operator=(TCPSocket &amp;&amp;src)']]]
 ];

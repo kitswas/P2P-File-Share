@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['history_5flist_0',['history_list',['../structhistory__list.html',1,'']]]
+  ['group_0',['Group',['../classGroup.html',1,'']]],
+  ['groupdb_1',['GroupDB',['../classGroupDB.html',1,'']]]
 ];

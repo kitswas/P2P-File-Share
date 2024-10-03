@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['cd_0',['cd',['../cd_8c.html#a4a8669d38accfeb2d504ee6f9c68e382',1,'cd(int nargs, char **args):&#160;cd.c'],['../internal__commands_8h.html#a4a8669d38accfeb2d504ee6f9c68e382',1,'cd(int nargs, char **args):&#160;cd.c']]],
-  ['clear_5fhistory_1',['clear_history',['../history_8c.html#afc991fdb1e95d7cafb1c6fe42f5956cd',1,'clear_history():&#160;history.c'],['../history_8h.html#afc991fdb1e95d7cafb1c6fe42f5956cd',1,'clear_history():&#160;history.c']]]
+  ['checkpassword_0',['checkPassword',['../classUser.html#a095f7cfe21e33b4565d6d9c5fd149798',1,'User']]],
+  ['connect_1',['connect',['../classTCPSocket.html#ae6580c94422a876a1b567b9ca49a36c4',1,'TCPSocket']]],
+  ['connect_5fto_5ftracker_2',['connect_to_tracker',['../client_8cpp.html#a517c4e314d6c56c5d45a80df5f6a1024',1,'client.cpp']]],
+  ['creategroup_3',['createGroup',['../classGroupDB.html#aba77e20b1eb345c84bb7dc47fc0bb1ca',1,'GroupDB']]],
+  ['createuser_4',['createUser',['../classUserDB.html#a50243723152a3797313d31aae8c88a75',1,'UserDB']]]
 ];

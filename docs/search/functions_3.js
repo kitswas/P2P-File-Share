@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['echo_0',['echo',['../echo_8c.html#a8e4f9094183dcd57eba3b40fbe2cf3e7',1,'echo(int nargs, char **args):&#160;echo.c'],['../internal__commands_8h.html#a8e4f9094183dcd57eba3b40fbe2cf3e7',1,'echo(int nargs, char **args):&#160;echo.c']]],
-  ['execute_1',['execute',['../executor_8c.html#ab4e1925ffbe1e99504c7198d7cb7a5cc',1,'execute(struct command *cmd):&#160;executor.c'],['../executor_8h.html#ab4e1925ffbe1e99504c7198d7cb7a5cc',1,'execute(struct command *cmd):&#160;executor.c']]]
+  ['deletegroup_0',['deleteGroup',['../classGroupDB.html#a9b065759692abce5292a4c5326b2305b',1,'GroupDB']]],
+  ['deleteuser_1',['deleteUser',['../classUserDB.html#aa2c5b340605d7bb457b55703949a3ed9',1,'UserDB']]],
+  ['disconnect_2',['disconnect',['../classTCPSocket.html#acb7dc1ca0127b6c1b5707ae967cdfcd9',1,'TCPSocket']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['job_0',['job',['../structjob.html',1,'']]]
+  ['networkerror_0',['NetworkError',['../classNetworkError.html',1,'']]]
 ];

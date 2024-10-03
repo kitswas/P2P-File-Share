@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['write_5fhistory_5fto_5ffile_0',['write_history_to_file',['../history_8c.html#a7fc9e9c3ac964b180937b66b0a9b8951',1,'write_history_to_file():&#160;history.c'],['../history_8h.html#a7fc9e9c3ac964b180937b66b0a9b8951',1,'write_history_to_file():&#160;history.c']]]
+  ['user_0',['User',['../classUser.html#a893ae29cc2c67781c014c41dd20cd8b1',1,'User']]],
+  ['userdb_1',['UserDB',['../classUserDB.html#ae3529b8e3ec35af9ed2c4e86e5173920',1,'UserDB']]]
 ];
