@@ -165,6 +165,8 @@ bool TCPSocket::connect(const std::string &ip, uint16_t port)
 		{
 		case 0:
 			break;
+		case ECONNREFUSED:
+			throw ConnectionClosedError(strerror(errno));
 		case EINPROGRESS: // Non-blocking mode
 			std::cout << "Connecting..." << std::endl;
 			break;
@@ -178,7 +180,8 @@ bool TCPSocket::connect(const std::string &ip, uint16_t port)
 
 bool TCPSocket::disconnect()
 {
-	close(socket_fd);
+	if (socket_fd != -1)
+		close(socket_fd);
 	socket_fd = -1;
 
 	return true;
@@ -186,15 +189,19 @@ bool TCPSocket::disconnect()
 
 ssize_t TCPSocket::send_data(const std::string &data)
 {
-	ssize_t sent = ::write(socket_fd, data.c_str(), data.size());
+	ssize_t sent = ::send(socket_fd, data.c_str(), data.size(), MSG_NOSIGNAL);
 	if (sent == -1)
 	{
 		std::cerr << "Error: " << strerror(errno) << std::endl;
-		if (errno == EWOULDBLOCK)
+		switch (errno)
 		{
+		case EPIPE:
+			throw ConnectionClosedError("Peer disconnected");
+		case EWOULDBLOCK:
 			throw WouldBlockError(strerror(errno));
+		default:
+			throw NetworkError(strerror(errno));
 		}
-		throw NetworkError(strerror(errno));
 	}
 	return sent;
 }
