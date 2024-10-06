@@ -42,9 +42,11 @@ public:
 
 	/**
 	 * @brief Bind the socket to a port
+	 * @param ip The IP address to bind to, or an empty string to bind to all interfaces
+	 * @param port The port to bind to
 	 * @return true on success, false on failure
 	 */
-	bool bind(uint16_t port);
+	bool bind(const std::string &ip, uint16_t port);
 
 	/**
 	 * @brief Listen for incoming connections

@@ -133,9 +133,9 @@ void TCPServer::serveRequests(const int wait_time)
 	}
 }
 
-bool TCPServer::start(uint16_t port, int listen_backlog)
+bool TCPServer::start(const std::string &ip, uint16_t port, int listen_backlog)
 {
-	if (!socket.bind(port))
+	if (!socket.bind(ip, port))
 	{
 		return false;
 	}

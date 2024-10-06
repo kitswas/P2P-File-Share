@@ -108,11 +108,12 @@ public:
 	/**
 	 * @brief Start the server.
 	 *
+	 * @param ip The IP address to listen on, or an empty string to listen on all interfaces.
 	 * @param port The port to listen on.
 	 * @param listen_backlog The maximum number of pending connections.
 	 * @return true on success, false on failure.
 	 */
-	bool start(uint16_t port, int listen_backlog = 1);
+	bool start(const std::string &ip, uint16_t port, int listen_backlog = 1);
 
 	/**
 	 * @brief Stop the server.
