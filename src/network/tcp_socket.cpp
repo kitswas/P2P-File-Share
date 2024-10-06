@@ -58,7 +58,7 @@ TCPSocket::TCPSocket(TCPSocket &&src) noexcept
 	// 		  << this->get_local_ip() << ":" << this->get_local_port() << std::endl;
 }
 
-TCPSocket &TCPSocket::operator=(TCPSocket &&src)
+TCPSocket &TCPSocket::operator=(TCPSocket &&src) noexcept
 {
 	// std::clog << "Move assignment called for socket "
 	// 		  << this->get_local_ip() << ":" << this->get_local_port() << std::endl;

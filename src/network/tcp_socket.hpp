@@ -38,7 +38,7 @@ public:
 	TCPSocket &operator=(const TCPSocket &) = delete;
 	TCPSocket(const TCPSocket &) = delete;
 	TCPSocket(TCPSocket &&src) noexcept;
-	TCPSocket &operator=(TCPSocket &&src);
+	TCPSocket &operator=(TCPSocket &&src) noexcept;
 
 	/**
 	 * @brief Bind the socket to a port
