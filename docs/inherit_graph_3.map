@@ -1,3 +1,9 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$classTCPServer.html" title=" " alt="" coords="5,5,93,31"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,31,144,56"/>
+<area shape="rect" id="Node000001" href="$classNetworkError.html" title=" " alt="" coords="192,31,300,56"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="158,41,192,41,192,46,158,46"/>
+<area shape="rect" id="Node000002" href="$classConnectionClosedError.html" title=" " alt="" coords="348,5,519,31"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="313,32,347,27,348,32,314,37"/>
+<area shape="rect" id="Node000003" href="$classWouldBlockError.html" title=" " alt="" coords="369,55,498,80"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="314,49,369,56,368,62,313,55"/>
 </map>

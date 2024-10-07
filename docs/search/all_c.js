@@ -1,10 +1,5 @@
 var searchData=
 [
-  ['p2p_20file_20share_0',['P2P-File-Share',['../index.html',1,'']]],
-  ['port_1',['port',['../structTracker.html#a3028b5d43374e44ca1274c049e1e24fc',1,'Tracker']]],
-  ['process_5fgroup_5frequest_2',['process_group_request',['../process__request_8cpp.html#af848fbb45e11267c06e380cc91d13ade',1,'process_request.cpp']]],
-  ['process_5frequest_3',['process_request',['../process__request_8cpp.html#a4df9ea5eafdb3bed91c3190a276a7b69',1,'process_request(std::shared_ptr&lt; TCPSocket &gt; client, std::string &amp;data):&#160;process_request.cpp'],['../process__request_8hpp.html#a4df9ea5eafdb3bed91c3190a276a7b69',1,'process_request(std::shared_ptr&lt; TCPSocket &gt; client, std::string &amp;data):&#160;process_request.cpp']]],
-  ['process_5frequest_2ecpp_4',['process_request.cpp',['../process__request_8cpp.html',1,'']]],
-  ['process_5frequest_2ehpp_5',['process_request.hpp',['../process__request_8hpp.html',1,'']]],
-  ['process_5fuser_5frequest_6',['process_user_request',['../process__request_8cpp.html#a5eb2d148bc92b3321502c4f607914d85',1,'process_request.cpp']]]
+  ['operator_3d_0',['operator=',['../classTCPServer.html#a67c8efa54b6a75d276538b0a78d9f6ad',1,'TCPServer::operator=()'],['../classTCPSocket.html#ada2746f66c27567541588bd9401aea1a',1,'TCPSocket::operator=(const TCPSocket &amp;)=delete'],['../classTCPSocket.html#a855ae3a69b6eb18be2583010d3e6efe8',1,'TCPSocket::operator=(TCPSocket &amp;&amp;src) noexcept']]],
+  ['operator_3d_3d_1',['operator==',['../classTCPSocket.html#a6b4aa4bd96587f57b3ac67b96d9a7ca0',1,'TCPSocket']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ip_0',['ip',['../structTracker.html#a1bf6d2927e83395495084913b1495eba',1,'Tracker']]]
+  ['ip_0',['ip',['../structEndpoint.html#a2f1b635a2000dbd7573a6c681f6ff34b',1,'Endpoint']]]
 ];

@@ -1,5 +1,6 @@
 var hierarchy =
 [
+    [ "Endpoint", "structEndpoint.html", null ],
     [ "Group", "classGroup.html", null ],
     [ "GroupDB", "classGroupDB.html", null ],
     [ "std::runtime_error", null, [
@@ -10,7 +11,6 @@ var hierarchy =
     ] ],
     [ "TCPServer", "classTCPServer.html", null ],
     [ "TCPSocket", "classTCPSocket.html", null ],
-    [ "Tracker", "structTracker.html", null ],
     [ "User", "classUser.html", null ],
     [ "UserDB", "classUserDB.html", null ]
 ];

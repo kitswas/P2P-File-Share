@@ -133,6 +133,7 @@ $(function(){initNavTree('tracker_8cpp.html',''); initResizable(true); });
 <code>#include &lt;sys/stat.h&gt;</code><br />
 <code>#include &lt;unistd.h&gt;</code><br />
 <code>#include &lt;thread&gt;</code><br />
+<code>#include &quot;<a class="el" href="load__tracker__info_8cpp.html">../common/load_tracker_info.cpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="tcp__server_8hpp.html">../network/tcp_server.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="process__request_8hpp.html">process_request.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -140,60 +141,70 @@ Include dependency graph for tracker.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="tracker_8cpp__incl.png" border="0" usemap="#asrc_2tracker_2tracker_8cpp" alt=""/></div>
 <map name="asrc_2tracker_2tracker_8cpp" id="asrc_2tracker_2tracker_8cpp">
-<area shape="rect" title="The tracker." alt="" coords="345,5,511,31"/>
-<area shape="rect" title=" " alt="" coords="5,79,72,104"/>
-<area shape="poly" title=" " alt="" coords="353,33,232,53,86,81,85,76,231,48,352,28"/>
-<area shape="rect" title=" " alt="" coords="96,79,176,104"/>
-<area shape="poly" title=" " alt="" coords="382,33,190,80,189,74,380,28"/>
-<area shape="rect" title=" " alt="" coords="201,79,263,104"/>
-<area shape="poly" title=" " alt="" coords="397,33,277,77,275,72,396,28"/>
-<area shape="rect" title=" " alt="" coords="952,225,1029,251"/>
-<area shape="poly" title=" " alt="" coords="511,23,647,42,722,56,797,76,882,101,917,119,954,150,974,180,987,211,982,213,970,182,950,154,914,123,880,106,795,81,721,62,646,47,511,29"/>
-<area shape="rect" title=" " alt="" coords="339,79,413,104"/>
-<area shape="poly" title=" " alt="" coords="422,33,395,69,390,66,417,29"/>
-<area shape="rect" title=" " alt="" coords="437,79,523,104"/>
-<area shape="poly" title=" " alt="" coords="439,29,466,66,461,69,434,33"/>
-<area shape="rect" title=" " alt="" coords="411,225,485,251"/>
-<area shape="poly" title=" " alt="" coords="391,33,356,51,341,64,329,80,326,91,329,103,342,142,366,176,390,198,416,216,413,221,387,202,362,179,337,145,324,105,321,91,324,78,337,61,353,47,389,28"/>
-<area shape="rect" title=" " alt="" coords="376,152,440,177"/>
-<area shape="poly" title=" " alt="" coords="466,28,496,41,524,58,541,79,542,92,537,105,524,118,504,129,454,150,452,145,501,125,521,113,532,103,537,91,536,81,521,62,494,46,464,33"/>
-<area shape="rect" href="tcp__server_8hpp.html" title=" " alt="" coords="597,79,784,104"/>
-<area shape="poly" title=" " alt="" coords="471,28,636,72,634,78,470,33"/>
-<area shape="rect" href="process__request_8hpp.html" title=" " alt="" coords="1005,79,1161,104"/>
-<area shape="poly" title=" " alt="" coords="511,25,986,76,992,77,991,82,985,81,511,31"/>
-<area shape="poly" title=" " alt="" coords="645,107,454,154,453,149,644,101"/>
-<area shape="rect" title=" " alt="" coords="619,152,685,177"/>
-<area shape="poly" title=" " alt="" coords="687,106,667,141,662,139,682,103"/>
-<area shape="rect" title=" " alt="" coords="710,152,797,177"/>
-<area shape="poly" title=" " alt="" coords="703,103,736,140,732,143,699,106"/>
-<area shape="rect" title=" " alt="" coords="464,152,507,177"/>
-<area shape="poly" title=" " alt="" coords="659,107,521,154,519,149,657,101"/>
-<area shape="rect" title=" " alt="" coords="531,152,595,177"/>
-<area shape="poly" title=" " alt="" coords="671,106,597,147,595,143,669,102"/>
-<area shape="rect" href="tcp__socket_8hpp.html" title=" " alt="" coords="821,152,939,177"/>
-<area shape="poly" title=" " alt="" coords="722,102,837,144,835,149,720,107"/>
-<area shape="poly" title=" " alt="" coords="899,175,962,215,959,220,896,180"/>
-<area shape="poly" title=" " alt="" coords="821,178,499,231,499,226,820,173"/>
-<area shape="rect" title=" " alt="" coords="832,225,928,251"/>
-<area shape="poly" title=" " alt="" coords="883,178,883,212,877,212,877,178"/>
-<area shape="rect" title=" " alt="" coords="1053,225,1112,251"/>
-<area shape="poly" title=" " alt="" coords="913,175,1041,219,1039,224,912,180"/>
-<area shape="rect" title=" " alt="" coords="618,225,721,251"/>
-<area shape="poly" title=" " alt="" coords="847,180,717,223,715,218,845,175"/>
-<area shape="rect" title=" " alt="" coords="745,225,807,251"/>
-<area shape="poly" title=" " alt="" coords="865,180,806,219,803,215,862,175"/>
-<area shape="poly" title=" " alt="" coords="1077,106,1008,215,1003,212,1073,103"/>
-<area shape="poly" title=" " alt="" coords="1051,107,926,150,925,145,1049,102"/>
-<area shape="poly" title=" " alt="" coords="1085,104,1085,212,1080,212,1080,104"/>
+<area shape="rect" title="The tracker." alt="" coords="434,5,599,31"/>
+<area shape="rect" title=" " alt="" coords="22,167,88,192"/>
+<area shape="poly" title=" " alt="" coords="434,28,271,48,195,63,143,81,120,97,101,117,71,157,66,153,96,113,117,93,141,76,194,58,270,43,433,23"/>
+<area shape="rect" title=" " alt="" coords="112,167,192,192"/>
+<area shape="poly" title=" " alt="" coords="434,25,357,30,277,40,208,57,183,68,165,80,155,96,150,115,150,153,145,153,145,114,150,94,161,77,180,63,207,52,277,35,357,25,433,19"/>
+<area shape="rect" title=" " alt="" coords="513,167,576,192"/>
+<area shape="poly" title=" " alt="" coords="534,29,556,50,574,78,578,98,575,119,562,155,557,153,570,118,572,98,569,80,552,53,531,33"/>
+<area shape="rect" title=" " alt="" coords="1247,240,1324,265"/>
+<area shape="poly" title=" " alt="" coords="600,20,944,40,1107,56,1165,65,1199,76,1218,90,1235,108,1259,148,1275,190,1284,226,1279,227,1270,192,1254,151,1230,111,1215,94,1197,81,1164,71,1107,61,943,45,599,25"/>
+<area shape="rect" title=" " alt="" coords="375,86,450,111"/>
+<area shape="poly" title=" " alt="" coords="503,33,440,80,437,76,500,29"/>
+<area shape="rect" title=" " alt="" coords="474,86,559,111"/>
+<area shape="poly" title=" " alt="" coords="519,31,519,72,514,72,514,31"/>
+<area shape="rect" title=" " alt="" coords="192,240,267,265"/>
+<area shape="poly" title=" " alt="" coords="434,27,244,46,155,61,119,70,92,81,63,98,42,115,26,137,12,167,9,190,17,207,33,221,57,232,118,245,179,249,179,254,117,250,56,237,31,226,12,211,4,191,7,166,22,134,38,111,60,94,90,76,117,65,153,56,244,40,433,22"/>
+<area shape="rect" title=" " alt="" coords="600,167,664,192"/>
+<area shape="poly" title=" " alt="" coords="538,29,567,49,595,77,616,116,629,153,624,155,611,118,590,80,563,53,535,33"/>
+<area shape="rect" href="load__tracker__info_8cpp.html" title="This file should be included directly in the source file. This is to prevent having to create yet ano..." alt="" coords="176,79,350,119"/>
+<area shape="poly" title=" " alt="" coords="480,33,338,77,336,72,479,28"/>
+<area shape="rect" href="tcp__server_8hpp.html" title=" " alt="" coords="730,86,916,111"/>
+<area shape="poly" title=" " alt="" coords="562,28,766,80,765,85,560,33"/>
+<area shape="rect" href="process__request_8hpp.html" title=" " alt="" coords="1029,86,1185,111"/>
+<area shape="poly" title=" " alt="" coords="600,28,1016,83,1015,88,599,33"/>
+<area shape="poly" title=" " alt="" coords="214,121,99,164,97,159,212,116"/>
+<area shape="poly" title=" " alt="" coords="238,121,182,161,179,156,235,117"/>
+<area shape="poly" title=" " alt="" coords="331,116,501,163,499,168,330,121"/>
+<area shape="poly" title=" " alt="" coords="261,120,238,227,233,226,256,119"/>
+<area shape="rect" href="endpoint_8hpp.html" title=" " alt="" coords="267,167,438,192"/>
+<area shape="poly" title=" " alt="" coords="286,117,331,155,327,159,283,121"/>
+<area shape="rect" title=" " alt="" coords="913,240,976,265"/>
+<area shape="poly" title=" " alt="" coords="322,116,451,164,476,178,501,189,559,205,609,214,696,220,786,224,900,238,899,243,785,229,696,226,608,219,558,210,500,195,474,183,449,169,320,121"/>
+<area shape="rect" title=" " alt="" coords="319,240,386,265"/>
+<area shape="poly" title=" " alt="" coords="355,192,355,226,350,226,350,192"/>
+<area shape="rect" title=" " alt="" coords="830,240,888,265"/>
+<area shape="poly" title=" " alt="" coords="434,189,816,243,815,248,433,195"/>
+<area shape="poly" title=" " alt="" coords="796,114,674,164,672,159,794,109"/>
+<area shape="rect" title=" " alt="" coords="688,167,755,192"/>
+<area shape="poly" title=" " alt="" coords="810,114,749,160,746,156,807,109"/>
+<area shape="rect" title=" " alt="" coords="780,167,866,192"/>
+<area shape="poly" title=" " alt="" coords="826,112,826,153,820,153,820,112"/>
+<area shape="rect" title=" " alt="" coords="891,167,934,192"/>
+<area shape="poly" title=" " alt="" coords="838,110,891,156,887,160,835,114"/>
+<area shape="rect" title=" " alt="" coords="958,167,1022,192"/>
+<area shape="poly" title=" " alt="" coords="848,109,954,158,952,163,846,114"/>
+<area shape="rect" href="tcp__socket_8hpp.html" title=" " alt="" coords="1097,167,1216,192"/>
+<area shape="poly" title=" " alt="" coords="872,109,1095,161,1094,166,871,114"/>
+<area shape="poly" title=" " alt="" coords="1179,190,1254,231,1251,235,1176,194"/>
+<area shape="poly" title=" " alt="" coords="1097,189,1034,195,830,208,670,215,511,224,307,243,281,246,281,241,307,237,511,219,670,210,829,203,1034,189,1096,184"/>
+<area shape="poly" title=" " alt="" coords="1106,195,902,243,902,243,901,238,901,237,1105,189"/>
+<area shape="poly" title=" " alt="" coords="1123,195,990,239,988,234,1122,189"/>
+<area shape="rect" title=" " alt="" coords="1127,240,1223,265"/>
+<area shape="poly" title=" " alt="" coords="1162,192,1171,226,1166,228,1157,193"/>
+<area shape="rect" title=" " alt="" coords="1000,240,1102,265"/>
+<area shape="poly" title=" " alt="" coords="1141,194,1081,235,1078,230,1138,190"/>
+<area shape="poly" title=" " alt="" coords="1138,109,1183,132,1230,165,1257,195,1276,226,1272,229,1252,198,1227,169,1181,136,1135,114"/>
+<area shape="poly" title=" " alt="" coords="1103,113,1077,152,1058,175,1035,194,1011,207,977,219,902,242,901,237,975,214,1009,202,1032,190,1054,171,1073,149,1099,110"/>
+<area shape="poly" title=" " alt="" coords="1117,110,1144,154,1140,156,1112,113"/>
 </map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a2051c050ff9ca75fb1b0df9e3c7a31fd" id="r_a2051c050ff9ca75fb1b0df9e3c7a31fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2051c050ff9ca75fb1b0df9e3c7a31fd">load_tracker_info</a> (const char *file, int n)</td></tr>
-<tr class="separator:a2051c050ff9ca75fb1b0df9e3c7a31fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe461d27b9c48d5921c00d521181f12f" id="r_afe461d27b9c48d5921c00d521181f12f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe461d27b9c48d5921c00d521181f12f">loop</a> ()</td></tr>
-<tr class="separator:afe461d27b9c48d5921c00d521181f12f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38dd77e2366333dddd249db20a1f17c8" id="r_a38dd77e2366333dddd249db20a1f17c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a38dd77e2366333dddd249db20a1f17c8">loop</a> (const <a class="el" href="structEndpoint.html">Endpoint</a> &amp;endpoint)</td></tr>
+<tr class="separator:a38dd77e2366333dddd249db20a1f17c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97" id="r_a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
 <tr class="separator:a0ddf1224851353fc92bfbff6f499fa97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -206,29 +217,8 @@ Functions</h2></td></tr>
 <dl class="section date"><dt>Date</dt><dd>2024-10-1</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2024 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a2051c050ff9ca75fb1b0df9e3c7a31fd" name="a2051c050ff9ca75fb1b0df9e3c7a31fd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2051c050ff9ca75fb1b0df9e3c7a31fd">&#9670;&#160;</a></span>load_tracker_info()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void load_tracker_info </td>
-          <td>(</td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>file</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>n</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="afe461d27b9c48d5921c00d521181f12f" name="afe461d27b9c48d5921c00d521181f12f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afe461d27b9c48d5921c00d521181f12f">&#9670;&#160;</a></span>loop()</h2>
+<a id="a38dd77e2366333dddd249db20a1f17c8" name="a38dd77e2366333dddd249db20a1f17c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38dd77e2366333dddd249db20a1f17c8">&#9670;&#160;</a></span>loop()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -236,7 +226,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void loop </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="structEndpoint.html">Endpoint</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>endpoint</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
