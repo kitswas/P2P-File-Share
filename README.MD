@@ -35,10 +35,11 @@ cmake --build build --config Release
 
 This project uses [Doxygen](https://www.doxygen.nl/index.html) to generate documentation.  
 If Doxygen is available on your system,  
-You can generate the documentation by running the following command:
+You can generate the documentation by running the `doc` CMake target.
 
 ```bash
-doxygen Doxyfile
+cmake -B build
+cmake --build build --config Release --target doc
 ```
 
 This repository also has an automated workflow to generate documentatation via Github Actions.  

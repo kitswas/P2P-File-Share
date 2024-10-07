@@ -32,14 +32,6 @@ jobs:
     - name: Print directory contents
       run: ls
       
-    - name: Setup awesome doxygen
-      run: |
-        cd doxygen-awesome-css
-        git fetch
-        git checkout main
-        git pull
-        cd ..
-      
     - name: Install doxygen
       run: |
         sudo apt-get install wget
@@ -54,11 +46,10 @@ jobs:
     - name: Install graphviz
       run: sudo apt-get install graphviz
 
-    - name: Remove existing files
-      run: rm -rf docs
-      
     - name: Generate documentation
-      run: doxygen Doxyfile
+      run: |
+        cmake -B build
+        cmake --build build --target doc
 
     - name: Commit changes
       # if: (git diff HEAD --name-only | wc -l) > 0
