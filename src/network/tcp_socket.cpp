@@ -242,6 +242,10 @@ std::string TCPSocket::receive_data(bool peek)
 			data_read += valread;
 		}
 	}
+	if (data_read == 0) // No data at all
+	{
+		throw ConnectionClosedError("Peer disconnected");
+	}
 	return data;
 }
 
