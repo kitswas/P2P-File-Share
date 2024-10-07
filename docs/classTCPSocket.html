@@ -142,11 +142,11 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a37c42c64a8f3626d6e48812a9b280930"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a852aa039cc68f35dd4bb2831f83eaa92" id="r_a852aa039cc68f35dd4bb2831f83eaa92"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a852aa039cc68f35dd4bb2831f83eaa92">TCPSocket</a> (<a class="el" href="classTCPSocket.html">TCPSocket</a> &amp;&amp;src) noexcept</td></tr>
 <tr class="separator:a852aa039cc68f35dd4bb2831f83eaa92"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c4342317fac0e940c85aacaddca157d" id="r_a9c4342317fac0e940c85aacaddca157d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classTCPSocket.html">TCPSocket</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c4342317fac0e940c85aacaddca157d">operator=</a> (<a class="el" href="classTCPSocket.html">TCPSocket</a> &amp;&amp;src)</td></tr>
-<tr class="separator:a9c4342317fac0e940c85aacaddca157d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf2e46393d713551d6c32963d2362dff" id="r_adf2e46393d713551d6c32963d2362dff"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adf2e46393d713551d6c32963d2362dff">bind</a> (uint16_t port)</td></tr>
-<tr class="memdesc:adf2e46393d713551d6c32963d2362dff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bind the socket to a port.  <br /></td></tr>
-<tr class="separator:adf2e46393d713551d6c32963d2362dff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a855ae3a69b6eb18be2583010d3e6efe8" id="r_a855ae3a69b6eb18be2583010d3e6efe8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classTCPSocket.html">TCPSocket</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a855ae3a69b6eb18be2583010d3e6efe8">operator=</a> (<a class="el" href="classTCPSocket.html">TCPSocket</a> &amp;&amp;src) noexcept</td></tr>
+<tr class="separator:a855ae3a69b6eb18be2583010d3e6efe8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13c2683a479c0b7dfe2f106e7f9282b2" id="r_a13c2683a479c0b7dfe2f106e7f9282b2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a13c2683a479c0b7dfe2f106e7f9282b2">bind</a> (const std::string &amp;ip, uint16_t port)</td></tr>
+<tr class="memdesc:a13c2683a479c0b7dfe2f106e7f9282b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bind the socket to a port.  <br /></td></tr>
+<tr class="separator:a13c2683a479c0b7dfe2f106e7f9282b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b737b3df6d0d67765c1f7537d1d9e6d" id="r_a7b737b3df6d0d67765c1f7537d1d9e6d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b737b3df6d0d67765c1f7537d1d9e6d">listen</a> (int listen_backlog)</td></tr>
 <tr class="memdesc:a7b737b3df6d0d67765c1f7537d1d9e6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Listen for incoming connections.  <br /></td></tr>
 <tr class="separator:a7b737b3df6d0d67765c1f7537d1d9e6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -297,8 +297,8 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="adf2e46393d713551d6c32963d2362dff" name="adf2e46393d713551d6c32963d2362dff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adf2e46393d713551d6c32963d2362dff">&#9670;&#160;</a></span>bind()</h2>
+<a id="a13c2683a479c0b7dfe2f106e7f9282b2" name="a13c2683a479c0b7dfe2f106e7f9282b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13c2683a479c0b7dfe2f106e7f9282b2">&#9670;&#160;</a></span>bind()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -306,13 +306,24 @@ Friends</h2></td></tr>
         <tr>
           <td class="memname">bool TCPSocket::bind </td>
           <td>(</td>
-          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>port</em></span></td><td>)</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>ip</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>port</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Bind the socket to a port. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ip</td><td>The IP address to bind to, or an empty string to bind to all interfaces </td></tr>
+    <tr><td class="paramname">port</td><td>The port to bind to </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>true on success, false on failure </dd></dl>
 
 </div>
@@ -492,11 +503,14 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="a9c4342317fac0e940c85aacaddca157d" name="a9c4342317fac0e940c85aacaddca157d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9c4342317fac0e940c85aacaddca157d">&#9670;&#160;</a></span>operator=() <span class="overload">[2/2]</span></h2>
+<a id="a855ae3a69b6eb18be2583010d3e6efe8" name="a855ae3a69b6eb18be2583010d3e6efe8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a855ae3a69b6eb18be2583010d3e6efe8">&#9670;&#160;</a></span>operator=() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="classTCPSocket.html">TCPSocket</a> &amp; TCPSocket::operator= </td>
@@ -505,6 +519,11 @@ Friends</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
