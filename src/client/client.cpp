@@ -8,54 +8,14 @@
  */
 
 #include <cstring>
-#include <fcntl.h>
 #include <iostream>
 
+#include "../common/load_tracker_info.cpp"
 #include "../network/network_errors.hpp"
 #include "../network/tcp_socket.hpp"
 
-struct Tracker
-{
-	std::string ip;
-	uint16_t port;
-};
-
 // List of trackers
-static std::vector<Tracker> trackers;
-
-void load_tracker_info(const char *file)
-{
-	int fd = open(file, O_RDONLY);
-	if (fd == -1)
-	{
-		std::cerr << "Error opening file" << strerror(errno) << std::endl;
-		exit(1);
-	}
-	constexpr size_t len = 1024;
-	char contents[len];
-	ssize_t valread = read(fd, contents, len); // read the file in one shot, assuming it's small
-	close(fd);
-	if (valread == -1)
-	{
-		std::cerr << "Error reading file" << strerror(errno) << std::endl;
-		exit(1);
-	}
-	int i = 1;
-	char *line = contents;
-	while (true)
-	{
-		char ip[len];
-		uint16_t port;
-		if (sscanf(line, "%s %hu", ip, &port) != 2)
-		{
-			break;
-		}
-		line = strchr(line, '\n') + 1;
-		trackers.push_back({ip, port});
-		std::cout << "Tracker " << i << " IP: " << ip << " Port: " << port << std::endl;
-		++i;
-	}
-}
+static std::vector<Endpoint> trackers;
 
 /**
  * @brief Attempt to connect to any of the trackers
@@ -98,7 +58,7 @@ int main(int argc, char *argv[])
 	file_path = argv[2];
 
 	// Load tracker info
-	load_tracker_info(file_path);
+	trackers = load_tracker_info(file_path);
 
 	// Connect to tracker
 	TCPSocket tracker;

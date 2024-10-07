@@ -27,43 +27,11 @@
 #include <unistd.h>
 #include <thread>
 
+#include "../common/load_tracker_info.cpp"
 #include "../network/tcp_server.hpp"
 #include "process_request.hpp"
 
-static std::string ip;
-static uint16_t port = 0;
-
-void load_tracker_info(const char *file, int n)
-{
-	int fd = open(file, O_RDONLY);
-	if (fd == -1)
-	{
-		std::cerr << "Error opening file" << strerror(errno) << std::endl;
-		exit(1);
-	}
-	constexpr size_t len = 1024;
-	char contents[len];
-	ssize_t valread = read(fd, contents, len); // read the file in one shot, assuming it's small
-	close(fd);
-	if (valread == -1)
-	{
-		std::cerr << "Error reading file" << strerror(errno) << std::endl;
-		exit(1);
-	}
-	int i = 1;
-	char *line = contents;
-	while (i <= n)
-	{
-		char buffer[len];
-		sscanf(line, "%s %hu", buffer, &port);
-		line = strchr(line, '\n') + 1;
-		ip = buffer;
-		++i;
-	}
-	std::cout << "IP: " << ip << " Port: " << port << std::endl;
-}
-
-void loop()
+void loop(const Endpoint &endpoint)
 {
 	std::function<void(std::shared_ptr<TCPSocket>)> onConnect = [](std::shared_ptr<TCPSocket> client)
 	{
@@ -83,7 +51,7 @@ void loop()
 	server.setOnConnect(onConnect);
 	server.setOnDisconnect(onDisconnect);
 	server.setOnData(onData);
-	server.start("", port);
+	server.start("", endpoint.port);
 
 	while (true)
 	{
@@ -126,7 +94,7 @@ int main(int argc, char *argv[])
 		exit(1);
 	}
 
-	load_tracker_info(file_path, n);
-	loop();
+	std::vector<Endpoint> trackers = load_tracker_info(file_path);
+	loop(trackers.at(n - 1));
 	return 0;
 }
