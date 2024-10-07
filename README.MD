@@ -1,6 +1,6 @@
 # P2P-File-Share
 
-A simple peer-to-peer file sharing system using TCP sockets.
+A simple peer-to-peer file sharing system using TCP sockets.  
 For educational purposes.
 
 > [!CAUTION]

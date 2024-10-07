@@ -91,7 +91,7 @@ bool TCPSocket::bind(const std::string &ip, uint16_t port)
 	local_address.sin_port = htons(port);
 	socklen_t size = sizeof(local_address);
 
-	if (::bind(socket_fd, (struct sockaddr *)&local_address, size) == -1)
+	if (::bind(socket_fd, reinterpret_cast<struct sockaddr *>(&local_address), size) == -1)
 	{
 		switch (errno)
 		{
@@ -102,7 +102,7 @@ bool TCPSocket::bind(const std::string &ip, uint16_t port)
 		}
 	}
 
-	if (getsockname(socket_fd, (struct sockaddr *)&local_address, &size) == -1)
+	if (getsockname(socket_fd, reinterpret_cast<struct sockaddr *>(&local_address), &size) == -1)
 	{
 		switch (errno)
 		{
@@ -136,7 +136,7 @@ std::unique_ptr<TCPSocket> TCPSocket::accept()
 {
 	auto client = std::make_unique<TCPSocket>();
 	socklen_t size;
-	client->socket_fd = ::accept(socket_fd, (struct sockaddr *)&client->peer_address, &size);
+	client->socket_fd = ::accept(socket_fd, reinterpret_cast<struct sockaddr *>(&client->peer_address), &size);
 
 	if (client->socket_fd == -1)
 	{
@@ -166,7 +166,7 @@ bool TCPSocket::connect(const std::string &ip, uint16_t port)
 	peer_address.sin_addr.s_addr = inet_addr(ip.c_str());
 	peer_address.sin_port = htons(port);
 
-	if (::connect(socket_fd, (struct sockaddr *)&peer_address, sizeof(peer_address)) == -1)
+	if (::connect(socket_fd, reinterpret_cast<struct sockaddr *>(&peer_address), sizeof(peer_address)) == -1)
 	{
 		switch (errno)
 		{
