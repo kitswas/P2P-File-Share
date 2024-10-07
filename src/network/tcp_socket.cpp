@@ -216,10 +216,10 @@ ssize_t TCPSocket::send_data(const std::string &data)
 std::string TCPSocket::receive_data(bool peek)
 {
 	constexpr size_t buffer_size = 1024;
-	char buffer[buffer_size] = {0};
+	std::vector<char> buffer(buffer_size);
 	std::string data = "";
 	size_t data_read = 0;
-	while (ssize_t valread = ::recv(socket_fd, buffer, buffer_size, peek ? MSG_PEEK : 0))
+	while (ssize_t valread = ::recv(socket_fd, buffer.data(), buffer_size, peek ? MSG_PEEK : 0))
 	{
 		if (valread == -1)
 		{
@@ -238,12 +238,10 @@ std::string TCPSocket::receive_data(bool peek)
 		}
 		else if (valread > 0)
 		{
-			data.append(buffer, valread);
-			memset(buffer, 0, buffer_size); // Clear the buffer
+			data.append(buffer.data(), valread);
 			data_read += valread;
 		}
 	}
-
 	return data;
 }
 
