@@ -48,6 +48,30 @@ set_property(TARGET OpenSSL::Crypto PROPERTY INTERFACE_INCLUDE_DIRECTORIES ${OPE
 add_dependencies(OpenSSL::Crypto OpenSSL)
 target_include_directories(OpenSSL::Crypto INTERFACE ${OPENSSL_INCLUDE_DIR})
 
+include(FetchContent)
+FetchContent_Declare(
+	doxygen-awesome-css
+	URL https://github.com/jothepro/doxygen-awesome-css/archive/refs/tags/v2.3.4.zip
+	DOWNLOAD_EXTRACT_TIMESTAMP ON
+)
+FetchContent_MakeAvailable(doxygen-awesome-css)
+# Save the location the files were cloned into
+# This allows us to get the path to doxygen-awesome.css
+FetchContent_GetProperties(doxygen-awesome-css SOURCE_DIR AWESOME_CSS_DIR)
+# Generate the Doxyfile
+set(DOXYFILE_IN Doxyfile)
+set(DOXYFILE_OUT ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
+configure_file(${DOXYFILE_IN} ${DOXYFILE_OUT} @ONLY)
+
+add_custom_target(
+	doc
+	COMMAND rm -rf ${CMAKE_SOURCE_DIR}/docs
+	COMMAND doxygen ${DOXYFILE_OUT}
+	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+	COMMENT "Generating documentation with Doxygen"
+	VERBATIM
+)
+
 add_subdirectory(src/tracker tracker)
 
 add_subdirectory(src/client client)
