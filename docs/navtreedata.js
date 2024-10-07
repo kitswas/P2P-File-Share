@@ -24,8 +24,11 @@
 */
 var NAVTREE =
 [
-  [ "C-Shell", "index.html", [
-    [ "P2P-File-Share", "index.html", "index" ],
+  [ "P2P-File-Share", "index.html", [
+    [ "How it works", "index.html#how-it-works", null ],
+    [ "Setting up your workspace", "index.html#setting-up-your-workspace", null ],
+    [ "How to run", "index.html#how-to-run", null ],
+    [ "Generating and Viewing Documentation", "index.html#generating-and-viewing-documentation", null ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],

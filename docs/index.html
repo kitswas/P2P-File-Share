@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>C-Shell: P2P-File-Share</title>
+<title>P2P-File-Share: P2P-File-Share</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -47,9 +47,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">C-Shell
+   <div id="projectname">P2P-File-Share
    </div>
-   <div id="projectbrief">A simple shell written in C.</div>
+   <div id="projectbrief">A simple peer-to-peer file sharing system using TCP sockets.</div>
   </td>
  </tr>
  </tbody>
@@ -142,8 +142,9 @@ How to run</h1>
 Generating and Viewing Documentation</h1>
 <p>This project uses <a href="https://www.doxygen.nl/index.html">Doxygen</a> to generate documentation. <br  />
  If Doxygen is available on your system, <br  />
- You can generate the documentation by running the following command:</p>
-<div class="fragment"><div class="line">doxygen Doxyfile</div>
+ You can generate the documentation by running the <code>doc</code> CMake target.</p>
+<div class="fragment"><div class="line">cmake -B build</div>
+<div class="line">cmake --build build --config Release --target doc</div>
 </div><!-- fragment --><p>This repository also has an automated workflow to generate documentatation via Github Actions. <br  />
 </p>
 <p>The generated documentation can be viewed at <a href="./docs/index.html">/docs</a>.</p>
