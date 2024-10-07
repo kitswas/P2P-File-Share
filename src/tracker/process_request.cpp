@@ -111,12 +111,12 @@ bool process_group_request(std::shared_ptr<TCPSocket> client, std::string_view r
 	std::shared_ptr<User> user = nullptr;
 	try
 	{
-		user = logged_in_users.at(client);
 		std::string group_id;
 		datastream >> group_id;
 		// The following require user login
 		if (request == "create_group")
 		{
+			user = logged_in_users.at(client);
 			if (groupDB.createGroup(group_id, user))
 			{
 				client->send_data("Group created\n");
@@ -128,6 +128,7 @@ bool process_group_request(std::shared_ptr<TCPSocket> client, std::string_view r
 		}
 		else if (request == "join_group")
 		{
+			user = logged_in_users.at(client);
 			std::shared_ptr<Group> group = groupDB.getGroup(group_id);
 			if (group && !group->has_member(user))
 			{
@@ -141,6 +142,7 @@ bool process_group_request(std::shared_ptr<TCPSocket> client, std::string_view r
 		}
 		else if (request == "leave_group")
 		{
+			user = logged_in_users.at(client);
 			std::shared_ptr<Group> group = groupDB.getGroup(group_id);
 			if (group && group->remove_user(user))
 			{
@@ -153,6 +155,7 @@ bool process_group_request(std::shared_ptr<TCPSocket> client, std::string_view r
 		}
 		else if (request == "list_requests")
 		{
+			user = logged_in_users.at(client);
 			std::shared_ptr<Group> group = groupDB.getGroup(group_id);
 			if (group)
 			{
@@ -171,6 +174,7 @@ bool process_group_request(std::shared_ptr<TCPSocket> client, std::string_view r
 		}
 		else if (request == "accept_request")
 		{
+			user = logged_in_users.at(client);
 			std::string username;
 			datastream >> username;
 			std::shared_ptr<Group> group = groupDB.getGroup(group_id);
