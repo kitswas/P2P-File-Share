@@ -217,22 +217,34 @@ std::string TCPSocket::receive_data(bool peek)
 {
 	constexpr size_t buffer_size = 1024;
 	char buffer[buffer_size] = {0};
-	ssize_t valread = ::recv(socket_fd, buffer, buffer_size, peek ? MSG_PEEK : 0);
-	if (valread == -1)
+	std::string data = "";
+	size_t data_read = 0;
+	while (ssize_t valread = ::recv(socket_fd, buffer, buffer_size, peek ? MSG_PEEK : 0))
 	{
-		std::cerr << "Error: " << strerror(errno) << std::endl;
-		if (errno == EWOULDBLOCK)
+		if (valread == -1)
 		{
-			throw WouldBlockError(strerror(errno));
+			std::cerr << "Error: " << strerror(errno) << std::endl;
+			switch (errno)
+			{
+			case EPIPE:
+				throw ConnectionClosedError("Peer disconnected");
+			case EWOULDBLOCK:
+				if (data_read > 0) // Data has been read, return what we have
+					return data;
+				throw WouldBlockError(strerror(errno));
+			default:
+				throw NetworkError(strerror(errno));
+			}
 		}
-		throw NetworkError(strerror(errno));
-	}
-	else if (valread == 0)
-	{
-		throw ConnectionClosedError("Peer disconnected");
+		else if (valread > 0)
+		{
+			data.append(buffer, valread);
+			memset(buffer, 0, buffer_size); // Clear the buffer
+			data_read += valread;
+		}
 	}
 
-	return std::string(buffer, valread);
+	return data;
 }
 
 std::string TCPSocket::get_peer_ip() const
