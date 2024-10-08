@@ -1,5 +1,6 @@
 #pragma once
 
+#include <stdexcept>
 #include <string>
 #include <variant>
 
@@ -26,6 +27,12 @@ enum class GroupRequest
 };
 
 using Request = std::variant<UserRequest, GroupRequest>;
+
+class UnknownRequest : public std::runtime_error
+{
+public:
+	using runtime_error::runtime_error;
+};
 
 struct Result
 {

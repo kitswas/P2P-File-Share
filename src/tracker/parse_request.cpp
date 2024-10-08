@@ -45,6 +45,9 @@ std::shared_ptr<Transaction> parse_request(std::shared_ptr<TCPSocket> client, st
 	{
 		req = GroupRequest::ACCEPT_JOIN_REQUEST;
 	}
+	else{
+		throw UnknownRequest("Unknown request");
+	}
 	transaction = std::make_shared<Transaction>(req, Endpoint{client->get_peer_ip(), client->get_peer_port()}, data);
 	return transaction;
 }
