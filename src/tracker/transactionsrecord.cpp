@@ -5,7 +5,7 @@ void TransactionsRecord::addTransaction(const Transaction &transaction)
 	transactions.push_back(transaction);
 }
 
-std::vector<const Transaction> TransactionsRecord::getTransactions() const
+std::vector<Transaction> TransactionsRecord::getTransactions() const
 {
-	return std::vector<const Transaction>();
+	return transactions;
 }

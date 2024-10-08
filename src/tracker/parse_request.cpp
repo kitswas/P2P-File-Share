@@ -2,7 +2,7 @@
 
 #include "parse_request.hpp"
 
-std::shared_ptr<Transaction> parse_request(std::shared_ptr<TCPSocket> client, std::string &data)
+std::shared_ptr<Transaction> parse_request(std::shared_ptr<TCPSocket> client, const std::string &data)
 {
 	std::stringstream ss(data);
 	std::string request;
@@ -45,9 +45,14 @@ std::shared_ptr<Transaction> parse_request(std::shared_ptr<TCPSocket> client, st
 	{
 		req = GroupRequest::ACCEPT_JOIN_REQUEST;
 	}
-	else{
+	else
+	{
 		throw UnknownRequest("Unknown request");
 	}
-	transaction = std::make_shared<Transaction>(req, Endpoint{client->get_peer_ip(), client->get_peer_port()}, data);
+	transaction = std::make_shared<Transaction>(Transaction{
+		req,
+		Endpoint{client->get_peer_ip(), client->get_peer_port()},
+		data,
+		Result{false, ""}});
 	return transaction;
 }

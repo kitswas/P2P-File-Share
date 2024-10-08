@@ -12,12 +12,12 @@
 class TransactionsRecord
 {
 private:
-	std::vector<const Transaction> transactions;
+	std::vector<Transaction> transactions;
 
 public:
 	TransactionsRecord() = default;
 
 	void addTransaction(const Transaction &transaction);
 
-	std::vector<const Transaction> getTransactions() const;
+	std::vector<Transaction> getTransactions() const;
 };
