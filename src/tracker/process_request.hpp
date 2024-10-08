@@ -1,8 +1,8 @@
 #pragma once
 
 #include <memory>
-#include <string>
 
+#include "../models/transaction.hpp"
 #include "../network/tcp_socket.hpp"
 
-void process_request(std::shared_ptr<TCPSocket> client, std::string &data);
+void process_request(std::shared_ptr<Transaction> transaction, std::shared_ptr<TCPSocket> client, bool should_respond);
