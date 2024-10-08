@@ -95,7 +95,7 @@ public:
 	 * @brief Get the port of the connected peer
 	 * @return The port of the connected peer
 	 */
-	int get_peer_port() const;
+	uint16_t get_peer_port() const;
 
 	/**
 	 * @brief Get the IP address of the local socket
@@ -107,7 +107,7 @@ public:
 	 * @brief Get the port of the local socket
 	 * @return The port of the local socket
 	 */
-	int get_local_port() const;
+	uint16_t get_local_port() const;
 
 	/**
 	 * @brief Set the socket non-blocking mode

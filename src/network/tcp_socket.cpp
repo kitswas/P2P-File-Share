@@ -254,7 +254,7 @@ std::string TCPSocket::get_peer_ip() const
 	return inet_ntoa(peer_address.sin_addr);
 }
 
-int TCPSocket::get_peer_port() const
+uint16_t TCPSocket::get_peer_port() const
 {
 	return ntohs(peer_address.sin_port);
 }
@@ -264,7 +264,7 @@ std::string TCPSocket::get_local_ip() const
 	return inet_ntoa(local_address.sin_addr);
 }
 
-int TCPSocket::get_local_port() const
+uint16_t TCPSocket::get_local_port() const
 {
 	return ntohs(local_address.sin_port);
 }
