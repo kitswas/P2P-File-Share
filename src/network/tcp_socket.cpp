@@ -218,12 +218,11 @@ std::string TCPSocket::receive_data(bool peek)
 	constexpr size_t buffer_size = 1024;
 	std::vector<char> buffer(buffer_size);
 	std::string data = "";
-	size_t data_read = 0;
+	ssize_t data_read = 0;
 	while (ssize_t valread = ::recv(socket_fd, buffer.data(), buffer_size, peek ? MSG_PEEK : 0))
 	{
 		if (valread == -1)
 		{
-			std::cerr << "Error: " << strerror(errno) << std::endl;
 			switch (errno)
 			{
 			case EPIPE:
@@ -240,6 +239,10 @@ std::string TCPSocket::receive_data(bool peek)
 		{
 			data.append(buffer.data(), valread);
 			data_read += valread;
+			if (valread < buffer_size || receive_data(true).empty()) // For blocking sockets
+			{
+				break; // No more data to read
+			}
 		}
 	}
 	if (data_read == 0) // No data at all
