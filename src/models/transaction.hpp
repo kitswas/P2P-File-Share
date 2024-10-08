@@ -61,8 +61,8 @@ struct Transaction
 
 	std::string to_string() const
 	{
-		return "Transaction: " + std::visit([](auto &&arg) -> std::string
-											{
+		return std::visit([](auto &&arg) -> std::string
+						  {
 			// Magic: https://en.cppreference.com/w/cpp/utility/variant/visit
 			using T = std::decay_t<decltype(arg)>;
 			if constexpr (std::is_same_v<T, UserRequest>)
