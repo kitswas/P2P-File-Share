@@ -10,7 +10,9 @@ enum class UserRequest
 {
 	CREATE,
 	DELETE,
-	LIST
+	LIST,
+	LOGIN,
+	LOGOUT,
 };
 
 enum class GroupRequest
