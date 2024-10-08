@@ -86,19 +86,20 @@ void loop(const Endpoint &endpoint, const std::vector<Endpoint> &trackers)
 		try
 		{
 			auto transaction = parse_request(client, data);
+			std::clog << "Parsed Transaction: " << transaction->to_string() << std::endl;
 			process_request(transaction, client, !is_tracker);
 			if (transaction->outcome.success)
 			{
 				successful_transactions.addTransaction(*transaction);
 			}
-			if (!is_tracker && transaction->outcome.success) // Mirror the data to the other trackers
-			{
-				mirror(*transaction, trackers);
-			}
+			// if (!is_tracker && transaction->outcome.success) // Mirror the data to the other trackers
+			// {
+			// 	mirror(*transaction, trackers);
+			// }
 		}
 		catch (UnknownRequest &e)
 		{
-			std::clog << e.what() << std::endl;
+			client->send_data("Unknown request\n");
 			return;
 		}
 	};
