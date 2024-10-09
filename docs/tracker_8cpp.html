@@ -118,7 +118,8 @@ $(function(){initNavTree('tracker_8cpp.html',''); initResizable(true); });
 
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">tracker.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -133,21 +134,37 @@ $(function(){initNavTree('tracker_8cpp.html',''); initResizable(true); });
 <code>#include &lt;sys/stat.h&gt;</code><br />
 <code>#include &lt;unistd.h&gt;</code><br />
 <code>#include &lt;thread&gt;</code><br />
+<code>#include &quot;<a class="el" href="generate__id_8cpp.html">../common/generate_id.cpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="load__tracker__info_8cpp.html">../common/load_tracker_info.cpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="network__errors_8hpp.html">../network/network_errors.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="tcp__server_8hpp.html">../network/tcp_server.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="parse__request_8hpp.html">parse_request.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="process__request_8hpp.html">process_request.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="transactionsrecord_8hpp.html">transactionsrecord.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for tracker.cpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="tracker_8cpp__incl.svg" width="1330" height="271"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="tracker_8cpp__incl.svg" width="1942" height="359"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a38dd77e2366333dddd249db20a1f17c8" id="r_a38dd77e2366333dddd249db20a1f17c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a38dd77e2366333dddd249db20a1f17c8">loop</a> (const <a class="el" href="structEndpoint.html">Endpoint</a> &amp;endpoint)</td></tr>
-<tr class="separator:a38dd77e2366333dddd249db20a1f17c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cfbfb3cd6dc613728c387689d57b54b" id="r_a5cfbfb3cd6dc613728c387689d57b54b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5cfbfb3cd6dc613728c387689d57b54b">mirror</a> (const <a class="el" href="structTransaction.html">Transaction</a> &amp;transaction, const std::vector&lt; <a class="el" href="structEndpoint.html">Endpoint</a> &gt; &amp;trackers)</td></tr>
+<tr class="separator:a5cfbfb3cd6dc613728c387689d57b54b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb14a1666bd6f9c3f834c41fddf699f0" id="r_abb14a1666bd6f9c3f834c41fddf699f0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abb14a1666bd6f9c3f834c41fddf699f0">process_data</a> (std::shared_ptr&lt; <a class="el" href="classTCPSocket.html">TCPSocket</a> &gt; client, std::string &amp;data, const std::vector&lt; <a class="el" href="structEndpoint.html">Endpoint</a> &gt; &amp;trackers)</td></tr>
+<tr class="separator:abb14a1666bd6f9c3f834c41fddf699f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa857cd05c00cc616013ed05cdf639350" id="r_aa857cd05c00cc616013ed05cdf639350"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa857cd05c00cc616013ed05cdf639350">sync_with_online_trackers</a> (const std::vector&lt; <a class="el" href="structEndpoint.html">Endpoint</a> &gt; &amp;trackers)</td></tr>
+<tr class="memdesc:aa857cd05c00cc616013ed05cdf639350"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attempt to connect to any of the trackers, get the list of successful transactions, and execute them on this tracker to bring it up to date.  <br /></td></tr>
+<tr class="separator:aa857cd05c00cc616013ed05cdf639350"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af92e698f11e6417e5250e39da2100d90" id="r_af92e698f11e6417e5250e39da2100d90"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af92e698f11e6417e5250e39da2100d90">loop</a> (const <a class="el" href="structEndpoint.html">Endpoint</a> &amp;endpoint, const std::vector&lt; <a class="el" href="structEndpoint.html">Endpoint</a> &gt; &amp;trackers)</td></tr>
+<tr class="separator:af92e698f11e6417e5250e39da2100d90"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97" id="r_a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
 <tr class="separator:a0ddf1224851353fc92bfbff6f499fa97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a8d0b3fc682033b68c65627ec9fe06cff" id="r_a8d0b3fc682033b68c65627ec9fe06cff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classTransactionsRecord.html">TransactionsRecord</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d0b3fc682033b68c65627ec9fe06cff">successful_transactions</a></td></tr>
+<tr class="separator:a8d0b3fc682033b68c65627ec9fe06cff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The tracker. </p>
@@ -158,8 +175,8 @@ Functions</h2></td></tr>
 <dl class="section date"><dt>Date</dt><dd>2024-10-1</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2024 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a38dd77e2366333dddd249db20a1f17c8" name="a38dd77e2366333dddd249db20a1f17c8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a38dd77e2366333dddd249db20a1f17c8">&#9670;&#160;</a></span>loop()</h2>
+<a id="af92e698f11e6417e5250e39da2100d90" name="af92e698f11e6417e5250e39da2100d90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af92e698f11e6417e5250e39da2100d90">&#9670;&#160;</a></span>loop()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -167,8 +184,12 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void loop </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structEndpoint.html">Endpoint</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>endpoint</em></span></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="structEndpoint.html">Endpoint</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>endpoint</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="structEndpoint.html">Endpoint</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>trackers</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -190,6 +211,87 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>argv</em></span>[]&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5cfbfb3cd6dc613728c387689d57b54b" name="a5cfbfb3cd6dc613728c387689d57b54b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5cfbfb3cd6dc613728c387689d57b54b">&#9670;&#160;</a></span>mirror()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mirror </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structTransaction.html">Transaction</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>transaction</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="structEndpoint.html">Endpoint</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>trackers</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abb14a1666bd6f9c3f834c41fddf699f0" name="abb14a1666bd6f9c3f834c41fddf699f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb14a1666bd6f9c3f834c41fddf699f0">&#9670;&#160;</a></span>process_data()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void process_data </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classTCPSocket.html">TCPSocket</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>client</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>data</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="structEndpoint.html">Endpoint</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>trackers</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa857cd05c00cc616013ed05cdf639350" name="aa857cd05c00cc616013ed05cdf639350"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa857cd05c00cc616013ed05cdf639350">&#9670;&#160;</a></span>sync_with_online_trackers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sync_with_online_trackers </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="structEndpoint.html">Endpoint</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>trackers</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Attempt to connect to any of the trackers, get the list of successful transactions, and execute them on this tracker to bring it up to date. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a8d0b3fc682033b68c65627ec9fe06cff" name="a8d0b3fc682033b68c65627ec9fe06cff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d0b3fc682033b68c65627ec9fe06cff">&#9670;&#160;</a></span>successful_transactions</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classTransactionsRecord.html">TransactionsRecord</a> successful_transactions</td>
         </tr>
       </table>
 </div><div class="memdoc">

@@ -1,11 +1,17 @@
 var searchData=
 [
-  ['tcp_5fserver_2ecpp_0',['tcp_server.cpp',['../tcp__server_8cpp.html',1,'']]],
-  ['tcp_5fserver_2ehpp_1',['tcp_server.hpp',['../tcp__server_8hpp.html',1,'']]],
-  ['tcp_5fsocket_2ecpp_2',['tcp_socket.cpp',['../tcp__socket_8cpp.html',1,'']]],
-  ['tcp_5fsocket_2ehpp_3',['tcp_socket.hpp',['../tcp__socket_8hpp.html',1,'']]],
-  ['tcpserver_4',['TCPServer',['../classTCPServer.html',1,'TCPServer'],['../classTCPSocket.html#ae4cfdb1814d91a8d28dadb49adda68f0',1,'TCPSocket::TCPServer'],['../classTCPServer.html#a80e32e87bfda786b7ffdb5c496e5f79d',1,'TCPServer::TCPServer(size_t maxConnections)'],['../classTCPServer.html#a9794f5db37a4cf1bb50f9448e152b208',1,'TCPServer::TCPServer(const TCPServer &amp;)=delete'],['../classTCPServer.html#a47e0b11564427e5b6e90ce5bf30b2150',1,'TCPServer::TCPServer(TCPServer &amp;&amp;)=delete']]],
-  ['tcpsocket_5',['TCPSocket',['../classTCPSocket.html',1,'TCPSocket'],['../classTCPSocket.html#a7a50427a401d1a6f3209d51818bad901',1,'TCPSocket::TCPSocket()'],['../classTCPSocket.html#a37c42c64a8f3626d6e48812a9b280930',1,'TCPSocket::TCPSocket(const TCPSocket &amp;)=delete'],['../classTCPSocket.html#a852aa039cc68f35dd4bb2831f83eaa92',1,'TCPSocket::TCPSocket(TCPSocket &amp;&amp;src) noexcept']]],
-  ['to_20run_6',['How to run',['../index.html#how-to-run',1,'']]],
-  ['tracker_2ecpp_7',['tracker.cpp',['../tracker_8cpp.html',1,'']]]
+  ['send_5fdata_0',['send_data',['../classTCPSocket.html#a004c59211398062acd9ea674df8d81fe',1,'TCPSocket']]],
+  ['set_5fnon_5fblocking_1',['set_non_blocking',['../classTCPSocket.html#a8163332bb04894dc1813f599a73bacb6',1,'TCPSocket']]],
+  ['setonconnect_2',['setOnConnect',['../classTCPServer.html#a9409c53fbf7a949c80973b183faad352',1,'TCPServer']]],
+  ['setondata_3',['setOnData',['../classTCPServer.html#a2fc46d09a97fb633fdb0f5e96f34de49',1,'TCPServer']]],
+  ['setondisconnect_4',['setOnDisconnect',['../classTCPServer.html#a015f86f12593df209e5a2b3e1a2d0430',1,'TCPServer']]],
+  ['setting_20up_20your_20workspace_5',['Setting up your workspace',['../index.html#setting-up-your-workspace',1,'']]],
+  ['share_6',['P2P-File-Share',['../index.html',1,'']]],
+  ['source_20files_7',['Common Source Files',['../md_src_2common_2readme.html',1,'']]],
+  ['start_8',['start',['../classTCPServer.html#aea988e3a25edbb7076c2082714def427',1,'TCPServer']]],
+  ['stop_9',['stop',['../classTCPServer.html#a9c0f55968624ea4dd49467b656e23807',1,'TCPServer']]],
+  ['success_10',['success',['../structResult.html#a849cf2825b5abc2411876ac92d41920d',1,'Result']]],
+  ['successful_5ftransactions_11',['successful_transactions',['../process__request_8cpp.html#a8d0b3fc682033b68c65627ec9fe06cff',1,'successful_transactions:&#160;tracker.cpp'],['../tracker_8cpp.html#a8d0b3fc682033b68c65627ec9fe06cff',1,'successful_transactions:&#160;tracker.cpp']]],
+  ['sync_12',['SYNC',['../transaction_8hpp.html#a692cac3b6ab660fc983549fae223fb45a274ccef15a21e829d03293a6fd1974f3',1,'transaction.hpp']]],
+  ['sync_5fwith_5fonline_5ftrackers_13',['sync_with_online_trackers',['../tracker_8cpp.html#aa857cd05c00cc616013ed05cdf639350',1,'tracker.cpp']]]
 ];

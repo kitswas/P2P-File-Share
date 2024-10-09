@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['connectionclosederror_0',['ConnectionClosedError',['../classConnectionClosedError.html',1,'']]]
+  ['always_5ffalse_0',['always_false',['../structalways__false.html',1,'']]]
 ];
