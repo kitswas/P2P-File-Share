@@ -117,7 +117,7 @@ Result process_group_request(EndpointID origin, GroupRequest request, std::strin
 		{
 			response += group + "\n";
 		}
-		result.message = (response.empty() ? "No users found\n" : response);
+		result.message = (response.empty() ? "No groups found\n" : response);
 		return result;
 	}
 
