@@ -27,6 +27,7 @@
 #include <unistd.h>
 #include <thread>
 
+#include "../common/generate_id.cpp"
 #include "../common/load_tracker_info.cpp"
 #include "../network/network_errors.hpp"
 #include "../network/tcp_server.hpp"
@@ -34,29 +35,59 @@
 #include "process_request.hpp"
 #include "transactionsrecord.hpp"
 
+static EndpointID my_id;
 static TransactionsRecord successful_transactions;
 
-bool mirror(const Transaction &transaction, const std::vector<Endpoint> &trackers)
+void mirror(const Transaction &transaction, const std::vector<Endpoint> &trackers)
 {
 	for (const auto &tracker : trackers)
 	{
-		if (tracker.ip == transaction.source.ip && tracker.port == transaction.source.port)
+		if (generate_id(tracker) == my_id)
 		{
 			continue;
 		}
 		try
 		{
-			auto mirror = std::make_shared<TCPSocket>();
-			mirror->connect(tracker.ip, tracker.port);
-			mirror->send_data(transaction.data);
+			TCPSocket mirror;
+			mirror.connect(tracker.ip, tracker.port);
+			std::string request = "0" + transaction.data;
+			mirror.send_data(request);
+			mirror.disconnect();
 		}
-		catch (NetworkError &_)
+		catch (ConnectionClosedError &_)
 		{
-			std::clog << "Error mirroring data to " << tracker.ip << ":" << tracker.port << std::endl;
-			return false;
+			std::clog << "Tracker at " << tracker.ip << ":" << tracker.port << " is down" << std::endl;
+		}
+		catch (NetworkError &e)
+		{
+			std::cerr << "Error mirroring data to " << tracker.ip << ":" << tracker.port << " - " << e.what() << std::endl;
 		}
 	}
-	return true;
+}
+
+void process_data(std::shared_ptr<TCPSocket> client, std::string &data, const std::vector<Endpoint> &trackers)
+{
+	try
+	{
+		std::shared_ptr<Transaction> transaction;
+		bool do_mirror = data[0] == '1'; // 1 for mirror
+		data = data.substr(1);			 // Strip the mirror flag
+		transaction = parse_request(data);
+		std::clog << "Parsed Transaction: ";
+		std::clog << transaction->to_string() << std::endl;
+		process_request(transaction, client, do_mirror);
+		if (transaction->outcome.success)
+		{
+			successful_transactions.addTransaction(*transaction);
+			if (do_mirror)
+				mirror(*transaction, trackers); // Mirror the data to the other trackers
+		}
+	}
+	catch (UnknownRequest &e)
+	{
+		client->send_data(e.what());
+		return;
+	}
 }
 
 void loop(const Endpoint &endpoint, const std::vector<Endpoint> &trackers)
@@ -72,36 +103,7 @@ void loop(const Endpoint &endpoint, const std::vector<Endpoint> &trackers)
 	std::function<void(std::shared_ptr<TCPSocket>, std::string &)> onData = [&trackers](std::shared_ptr<TCPSocket> client, std::string &data)
 	{
 		std::cout << "Data received from " << client->get_peer_ip() << ":" << client->get_peer_port() << " : " << data << std::endl;
-
-		// If data is from another tracker, process it locally to ensure consistency
-		bool is_tracker = false;
-		for (const auto &tracker : trackers)
-		{
-			if (client->get_peer_ip() == tracker.ip && client->get_peer_port() == tracker.port)
-			{
-				is_tracker = true;
-				break;
-			}
-		}
-		try
-		{
-			auto transaction = parse_request(client, data);
-			std::clog << "Parsed Transaction: " << transaction->to_string() << std::endl;
-			process_request(transaction, client, !is_tracker);
-			if (transaction->outcome.success)
-			{
-				successful_transactions.addTransaction(*transaction);
-			}
-			// if (!is_tracker && transaction->outcome.success) // Mirror the data to the other trackers
-			// {
-			// 	mirror(*transaction, trackers);
-			// }
-		}
-		catch (UnknownRequest &e)
-		{
-			client->send_data("Unknown request\n");
-			return;
-		}
+		process_data(client, data, trackers);
 	};
 
 	TCPServer server(2);
@@ -152,6 +154,8 @@ int main(int argc, char *argv[])
 	}
 
 	std::vector<Endpoint> trackers = load_tracker_info(file_path);
+	my_id = generate_id(trackers.at(n - 1));
+	std::cout << "My ID: " << my_id << std::endl;
 	loop(trackers.at(n - 1), trackers);
 	return 0;
 }

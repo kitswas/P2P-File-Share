@@ -6,15 +6,15 @@
 
 static GroupDB groupDB;
 
-static std::unordered_map<std::shared_ptr<TCPSocket>, std::shared_ptr<User>> logged_in_users;
+static std::unordered_map<EndpointID, std::shared_ptr<User>> logged_in_users;
 static UserDB userDB;
 
-bool is_logged_in(std::shared_ptr<TCPSocket> client)
+bool is_logged_in(EndpointID client)
 {
 	return logged_in_users.find(client) != logged_in_users.end();
 }
 
-Result process_user_request(std::shared_ptr<TCPSocket> client, UserRequest request, std::stringstream &datastream)
+Result process_user_request(EndpointID origin, UserRequest request, std::stringstream &datastream)
 {
 	Result result;
 	if (request == UserRequest::CREATE)
@@ -65,9 +65,9 @@ Result process_user_request(std::shared_ptr<TCPSocket> client, UserRequest reque
 		std::string password;
 		datastream >> username >> password;
 		auto user = userDB.getUser(username);
-		if (user && !is_logged_in(client) && user->checkPassword(password))
+		if (user && !is_logged_in(origin) && user->checkPassword(password))
 		{
-			logged_in_users.try_emplace(client, user);
+			logged_in_users.try_emplace(origin, user);
 			result.message = "Login successful\n";
 		}
 		else
@@ -77,7 +77,7 @@ Result process_user_request(std::shared_ptr<TCPSocket> client, UserRequest reque
 	}
 	else if (request == UserRequest::LOGOUT)
 	{
-		if (logged_in_users.erase(client))
+		if (logged_in_users.erase(origin))
 		{
 			result.message = "Logout successful\n";
 		}
@@ -97,7 +97,7 @@ Result process_user_request(std::shared_ptr<TCPSocket> client, UserRequest reque
 	return result;
 }
 
-Result process_group_request(std::shared_ptr<TCPSocket> client, GroupRequest request, std::stringstream &datastream)
+Result process_group_request(EndpointID origin, GroupRequest request, std::stringstream &datastream)
 {
 	Result result;
 	const char *const login_required_warning = "You must be logged in to perform this action\n";
@@ -123,7 +123,7 @@ Result process_group_request(std::shared_ptr<TCPSocket> client, GroupRequest req
 		// The following require user login
 		if (request == GroupRequest::CREATE)
 		{
-			user = logged_in_users.at(client);
+			user = logged_in_users.at(origin);
 			if (groupDB.createGroup(group_id, user))
 			{
 				result.message = "Group created\n";
@@ -135,7 +135,7 @@ Result process_group_request(std::shared_ptr<TCPSocket> client, GroupRequest req
 		}
 		else if (request == GroupRequest::JOIN)
 		{
-			user = logged_in_users.at(client);
+			user = logged_in_users.at(origin);
 			std::shared_ptr<Group> group = groupDB.getGroup(group_id);
 			if (group && !group->has_member(user))
 			{
@@ -149,7 +149,7 @@ Result process_group_request(std::shared_ptr<TCPSocket> client, GroupRequest req
 		}
 		else if (request == GroupRequest::LEAVE)
 		{
-			user = logged_in_users.at(client);
+			user = logged_in_users.at(origin);
 			std::shared_ptr<Group> group = groupDB.getGroup(group_id);
 			if (group && group->remove_user(user))
 			{
@@ -162,7 +162,7 @@ Result process_group_request(std::shared_ptr<TCPSocket> client, GroupRequest req
 		}
 		else if (request == GroupRequest::LIST_JOIN_REQUESTS)
 		{
-			user = logged_in_users.at(client);
+			user = logged_in_users.at(origin);
 			std::shared_ptr<Group> group = groupDB.getGroup(group_id);
 			if (group)
 			{
@@ -181,7 +181,7 @@ Result process_group_request(std::shared_ptr<TCPSocket> client, GroupRequest req
 		}
 		else if (request == GroupRequest::ACCEPT_JOIN_REQUEST)
 		{
-			user = logged_in_users.at(client);
+			user = logged_in_users.at(origin);
 			std::string username;
 			datastream >> username;
 			std::shared_ptr<Group> group = groupDB.getGroup(group_id);
@@ -232,7 +232,7 @@ Result process_group_request(std::shared_ptr<TCPSocket> client, GroupRequest req
 	return result;
 }
 
-void process_request(std::shared_ptr<Transaction> transaction, std::shared_ptr<TCPSocket> client, bool should_respond)
+void process_request(std::shared_ptr<Transaction> transaction, std::shared_ptr<TCPSocket> client, bool do_mirror)
 {
 	std::stringstream ss(transaction->data);
 	std::string request;
@@ -240,18 +240,20 @@ void process_request(std::shared_ptr<Transaction> transaction, std::shared_ptr<T
 	Result result;
 	if (std::holds_alternative<UserRequest>(transaction->request))
 	{
-		result = process_user_request(client, std::get<UserRequest>(transaction->request), ss);
+		result = process_user_request(transaction->origin, std::get<UserRequest>(transaction->request), ss);
 	}
 	else if (std::holds_alternative<GroupRequest>(transaction->request))
 	{
-		result = process_group_request(client, std::get<GroupRequest>(transaction->request), ss);
+		result = process_group_request(transaction->origin, std::get<GroupRequest>(transaction->request), ss);
 	}
 	else
 	{
 		result.success = false;
 		result.message = "Invalid request\n";
 	}
-	if (should_respond)
+	transaction->outcome = result;
+
+	if (do_mirror)
 	{
 		client->send_data(result.message);
 	}

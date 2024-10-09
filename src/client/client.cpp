@@ -10,7 +10,9 @@
 #include <cstring>
 #include <iostream>
 
+#include "../common/generate_id.cpp"
 #include "../common/load_tracker_info.cpp"
+#include "../models/endpoint.hpp"
 #include "../network/network_errors.hpp"
 #include "../network/tcp_socket.hpp"
 
@@ -46,6 +48,8 @@ bool connect_to_tracker(TCPSocket &tracker)
 int main(int argc, char *argv[])
 {
 	const char *file_path = nullptr;
+	Endpoint client_endpoint;
+	EndpointID my_id;
 
 	// Parse args
 	if (argc != 3)
@@ -53,7 +57,19 @@ int main(int argc, char *argv[])
 		std::cerr << "Usage: ../client <IP>:<PORT> tracker_info.txt" << std::endl;
 		exit(1);
 	}
-	// Ignore argv[1] for now
+
+	// Parse client endpoint
+	std::string client_endpoint_str(argv[1]);
+	try
+	{
+		client_endpoint = Endpoint::from_string(client_endpoint_str);
+		my_id = generate_id(client_endpoint);
+	}
+	catch (const std::invalid_argument &e)
+	{
+		std::cerr << e.what() << std::endl;
+		exit(1);
+	}
 
 	file_path = argv[2];
 
@@ -67,6 +83,8 @@ int main(int argc, char *argv[])
 		std::cerr << "Failed to connect to trackers." << std::endl;
 		exit(1);
 	}
+
+	std::cout << "My ID: " << my_id << std::endl;
 
 	// Parse user input
 	while (true)
@@ -83,7 +101,8 @@ int main(int argc, char *argv[])
 		}
 		try
 		{
-			tracker.send_data(input);
+			std::string request = "1" + std::to_string(my_id) + " " + input;
+			tracker.send_data(request);
 			response = tracker.receive_data();
 			std::cout << response << std::endl;
 		}

@@ -2,9 +2,11 @@
 
 #include "parse_request.hpp"
 
-std::shared_ptr<Transaction> parse_request(std::shared_ptr<TCPSocket> client, const std::string &data)
+std::shared_ptr<Transaction> parse_request(const std::string &data)
 {
 	std::stringstream ss(data);
+	EndpointID id;
+	ss >> id;
 	std::string request;
 	ss >> request;
 	std::shared_ptr<Transaction> transaction;
@@ -20,6 +22,14 @@ std::shared_ptr<Transaction> parse_request(std::shared_ptr<TCPSocket> client, co
 	else if (request == "list_users")
 	{
 		req = UserRequest::LIST;
+	}
+	else if (request == "login")
+	{
+		req = UserRequest::LOGIN;
+	}
+	else if (request == "logout")
+	{
+		req = UserRequest::LOGOUT;
 	}
 	else if (request == "create_group")
 	{
@@ -50,9 +60,9 @@ std::shared_ptr<Transaction> parse_request(std::shared_ptr<TCPSocket> client, co
 		throw UnknownRequest("Unknown request");
 	}
 	transaction = std::make_shared<Transaction>(Transaction{
+		id,
 		req,
-		Endpoint{client->get_peer_ip(), client->get_peer_port()},
 		data,
-		Result{false, ""}});
+		{false, "Not yet processed"}});
 	return transaction;
 }

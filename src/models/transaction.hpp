@@ -7,6 +7,12 @@
 #include "../models/endpoint.hpp"
 #include "../network/tcp_socket.hpp"
 
+enum class RequestType
+{
+	USER,
+	GROUP,
+};
+
 enum class UserRequest
 {
 	CREATE,
@@ -53,8 +59,8 @@ struct always_false : std::false_type
  */
 struct Transaction
 {
+	const EndpointID origin;
 	const Request request;
-	const Endpoint source;
 	const std::string data;
 
 	Result outcome;
@@ -67,16 +73,17 @@ struct Transaction
 			using T = std::decay_t<decltype(arg)>;
 			if constexpr (std::is_same_v<T, UserRequest>)
 			{
-				return "UserRequest";
+				return "UserRequest " +  std::to_string(static_cast<int>(arg));
 			}
 			else if constexpr (std::is_same_v<T, GroupRequest>)
 			{
-				return "GroupRequest";
+				return "GroupRequest " +  std::to_string(static_cast<int>(arg));
 			}
 			else // Programmer error, should never happen
 			{
 				static_assert(always_false<T>::value, "non-exhaustive visitor!");
 			} }, request) +
-			   " from " + source.to_string() + " with data: " + data;
+			   " from " + std::to_string(origin) +
+			   " with data: " + data;
 	}
 };

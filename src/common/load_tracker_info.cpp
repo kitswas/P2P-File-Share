@@ -1,9 +1,3 @@
-/**
- * @file load_tracker_info.cpp
- * @brief This file should be included directly in the source file.
- * This is to prevent having to create yet another library.
- */
-
 #pragma once
 
 #include "../models/endpoint.hpp"
