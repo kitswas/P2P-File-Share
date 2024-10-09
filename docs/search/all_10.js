@@ -7,11 +7,12 @@ var searchData=
   ['setondisconnect_4',['setOnDisconnect',['../classTCPServer.html#a015f86f12593df209e5a2b3e1a2d0430',1,'TCPServer']]],
   ['setting_20up_20your_20workspace_5',['Setting up your workspace',['../index.html#setting-up-your-workspace',1,'']]],
   ['share_6',['P2P-File-Share',['../index.html',1,'']]],
-  ['source_20files_7',['Common Source Files',['../md_src_2common_2readme.html',1,'']]],
-  ['start_8',['start',['../classTCPServer.html#aea988e3a25edbb7076c2082714def427',1,'TCPServer']]],
-  ['stop_9',['stop',['../classTCPServer.html#a9c0f55968624ea4dd49467b656e23807',1,'TCPServer']]],
-  ['success_10',['success',['../structResult.html#a849cf2825b5abc2411876ac92d41920d',1,'Result']]],
-  ['successful_5ftransactions_11',['successful_transactions',['../process__request_8cpp.html#a8d0b3fc682033b68c65627ec9fe06cff',1,'successful_transactions:&#160;tracker.cpp'],['../tracker_8cpp.html#a8d0b3fc682033b68c65627ec9fe06cff',1,'successful_transactions:&#160;tracker.cpp']]],
-  ['sync_12',['SYNC',['../transaction_8hpp.html#a692cac3b6ab660fc983549fae223fb45a274ccef15a21e829d03293a6fd1974f3',1,'transaction.hpp']]],
-  ['sync_5fwith_5fonline_5ftrackers_13',['sync_with_online_trackers',['../tracker_8cpp.html#aa857cd05c00cc616013ed05cdf639350',1,'tracker.cpp']]]
+  ['size_7',['size',['../classFileInfo.html#a92dda230ccf13e8ea7eb7fa663f6748f',1,'FileInfo']]],
+  ['source_20files_8',['Common Source Files',['../md_src_2common_2readme.html',1,'']]],
+  ['start_9',['start',['../classTCPServer.html#aea988e3a25edbb7076c2082714def427',1,'TCPServer']]],
+  ['stop_10',['stop',['../classTCPServer.html#a9c0f55968624ea4dd49467b656e23807',1,'TCPServer']]],
+  ['success_11',['success',['../structResult.html#a849cf2825b5abc2411876ac92d41920d',1,'Result']]],
+  ['successful_5ftransactions_12',['successful_transactions',['../process__request_8cpp.html#a8d0b3fc682033b68c65627ec9fe06cff',1,'successful_transactions:&#160;tracker.cpp'],['../tracker_8cpp.html#a8d0b3fc682033b68c65627ec9fe06cff',1,'successful_transactions:&#160;tracker.cpp']]],
+  ['sync_13',['SYNC',['../transaction_8hpp.html#a692cac3b6ab660fc983549fae223fb45a274ccef15a21e829d03293a6fd1974f3',1,'transaction.hpp']]],
+  ['sync_5fwith_5fonline_5ftrackers_14',['sync_with_online_trackers',['../tracker_8cpp.html#aa857cd05c00cc616013ed05cdf639350',1,'tracker.cpp']]]
 ];

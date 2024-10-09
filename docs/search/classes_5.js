@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['result_0',['Result',['../structResult.html',1,'']]]
+  ['networkerror_0',['NetworkError',['../classNetworkError.html',1,'']]]
 ];

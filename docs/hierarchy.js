@@ -4,6 +4,7 @@ var hierarchy =
     [ "std::false_type", null, [
       [ "always_false< T >", "structalways__false.html", null ]
     ] ],
+    [ "FileInfo", "classFileInfo.html", null ],
     [ "Group", "classGroup.html", null ],
     [ "GroupDB", "classGroupDB.html", null ],
     [ "Result", "structResult.html", null ],

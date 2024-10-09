@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['wouldblockerror_0',['WouldBlockError',['../classWouldBlockError.html',1,'']]]
+  ['unknownrequest_0',['UnknownRequest',['../classUnknownRequest.html',1,'']]],
+  ['user_1',['User',['../classUser.html',1,'']]],
+  ['userdb_2',['UserDB',['../classUserDB.html',1,'']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['message_0',['message',['../structResult.html#a47e40f6efbda07f255548806d92150f5',1,'Result']]]
+  ['ip_0',['ip',['../structEndpoint.html#a2f1b635a2000dbd7573a6c681f6ff34b',1,'Endpoint']]]
 ];
