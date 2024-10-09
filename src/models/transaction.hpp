@@ -47,8 +47,8 @@ public:
 
 struct Result
 {
-	bool success;
-	std::string message;
+	bool success = false;
+	std::string message = "Not yet processed";
 };
 
 /**
