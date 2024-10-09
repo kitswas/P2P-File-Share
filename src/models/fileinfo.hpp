@@ -130,6 +130,6 @@ public:
 
 	friend bool operator==(const FileInfo &lhs, const FileInfo &rhs) noexcept
 	{
-		return lhs.size == rhs.size && lhs.hash == rhs.hash;
+		return lhs.name == rhs.name;
 	}
 };

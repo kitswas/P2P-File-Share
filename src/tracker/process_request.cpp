@@ -241,6 +241,84 @@ Result process_group_request(EndpointID origin, GroupRequest request, std::strin
 	return result;
 }
 
+Result process_file_request(EndpointID origin, FileRequest request, std::stringstream &datastream)
+{
+	Result result;
+
+	std::shared_ptr<User> user = nullptr;
+	try
+	{
+		user = logged_in_users.at(origin);
+	}
+	catch (std::out_of_range &_)
+	{
+		const char *const login_required_warning = "You must be logged in to perform this action\n";
+		result.message = login_required_warning;
+		return result;
+	}
+	std::shared_ptr<Group> group = nullptr;
+	try
+	{
+		std::string group_id;
+		datastream >> group_id;
+		group = groupDB.getGroup(group_id);
+	}
+	catch (std::out_of_range &_)
+	{
+		const char *const group_missing_warning = "Group not found\n";
+		result.message = group_missing_warning;
+		return result;
+	}
+
+	try
+	{
+		if (request == FileRequest::LIST)
+		{
+			auto files = group->get_files();
+			result.message = "";
+			for (auto const &file : files)
+			{
+				result.message += file->file_info->to_string() + "\n";
+			}
+			result.message = (result.message.empty() ? "No files found\n" : result.message);
+			return result;
+		}
+		else if (request == FileRequest::UPLOAD)
+		{
+			std::string endpoint_str;
+			datastream >> endpoint_str;
+			Endpoint endpoint = Endpoint::from_string(endpoint_str);
+			std::string bencoded_info;
+			datastream >> bencoded_info;
+			FileInfo file_info = FileInfo::from_bencoded(bencoded_info);
+			auto file = std::make_shared<File>();
+			file->source = std::make_shared<Endpoint>(endpoint);
+			file->file_info = std::make_shared<FileInfo>(file_info);
+			file->group_id = group->get_group_id();
+			if (group->add_file(file))
+			{
+				result.message = "File uploaded\n";
+				result.success = true;
+			}
+			else
+			{
+				result.message = "File already exists\n";
+			}
+		}
+		else
+		{
+			result.success = false;
+			result.message = "Not a file request\n";
+			return result;
+		}
+	}
+	catch (std::invalid_argument &_)
+	{
+		result.message = "Invalid request\n";
+	}
+	return result;
+}
+
 void process_request(std::shared_ptr<Transaction> transaction, std::shared_ptr<TCPSocket> client, bool do_mirror)
 {
 	std::stringstream ss(transaction->data);
@@ -257,6 +335,10 @@ void process_request(std::shared_ptr<Transaction> transaction, std::shared_ptr<T
 	else if (std::holds_alternative<GroupRequest>(transaction->request))
 	{
 		result = process_group_request(transaction->origin, std::get<GroupRequest>(transaction->request), ss);
+	}
+	else if (std::holds_alternative<FileRequest>(transaction->request))
+	{
+		result = process_file_request(transaction->origin, std::get<FileRequest>(transaction->request), ss);
 	}
 	else if (std::holds_alternative<TrackerRequest>(transaction->request))
 	{

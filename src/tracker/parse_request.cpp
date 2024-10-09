@@ -55,6 +55,18 @@ std::shared_ptr<Transaction> parse_request(const std::string &data)
 	{
 		req = GroupRequest::ACCEPT_JOIN_REQUEST;
 	}
+	else if (request == "list_files")
+	{
+		req = FileRequest::LIST;
+	}
+	else if (request == "upload_file")
+	{
+		req = FileRequest::UPLOAD;
+	}
+	else if (request == "download_file")
+	{
+		req = FileRequest::DOWNLOAD;
+	}
 	else if (request == "sync")
 	{
 		req = TrackerRequest::SYNC;

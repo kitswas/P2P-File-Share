@@ -32,12 +32,19 @@ enum class GroupRequest
 	ACCEPT_JOIN_REQUEST,
 };
 
+enum class FileRequest
+{
+	LIST,
+	UPLOAD,
+	DOWNLOAD,
+};
+
 enum class TrackerRequest
 {
 	SYNC,
 };
 
-using Request = std::variant<UserRequest, GroupRequest, TrackerRequest>;
+using Request = std::variant<UserRequest, GroupRequest, FileRequest, TrackerRequest>;
 
 class UnknownRequest : public std::runtime_error
 {
@@ -87,6 +94,10 @@ struct Transaction
 			else if constexpr (std::is_same_v<T, TrackerRequest>)
 			{
 				return "TrackerRequest " +  std::to_string(static_cast<int>(arg));
+			}
+			else if constexpr (std::is_same_v<T, FileRequest>)
+			{
+				return "FileRequest " +  std::to_string(static_cast<int>(arg));
 			}
 			else // Programmer error, should never happen
 			{

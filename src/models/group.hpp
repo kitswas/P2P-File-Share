@@ -4,7 +4,17 @@
 #include <string>
 #include <unordered_set>
 
+#include "endpoint.hpp"
+#include "fileinfo.hpp"
 #include "user.hpp"
+
+class File
+{
+public:
+	std::shared_ptr<Endpoint> source;
+	std::shared_ptr<FileInfo> file_info;
+	std::string group_id;
+};
 
 class Group
 {
@@ -13,12 +23,14 @@ private:
 	std::shared_ptr<User> owner;
 	std::unordered_set<std::shared_ptr<User>> users;
 	std::unordered_set<std::shared_ptr<User>> join_requests;
+	std::unordered_set<std::shared_ptr<File>> files;
 
 public:
 	Group(std::string const &group_id, std::shared_ptr<User> owner) : group_id(group_id), owner(owner) {};
 
 	std::string get_group_id() const { return group_id; }
 	std::shared_ptr<User> get_owner() const { return owner; }
+	std::unordered_set<std::shared_ptr<File>> get_files() const { return files; }
 	std::unordered_set<std::shared_ptr<User>> get_users() const { return users; }
 	std::unordered_set<std::shared_ptr<User>> get_join_requests() const { return join_requests; }
 
@@ -60,6 +72,16 @@ public:
 			return false;
 		}
 		join_requests.erase(user);
+		return true;
+	}
+
+	bool add_file(std::shared_ptr<File> file)
+	{
+		if (files.find(file) != files.end())
+		{
+			return false;
+		}
+		files.insert(file);
 		return true;
 	}
 };

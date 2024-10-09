@@ -15,6 +15,7 @@
 #include "../models/endpoint.hpp"
 #include "../network/network_errors.hpp"
 #include "../network/tcp_socket.hpp"
+#include "process_input.hpp"
 
 // List of trackers
 static std::vector<Endpoint> trackers;
@@ -90,7 +91,6 @@ int main(int argc, char *argv[])
 	while (true)
 	{
 		std::string input;
-		std::string response;
 		if (std::cin.peek() != EOF) // check if there is input
 		{
 			std::getline(std::cin >> std::ws, input);
@@ -101,10 +101,7 @@ int main(int argc, char *argv[])
 		}
 		try
 		{
-			std::string request = "1" + std::to_string(my_id) + " " + input;
-			tracker.send_data(request);
-			response = tracker.receive_data();
-			std::cout << response << std::endl;
+			process_input(input, tracker, my_id, client_endpoint);
 		}
 		catch (const ConnectionClosedError &e)
 		{
