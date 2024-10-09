@@ -272,7 +272,7 @@ void process_request(std::shared_ptr<Transaction> transaction, std::shared_ptr<T
 			}
 			client->send_data("done");
 		}
-		client->set_non_blocking(true); // Set back to non-blocking
+		client->disconnect();
 	}
 	else
 	{
