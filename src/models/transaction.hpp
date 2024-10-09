@@ -32,7 +32,12 @@ enum class GroupRequest
 	ACCEPT_JOIN_REQUEST,
 };
 
-using Request = std::variant<UserRequest, GroupRequest>;
+enum class TrackerRequest
+{
+	SYNC,
+};
+
+using Request = std::variant<UserRequest, GroupRequest, TrackerRequest>;
 
 class UnknownRequest : public std::runtime_error
 {
@@ -78,6 +83,10 @@ struct Transaction
 			else if constexpr (std::is_same_v<T, GroupRequest>)
 			{
 				return "GroupRequest " +  std::to_string(static_cast<int>(arg));
+			}
+			else if constexpr (std::is_same_v<T, TrackerRequest>)
+			{
+				return "TrackerRequest " +  std::to_string(static_cast<int>(arg));
 			}
 			else // Programmer error, should never happen
 			{

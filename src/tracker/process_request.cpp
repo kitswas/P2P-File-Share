@@ -1,6 +1,7 @@
 #include "process_request.hpp"
 #include "groupdb.hpp"
 #include "userdb.hpp"
+#include "transactionsrecord.hpp"
 
 #include <sstream>
 
@@ -8,6 +9,8 @@ static GroupDB groupDB;
 
 static std::unordered_map<EndpointID, std::shared_ptr<User>> logged_in_users;
 static UserDB userDB;
+
+extern TransactionsRecord successful_transactions;
 
 bool is_logged_in(EndpointID client)
 {
@@ -254,6 +257,22 @@ void process_request(std::shared_ptr<Transaction> transaction, std::shared_ptr<T
 	else if (std::holds_alternative<GroupRequest>(transaction->request))
 	{
 		result = process_group_request(transaction->origin, std::get<GroupRequest>(transaction->request), ss);
+	}
+	else if (std::holds_alternative<TrackerRequest>(transaction->request))
+	{
+		do_mirror = false;
+		transaction->outcome.success = false; // We do not want to store tracker requests
+		client->set_non_blocking(false);	  // We want to block until all data is sent
+		if (std::get<TrackerRequest>(transaction->request) == TrackerRequest::SYNC)
+		{
+			for (auto const &t : successful_transactions.getTransactions())
+			{
+				client->send_data(t.data);
+				client->receive_data(); // Wait for the tracker to process the data
+			}
+			client->send_data("done");
+		}
+		client->set_non_blocking(true); // Set back to non-blocking
 	}
 	else
 	{

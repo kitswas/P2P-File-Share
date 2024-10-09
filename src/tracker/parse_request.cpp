@@ -55,6 +55,10 @@ std::shared_ptr<Transaction> parse_request(const std::string &data)
 	{
 		req = GroupRequest::ACCEPT_JOIN_REQUEST;
 	}
+	else if (request == "sync")
+	{
+		req = TrackerRequest::SYNC;
+	}
 	else
 	{
 		throw UnknownRequest("Unknown request");

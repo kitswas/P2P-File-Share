@@ -36,7 +36,7 @@
 #include "transactionsrecord.hpp"
 
 static EndpointID my_id;
-static TransactionsRecord successful_transactions;
+TransactionsRecord successful_transactions;
 
 void mirror(const Transaction &transaction, const std::vector<Endpoint> &trackers)
 {
@@ -88,6 +88,52 @@ void process_data(std::shared_ptr<TCPSocket> client, std::string &data, const st
 		client->send_data(e.what());
 		return;
 	}
+}
+
+/**
+ * @brief Attempt to connect to any of the trackers, get the list of successful transactions,
+ * and execute them on this tracker to bring it up to date.
+ */
+bool sync_with_online_trackers(const std::vector<Endpoint> &trackers)
+{
+	TCPSocket tracker;
+	for (auto const &t : trackers)
+	{
+		if (generate_id(t) == my_id)
+		{
+			continue;
+		}
+		try
+		{
+			if (tracker.connect(t.ip, t.port))
+			{
+				std::clog << "Connected to tracker " << t.ip << ":" << t.port << std::endl;
+				std::string sync_request = "0" + std::to_string(my_id) + " sync \n";
+				tracker.send_data(sync_request);
+				while (true)
+				{
+					std::string data = tracker.receive_data();
+					std::clog << "Received data: " << data << std::endl;
+					if (data.empty() || data == "done")
+					{
+						break;
+					}
+					tracker.send_data("next"); // Acknowledge the data
+					std::shared_ptr<Transaction> transaction = parse_request(data);
+					process_request(transaction, nullptr, false);
+				}
+				tracker.disconnect();
+				std::clog << "Synced with tracker " << t.ip << ":" << t.port << std::endl;
+
+				return true;
+			}
+		}
+		catch (const ConnectionClosedError &e)
+		{
+			std::cerr << t.ip << ":" << t.port << " " << e.what() << std::endl;
+		}
+	}
+	return false;
 }
 
 void loop(const Endpoint &endpoint, const std::vector<Endpoint> &trackers)
@@ -156,6 +202,15 @@ int main(int argc, char *argv[])
 	std::vector<Endpoint> trackers = load_tracker_info(file_path);
 	my_id = generate_id(trackers.at(n - 1));
 	std::cout << "My ID: " << my_id << std::endl;
-	loop(trackers.at(n - 1), trackers);
+	sync_with_online_trackers(trackers);
+	try
+	{
+		loop(trackers.at(n - 1), trackers);
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
+		return 1;
+	}
 	return 0;
 }
