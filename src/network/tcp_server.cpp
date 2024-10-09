@@ -95,10 +95,19 @@ void TCPServer::serveRequests(const int wait_time)
 						auto client = *it;
 						try
 						{
-							std::string data = client->receive_data();
-							if (onData && !data.empty())
+							if (std::string data = client->receive_data(); onData && !data.empty())
 							{
 								onData(client, data);
+							}
+							// Check if we have called client->disconnect() in onData()
+							if (client->socket_fd == -1)
+							{
+								FD_CLR(i, &active_fd_set);
+								clients.erase(it);
+								if (onDisconnect)
+								{
+									onDisconnect(client);
+								}
 							}
 						}
 						catch (WouldBlockError &_)
