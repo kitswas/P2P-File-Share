@@ -17,6 +17,7 @@ bool is_logged_in(EndpointID client)
 Result process_user_request(EndpointID origin, UserRequest request, std::stringstream &datastream)
 {
 	Result result;
+
 	if (request == UserRequest::CREATE)
 	{
 		std::string username;
@@ -27,6 +28,7 @@ Result process_user_request(EndpointID origin, UserRequest request, std::strings
 		if (userDB.createUser(username, password))
 		{
 			result.message = "User created\n";
+			result.success = true;
 		}
 		else
 		{
@@ -42,6 +44,7 @@ Result process_user_request(EndpointID origin, UserRequest request, std::strings
 		if (userDB.deleteUser(username))
 		{
 			result.message = "User deleted\n";
+			result.success = true;
 		}
 		else
 		{
@@ -69,6 +72,7 @@ Result process_user_request(EndpointID origin, UserRequest request, std::strings
 		{
 			logged_in_users.try_emplace(origin, user);
 			result.message = "Login successful\n";
+			result.success = true;
 		}
 		else
 		{
@@ -80,6 +84,7 @@ Result process_user_request(EndpointID origin, UserRequest request, std::strings
 		if (logged_in_users.erase(origin))
 		{
 			result.message = "Logout successful\n";
+			result.success = true;
 		}
 		else
 		{
@@ -93,7 +98,6 @@ Result process_user_request(EndpointID origin, UserRequest request, std::strings
 		return result;
 	}
 
-	result.success = true;
 	return result;
 }
 
@@ -111,7 +115,6 @@ Result process_group_request(EndpointID origin, GroupRequest request, std::strin
 			response += group + "\n";
 		}
 		result.message = (response.empty() ? "No users found\n" : response);
-		result.success = true;
 		return result;
 	}
 
@@ -127,6 +130,7 @@ Result process_group_request(EndpointID origin, GroupRequest request, std::strin
 			if (groupDB.createGroup(group_id, user))
 			{
 				result.message = "Group created\n";
+				result.success = true;
 			}
 			else
 			{
@@ -141,6 +145,7 @@ Result process_group_request(EndpointID origin, GroupRequest request, std::strin
 			{
 				group->add_join_request(user);
 				result.message = "Join request sent\n";
+				result.success = true;
 			}
 			else
 			{
@@ -154,6 +159,7 @@ Result process_group_request(EndpointID origin, GroupRequest request, std::strin
 			if (group && group->remove_user(user))
 			{
 				result.message = "Left group\n";
+				result.success = true;
 			}
 			else
 			{
@@ -202,6 +208,7 @@ Result process_group_request(EndpointID origin, GroupRequest request, std::strin
 							group->add_user(join_request);
 							group->remove_join_request(join_request);
 							result.message = "Request accepted\n";
+							result.success = true;
 							found = true;
 							break;
 						}
@@ -228,15 +235,17 @@ Result process_group_request(EndpointID origin, GroupRequest request, std::strin
 	{
 		result.message = login_required_warning;
 	}
-	result.success = true;
 	return result;
 }
 
 void process_request(std::shared_ptr<Transaction> transaction, std::shared_ptr<TCPSocket> client, bool do_mirror)
 {
 	std::stringstream ss(transaction->data);
-	std::string request;
-	ss >> request;
+	EndpointID _id;
+	ss >> _id; // Discard the id
+	std::string _request;
+	ss >> _request; // Discard the request
+
 	Result result;
 	if (std::holds_alternative<UserRequest>(transaction->request))
 	{
