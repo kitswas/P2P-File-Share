@@ -300,18 +300,27 @@ Result process_file_request(EndpointID origin, FileRequest request, std::strings
 			datastream >> endpoint_str;
 			Endpoint endpoint = Endpoint::from_string(endpoint_str);
 			FileInfo file_info = FileInfo::from_string(datastream.str().substr(datastream.tellg()));
-			auto file = std::make_shared<File>();
-			file->source = std::make_shared<Endpoint>(endpoint);
-			file->file_info = std::make_shared<FileInfo>(file_info);
-			file->group_id = group->get_group_id();
-			if (group->add_file(file))
+			auto file = std::make_shared<File>(std::make_shared<FileInfo>(file_info), group_id);
+			std::unordered_set<std::shared_ptr<File>> files = group->get_files();
+			std::shared_ptr<File> file_lookup = nullptr;
+			for (auto const &f : files)
 			{
-				result.message = "File uploaded\n";
-				result.success = true;
+				if (*f == *file)
+				{
+					file_lookup = f;
+					break;
+				}
+			}
+			if (file_lookup)
+			{
+				file_lookup->seeders.insert(std::make_shared<Endpoint>(endpoint));
+				result.message = "File already exists. Added you as a seeder\n";
 			}
 			else
 			{
-				result.message = "File already exists\n";
+				group->add_file(file);
+				result.message = "File uploaded\n";
+				result.success = true;
 			}
 		}
 		else
