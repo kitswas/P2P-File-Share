@@ -132,11 +132,12 @@ $(function(){initNavTree('client_8cpp.html',''); initResizable(true); });
 <code>#include &quot;<a class="el" href="endpoint_8hpp.html">../models/endpoint.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="network__errors_8hpp.html">../network/network_errors.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="tcp__socket_8hpp.html">../network/tcp_socket.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="tcp__server_8hpp.html">../network/tcp_server.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="process__input_8hpp.html">process_input.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for client.cpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="client_8cpp__incl.svg" width="1062" height="271"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="client_8cpp__incl.svg" width="1483" height="271"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
@@ -144,6 +145,8 @@ Functions</h2></td></tr>
 <tr class="memitem:a517c4e314d6c56c5d45a80df5f6a1024" id="r_a517c4e314d6c56c5d45a80df5f6a1024"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a517c4e314d6c56c5d45a80df5f6a1024">connect_to_tracker</a> (<a class="el" href="classTCPSocket.html">TCPSocket</a> &amp;tracker)</td></tr>
 <tr class="memdesc:a517c4e314d6c56c5d45a80df5f6a1024"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attempt to connect to any of the trackers.  <br /></td></tr>
 <tr class="separator:a517c4e314d6c56c5d45a80df5f6a1024"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9f5729519ab3f57299113e9892f7207" id="r_ab9f5729519ab3f57299113e9892f7207"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab9f5729519ab3f57299113e9892f7207">loop</a> (const <a class="el" href="structEndpoint.html">Endpoint</a> &amp;client_endpoint, <a class="el" href="classTCPSocket.html">TCPSocket</a> &amp;tracker, const <a class="el" href="endpoint_8hpp.html#a3e154fa78f0e54fb3943193a72c1d3ca">EndpointID</a> &amp;my_id)</td></tr>
+<tr class="separator:ab9f5729519ab3f57299113e9892f7207"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97" id="r_a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
 <tr class="memdesc:a0ddf1224851353fc92bfbff6f499fa97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execution starts here.  <br /></td></tr>
 <tr class="separator:a0ddf1224851353fc92bfbff6f499fa97"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -170,6 +173,32 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Attempt to connect to any of the trackers. </p>
+
+</div>
+</div>
+<a id="ab9f5729519ab3f57299113e9892f7207" name="ab9f5729519ab3f57299113e9892f7207"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9f5729519ab3f57299113e9892f7207">&#9670;&#160;</a></span>loop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void loop </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structEndpoint.html">Endpoint</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>client_endpoint</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classTCPSocket.html">TCPSocket</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>tracker</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="endpoint_8hpp.html#a3e154fa78f0e54fb3943193a72c1d3ca">EndpointID</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>my_id</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>

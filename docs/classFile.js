@@ -1,6 +1,8 @@
 var classFile =
 [
-    [ "file_info", "classFile.html#ac2e25b9694f7ebf648c76f7da66f99e2", null ],
-    [ "group_id", "classFile.html#a12286dc6d69f57ee723d0531b8eda19c", null ],
-    [ "source", "classFile.html#aa5533dee9906af0bf151c7ec8ede1c52", null ]
+    [ "File", "classFile.html#a390165d9ea33f31c251b0324aee50a90", null ],
+    [ "operator==", "classFile.html#a865a1543138f01844355d746e14b70fc", null ],
+    [ "file_info", "classFile.html#ac685c0c2cb1144bf3a9b5c3701e03035", null ],
+    [ "group_id", "classFile.html#a45455826abd575bc84e8eb41cba46d3a", null ],
+    [ "seeders", "classFile.html#a1bb8349de650b4eb043a7b0627508402", null ]
 ];

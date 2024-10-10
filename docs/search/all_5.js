@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['file_0',['File',['../classFile.html',1,'']]],
+  ['file_0',['File',['../classFile.html',1,'File'],['../classFile.html#a390165d9ea33f31c251b0324aee50a90',1,'File::File()']]],
   ['file_20share_1',['P2P-File-Share',['../index.html',1,'']]],
-  ['file_5finfo_2',['file_info',['../classFile.html#ac2e25b9694f7ebf648c76f7da66f99e2',1,'File']]],
+  ['file_5finfo_2',['file_info',['../classFile.html#ac685c0c2cb1144bf3a9b5c3701e03035',1,'File']]],
   ['fileinfo_3',['FileInfo',['../classFileInfo.html',1,'FileInfo'],['../classFileInfo.html#a30f4d09e7ea013513af2e87f93e4654b',1,'FileInfo::FileInfo()']]],
   ['fileinfo_2ehpp_4',['fileinfo.hpp',['../fileinfo_8hpp.html',1,'']]],
   ['filerequest_5',['FileRequest',['../transaction_8hpp.html#a07153c95f1b70003a5a07909850d2939',1,'transaction.hpp']]],

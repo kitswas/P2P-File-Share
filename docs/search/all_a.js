@@ -8,5 +8,5 @@ var searchData=
   ['load_5ftracker_5finfo_2ecpp_5',['load_tracker_info.cpp',['../load__tracker__info_8cpp.html',1,'']]],
   ['login_6',['LOGIN',['../transaction_8hpp.html#a7a62678c11f1794bbf48113799481c46a4976d7ca80f2cb54c1c7d5c87fb0c7ef',1,'transaction.hpp']]],
   ['logout_7',['LOGOUT',['../transaction_8hpp.html#a7a62678c11f1794bbf48113799481c46a6b4ea69e17243db95f7b46c384d40370',1,'transaction.hpp']]],
-  ['loop_8',['loop',['../tracker_8cpp.html#af92e698f11e6417e5250e39da2100d90',1,'tracker.cpp']]]
+  ['loop_8',['loop',['../client_8cpp.html#ab9f5729519ab3f57299113e9892f7207',1,'loop(const Endpoint &amp;client_endpoint, TCPSocket &amp;tracker, const EndpointID &amp;my_id):&#160;client.cpp'],['../tracker_8cpp.html#af92e698f11e6417e5250e39da2100d90',1,'loop(const Endpoint &amp;endpoint, const std::vector&lt; Endpoint &gt; &amp;trackers):&#160;tracker.cpp']]]
 ];

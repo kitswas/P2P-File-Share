@@ -118,7 +118,9 @@ $(function(){initNavTree('classFile.html',''); initResizable(true); });
 
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="classFile-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">File Class Reference</div></div>
 </div><!--header-->
@@ -126,52 +128,122 @@ $(function(){initNavTree('classFile.html',''); initResizable(true); });
 
 <p><code>#include &lt;group.hpp&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a390165d9ea33f31c251b0324aee50a90" id="r_a390165d9ea33f31c251b0324aee50a90"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a390165d9ea33f31c251b0324aee50a90">File</a> (std::shared_ptr&lt; <a class="el" href="classFileInfo.html">FileInfo</a> &gt; <a class="el" href="#ac685c0c2cb1144bf3a9b5c3701e03035">file_info</a>, std::string const &amp;<a class="el" href="#a45455826abd575bc84e8eb41cba46d3a">group_id</a>)</td></tr>
+<tr class="separator:a390165d9ea33f31c251b0324aee50a90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:aa5533dee9906af0bf151c7ec8ede1c52" id="r_aa5533dee9906af0bf151c7ec8ede1c52"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="structEndpoint.html">Endpoint</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa5533dee9906af0bf151c7ec8ede1c52">source</a></td></tr>
-<tr class="separator:aa5533dee9906af0bf151c7ec8ede1c52"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac2e25b9694f7ebf648c76f7da66f99e2" id="r_ac2e25b9694f7ebf648c76f7da66f99e2"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classFileInfo.html">FileInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac2e25b9694f7ebf648c76f7da66f99e2">file_info</a></td></tr>
-<tr class="separator:ac2e25b9694f7ebf648c76f7da66f99e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12286dc6d69f57ee723d0531b8eda19c" id="r_a12286dc6d69f57ee723d0531b8eda19c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a12286dc6d69f57ee723d0531b8eda19c">group_id</a></td></tr>
-<tr class="separator:a12286dc6d69f57ee723d0531b8eda19c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bb8349de650b4eb043a7b0627508402" id="r_a1bb8349de650b4eb043a7b0627508402"><td class="memItemLeft" align="right" valign="top">std::unordered_set&lt; std::shared_ptr&lt; <a class="el" href="structEndpoint.html">Endpoint</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1bb8349de650b4eb043a7b0627508402">seeders</a></td></tr>
+<tr class="separator:a1bb8349de650b4eb043a7b0627508402"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac685c0c2cb1144bf3a9b5c3701e03035" id="r_ac685c0c2cb1144bf3a9b5c3701e03035"><td class="memItemLeft" align="right" valign="top">const std::shared_ptr&lt; <a class="el" href="classFileInfo.html">FileInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac685c0c2cb1144bf3a9b5c3701e03035">file_info</a></td></tr>
+<tr class="separator:ac685c0c2cb1144bf3a9b5c3701e03035"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45455826abd575bc84e8eb41cba46d3a" id="r_a45455826abd575bc84e8eb41cba46d3a"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a45455826abd575bc84e8eb41cba46d3a">group_id</a></td></tr>
+<tr class="separator:a45455826abd575bc84e8eb41cba46d3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a865a1543138f01844355d746e14b70fc" id="r_a865a1543138f01844355d746e14b70fc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a865a1543138f01844355d746e14b70fc">operator==</a> (const <a class="el" href="classFile.html">File</a> &amp;lhs, const <a class="el" href="classFile.html">File</a> &amp;rhs)</td></tr>
+<tr class="separator:a865a1543138f01844355d746e14b70fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a390165d9ea33f31c251b0324aee50a90" name="a390165d9ea33f31c251b0324aee50a90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a390165d9ea33f31c251b0324aee50a90">&#9670;&#160;</a></span>File()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">File::File </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classFileInfo.html">FileInfo</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>file_info</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string const &amp;</td>          <td class="paramname"><span class="paramname"><em>group_id</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Symbol Documentation</h2>
+<a id="a865a1543138f01844355d746e14b70fc" name="a865a1543138f01844355d746e14b70fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a865a1543138f01844355d746e14b70fc">&#9670;&#160;</a></span>operator==</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classFile.html">File</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>lhs</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classFile.html">File</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>rhs</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="ac2e25b9694f7ebf648c76f7da66f99e2" name="ac2e25b9694f7ebf648c76f7da66f99e2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac2e25b9694f7ebf648c76f7da66f99e2">&#9670;&#160;</a></span>file_info</h2>
+<a id="ac685c0c2cb1144bf3a9b5c3701e03035" name="ac685c0c2cb1144bf3a9b5c3701e03035"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac685c0c2cb1144bf3a9b5c3701e03035">&#9670;&#160;</a></span>file_info</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::shared_ptr&lt;<a class="el" href="classFileInfo.html">FileInfo</a>&gt; File::file_info</td>
+          <td class="memname">const std::shared_ptr&lt;<a class="el" href="classFileInfo.html">FileInfo</a>&gt; File::file_info</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a12286dc6d69f57ee723d0531b8eda19c" name="a12286dc6d69f57ee723d0531b8eda19c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a12286dc6d69f57ee723d0531b8eda19c">&#9670;&#160;</a></span>group_id</h2>
+<a id="a45455826abd575bc84e8eb41cba46d3a" name="a45455826abd575bc84e8eb41cba46d3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45455826abd575bc84e8eb41cba46d3a">&#9670;&#160;</a></span>group_id</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::string File::group_id</td>
+          <td class="memname">const std::string File::group_id</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="aa5533dee9906af0bf151c7ec8ede1c52" name="aa5533dee9906af0bf151c7ec8ede1c52"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa5533dee9906af0bf151c7ec8ede1c52">&#9670;&#160;</a></span>source</h2>
+<a id="a1bb8349de650b4eb043a7b0627508402" name="a1bb8349de650b4eb043a7b0627508402"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1bb8349de650b4eb043a7b0627508402">&#9670;&#160;</a></span>seeders</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::shared_ptr&lt;<a class="el" href="structEndpoint.html">Endpoint</a>&gt; File::source</td>
+          <td class="memname">std::unordered_set&lt;std::shared_ptr&lt;<a class="el" href="structEndpoint.html">Endpoint</a>&gt; &gt; File::seeders</td>
         </tr>
       </table>
 </div><div class="memdoc">
