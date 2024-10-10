@@ -84,9 +84,9 @@ bool TCPSocket::bind(const std::string &ip, uint16_t port)
 	{
 		local_address.sin_addr.s_addr = INADDR_ANY;
 	}
-	else if (inet_aton(ip.c_str(), &local_address.sin_addr))
+	else if (!inet_aton(ip.c_str(), &local_address.sin_addr))
 	{
-		throw NetworkError("Invalid IP address");
+		throw NetworkError("Invalid IP address " + ip);
 	}
 	local_address.sin_port = htons(port);
 	socklen_t size = sizeof(local_address);
