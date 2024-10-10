@@ -1,0 +1,5 @@
+create_user swas 123
+login swas 123
+create_group pdfs
+upload_file libc.pdf pdfs
+list_files pdfs
