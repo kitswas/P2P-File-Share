@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <vector>
 
+#include "../models/file.hpp"
 #include "../models/fileinfo.hpp"
 #include "hash.hpp"
 #include "process_input.hpp"
@@ -19,7 +20,8 @@ std::unique_ptr<FileInfo> get_file_info(const std::string &file_path)
 	if (fd == -1)
 	{
 		std::cerr << "Error opening file" << strerror(errno) << std::endl;
-		std::cerr << "Check that filepath does not have spaces.\n" << std::endl;
+		std::cerr << "Check that filepath does not have spaces.\n"
+				  << std::endl;
 		return nullptr;
 	}
 	// get file size
@@ -62,7 +64,7 @@ bool process_input(const std::string &input, TCPSocket &tracker, EndpointID my_i
 		std::cout << file_info->to_string() << std::endl;
 		request += command + " " + group_id + " " + client_endpoint.to_string() + " " + file_info->to_string();
 	}
-	else if(command == "download_file")
+	else if (command == "download_file")
 	{
 		std::string group_id;
 		ss >> group_id;
@@ -70,6 +72,7 @@ bool process_input(const std::string &input, TCPSocket &tracker, EndpointID my_i
 		ss >> file_name;
 		std::string destination_path;
 		ss >> destination_path;
+		request += command + " " + group_id + " " + file_name;
 	}
 	else
 	{
@@ -77,6 +80,30 @@ bool process_input(const std::string &input, TCPSocket &tracker, EndpointID my_i
 	}
 	tracker.send_data(request);
 	std::string response = tracker.receive_data();
-	std::cout << response << std::endl;
+	if (command == "download_file")
+	{
+		std::stringstream download_info(response);
+		int file_found = 0;
+		download_info >> file_found;
+		if (download_info.fail())
+		{
+			std::cout << response << std::endl;
+			return true;
+		}
+		if (file_found == 1)
+		{
+			auto file = File::from_string(download_info.str().substr(download_info.tellg()));
+			std::cout << file.group_id << " " << file.file_info->name << std::endl;
+			std::cout << file.file_info->to_string() << std::endl;
+		}
+		else
+		{
+			std::cout << download_info.str().substr(download_info.tellg()) << std::endl;
+		}
+	}
+	else
+	{
+		std::cout << response << std::endl;
+	}
 	return true;
 }

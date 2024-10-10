@@ -301,6 +301,7 @@ Result process_file_request(EndpointID origin, FileRequest request, std::strings
 			Endpoint endpoint = Endpoint::from_string(endpoint_str);
 			FileInfo file_info = FileInfo::from_string(datastream.str().substr(datastream.tellg()));
 			auto file = std::make_shared<File>(std::make_shared<FileInfo>(file_info), group_id);
+			file->seeders.insert(std::make_shared<Endpoint>(endpoint));
 			std::unordered_set<std::shared_ptr<File>> files = group->get_files();
 			std::shared_ptr<File> file_lookup = nullptr;
 			for (auto const &f : files)
@@ -321,6 +322,30 @@ Result process_file_request(EndpointID origin, FileRequest request, std::strings
 				group->add_file(file);
 				result.message = "File uploaded\n";
 				result.success = true;
+			}
+		}
+		else if (request == FileRequest::DOWNLOAD)
+		{
+			std::string file_name;
+			datastream >> file_name;
+			auto files = group->get_files();
+			std::shared_ptr<File> file = nullptr;
+			for (auto const &f : files)
+			{
+				if (f->file_info->name == file_name)
+				{
+					file = f;
+					break;
+				}
+			}
+			if (file)
+			{
+				result.message = "1 " + file->to_string() + "\n";
+				result.success = true;
+			}
+			else
+			{
+				result.message = "0 File not found\n";
 			}
 		}
 		else
