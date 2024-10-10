@@ -16,7 +16,9 @@
 #include "../network/network_errors.hpp"
 #include "../network/tcp_socket.hpp"
 #include "../network/tcp_server.hpp"
+#include "peerdb.hpp"
 #include "process_input.hpp"
+#include "process_request.hpp"
 
 // List of trackers
 static std::vector<Endpoint> trackers;
@@ -46,6 +48,8 @@ bool connect_to_tracker(TCPSocket &tracker)
 
 void loop(const Endpoint &client_endpoint, TCPSocket &tracker, const EndpointID &my_id)
 {
+	PeerDB peer_db;
+
 	std::function<void(std::shared_ptr<TCPSocket>)> onConnect = [](std::shared_ptr<TCPSocket> client)
 	{
 		std::cout << "Client connected " << client->get_peer_ip() << ":" << client->get_peer_port() << std::endl;
@@ -54,9 +58,10 @@ void loop(const Endpoint &client_endpoint, TCPSocket &tracker, const EndpointID 
 	{
 		std::cout << "Client disconnected " << client->get_peer_ip() << ":" << client->get_peer_port() << std::endl;
 	};
-	std::function<void(std::shared_ptr<TCPSocket>, std::string &)> onData = [](std::shared_ptr<TCPSocket> client, std::string &data)
+	std::function<void(std::shared_ptr<TCPSocket>, std::string &)> onData = [&peer_db, my_id](std::shared_ptr<TCPSocket> client, std::string &data)
 	{
 		std::cout << "Data received from " << client->get_peer_ip() << ":" << client->get_peer_port() << " : " << data << std::endl;
+		process_request(client, peer_db, data, my_id);
 	};
 
 	TCPServer server(100);
