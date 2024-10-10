@@ -16,6 +16,7 @@
 #include "../network/network_errors.hpp"
 #include "../network/tcp_socket.hpp"
 #include "../network/tcp_server.hpp"
+#include "downloadmanager.hpp"
 #include "peerdb.hpp"
 #include "process_input.hpp"
 #include "process_request.hpp"
@@ -49,6 +50,7 @@ bool connect_to_tracker(TCPSocket &tracker)
 void loop(const Endpoint &client_endpoint, TCPSocket &tracker, const EndpointID &my_id)
 {
 	PeerDB peer_db;
+	DownloadManager download_manager(peer_db, client_endpoint, my_id);
 
 	std::function<void(std::shared_ptr<TCPSocket>)> onConnect = [](std::shared_ptr<TCPSocket> client)
 	{
@@ -84,7 +86,7 @@ void loop(const Endpoint &client_endpoint, TCPSocket &tracker, const EndpointID 
 		}
 		try
 		{
-			process_input(input, tracker, my_id, client_endpoint);
+			process_input(input, tracker, my_id, client_endpoint, download_manager);
 		}
 		catch (const ConnectionClosedError &e)
 		{

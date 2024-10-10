@@ -44,7 +44,7 @@ std::unique_ptr<FileInfo> get_file_info(const std::string &file_path)
 	return std::make_unique<FileInfo>(filename, file_size, pieces, hash);
 }
 
-bool process_input(const std::string &input, TCPSocket &tracker, EndpointID my_id, const Endpoint &client_endpoint)
+bool process_input(const std::string &input, TCPSocket &tracker, EndpointID my_id, const Endpoint &client_endpoint, DownloadManager &download_manager)
 {
 	std::string request = "1" + std::to_string(my_id) + " ";
 	std::stringstream ss(input);
@@ -93,8 +93,7 @@ bool process_input(const std::string &input, TCPSocket &tracker, EndpointID my_i
 		if (file_found == 1)
 		{
 			auto file = File::from_string(download_info.str().substr(download_info.tellg()));
-			std::cout << file.group_id << " " << file.file_info->name << std::endl;
-			std::cout << file.file_info->to_string() << std::endl;
+			std::cout << std::boolalpha << download_manager.enqueue_download(file.group_id, file.file_info, "tempfile") << std::endl;
 		}
 		else
 		{
