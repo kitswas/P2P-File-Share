@@ -10,6 +10,8 @@ static GroupDB groupDB;
 static std::unordered_map<EndpointID, std::shared_ptr<User>> logged_in_users;
 static UserDB userDB;
 
+static const char *const login_required_warning = "You must be logged in to perform this action\n";
+
 extern TransactionsRecord successful_transactions;
 
 bool is_logged_in(EndpointID client)
@@ -107,8 +109,6 @@ Result process_user_request(EndpointID origin, UserRequest request, std::strings
 Result process_group_request(EndpointID origin, GroupRequest request, std::stringstream &datastream)
 {
 	Result result;
-	const char *const login_required_warning = "You must be logged in to perform this action\n";
-
 	if (request == GroupRequest::LIST)
 	{
 		auto groups = groupDB.getGroups();
@@ -252,21 +252,23 @@ Result process_file_request(EndpointID origin, FileRequest request, std::strings
 	}
 	catch (std::out_of_range &_)
 	{
-		const char *const login_required_warning = "You must be logged in to perform this action\n";
 		result.message = login_required_warning;
 		return result;
 	}
+
 	std::shared_ptr<Group> group = nullptr;
-	try
-	{
-		std::string group_id;
-		datastream >> group_id;
-		group = groupDB.getGroup(group_id);
-	}
-	catch (std::out_of_range &_)
+	std::string group_id;
+	datastream >> group_id;
+	group = groupDB.getGroup(group_id);
+	if (!group)
 	{
 		const char *const group_missing_warning = "Group not found\n";
 		result.message = group_missing_warning;
+		return result;
+	}
+	if (!group->has_member(user))
+	{
+		result.message = "You are not a member of this group\n";
 		return result;
 	}
 
