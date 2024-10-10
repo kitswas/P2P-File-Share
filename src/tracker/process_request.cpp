@@ -21,6 +21,7 @@ bool is_logged_in(EndpointID client)
 
 Result process_user_request(EndpointID origin, UserRequest request, std::stringstream &datastream)
 {
+	const char *const user_not_found_warning = "User does not exist\n";
 	Result result;
 
 	if (request == UserRequest::CREATE)
@@ -53,7 +54,7 @@ Result process_user_request(EndpointID origin, UserRequest request, std::strings
 		}
 		else
 		{
-			result.message = "User does not exist\n";
+			result.message = user_not_found_warning;
 		}
 	}
 	else if (request == UserRequest::LIST)
@@ -73,7 +74,15 @@ Result process_user_request(EndpointID origin, UserRequest request, std::strings
 		std::string password;
 		datastream >> username >> password;
 		auto user = userDB.getUser(username);
-		if (user && !is_logged_in(origin) && user->checkPassword(password))
+		if (is_logged_in(origin))
+		{
+			result.message = logged_in_users.at(origin)->getUsername() + " is already logged in\n";
+		}
+		else if (!user)
+		{
+			result.message = user_not_found_warning;
+		}
+		else if (user->checkPassword(password))
 		{
 			logged_in_users.try_emplace(origin, user);
 			result.message = "Login successful\n";
