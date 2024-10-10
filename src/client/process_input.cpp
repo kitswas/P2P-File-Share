@@ -53,11 +53,6 @@ bool process_input(const std::string &input, TCPSocket &tracker, EndpointID my_i
 		ss >> file_path;
 		std::string group_id;
 		ss >> group_id;
-		if (file_path.find_first_of(" \t") != std::string::npos)
-		{
-			std::cerr << "Filepath cannot have spaces.\n" << std::endl;
-			return false;
-		}
 		auto file_info = get_file_info(file_path);
 		if (!file_info)
 		{
