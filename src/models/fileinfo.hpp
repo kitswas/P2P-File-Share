@@ -5,6 +5,9 @@
 #include <string>
 #include <vector>
 
+// 512KB
+const size_t block_size = 512 * 1024;
+
 class FileInfo
 {
 public:
@@ -18,7 +21,7 @@ public:
 	const size_t size;
 	/**
 	 * @brief The list of SHA1 hashes of the pieces of the file
-	 * Each piece is should be 512KB
+	 * Each piece is should be @link block_size @endlink bytes long
 	 */
 	const std::vector<std::string> pieces;
 	/**

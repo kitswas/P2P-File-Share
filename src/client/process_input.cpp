@@ -10,9 +10,6 @@
 #include "hash.hpp"
 #include "process_input.hpp"
 
-// 512KB
-const off_t block_size = 512 * 1024;
-
 std::unique_ptr<FileInfo> get_file_info(const std::string &file_path)
 {
 	// get filename

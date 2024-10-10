@@ -39,7 +39,7 @@ You can generate the documentation by running the `doc` CMake target.
 
 ```bash
 cmake -B build
-cmake --build build --config Release --target doc
+cmake --build build --target doc
 ```
 
 This repository also has an automated workflow to generate documentatation via Github Actions.  
