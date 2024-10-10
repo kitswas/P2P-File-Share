@@ -288,9 +288,7 @@ Result process_file_request(EndpointID origin, FileRequest request, std::strings
 			std::string endpoint_str;
 			datastream >> endpoint_str;
 			Endpoint endpoint = Endpoint::from_string(endpoint_str);
-			std::string bencoded_info;
-			datastream >> bencoded_info;
-			FileInfo file_info = FileInfo::from_bencoded(bencoded_info);
+			FileInfo file_info = FileInfo::from_string(datastream.str().substr(datastream.tellg()));
 			auto file = std::make_shared<File>();
 			file->source = std::make_shared<Endpoint>(endpoint);
 			file->file_info = std::make_shared<FileInfo>(file_info);

@@ -62,7 +62,7 @@ bool process_input(const std::string &input, TCPSocket &tracker, EndpointID my_i
 			return false;
 		}
 		std::cout << file_info->to_string() << std::endl;
-		request += command + " " + group_id + " " + client_endpoint.to_string() + " " + file_info->bencoded();
+		request += command + " " + group_id + " " + client_endpoint.to_string() + " " + file_info->to_string();
 	}
 	else
 	{
