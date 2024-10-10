@@ -154,7 +154,7 @@ bool TCPServer::start(const std::string &ip, uint16_t port, int listen_backlog)
 		return false;
 	}
 
-	std::cout << "Server started on port " << socket.get_local_port() << std::endl;
+	std::clog << "Server started on "<< socket.get_local_ip() << " at port " << socket.get_local_port() << std::endl;
 
 	running = true;
 	service_thread = std::thread(&TCPServer::serveRequests, this, 1);
