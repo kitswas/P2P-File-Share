@@ -15,6 +15,7 @@
 #include "../models/endpoint.hpp"
 #include "../network/network_errors.hpp"
 #include "../network/tcp_socket.hpp"
+#include "../network/tcp_server.hpp"
 #include "process_input.hpp"
 
 // List of trackers
@@ -41,6 +42,60 @@ bool connect_to_tracker(TCPSocket &tracker)
 		}
 	}
 	return false;
+}
+
+void loop(const Endpoint &client_endpoint, TCPSocket &tracker, const EndpointID &my_id)
+{
+	std::function<void(std::shared_ptr<TCPSocket>)> onConnect = [](std::shared_ptr<TCPSocket> client)
+	{
+		std::cout << "Client connected " << client->get_peer_ip() << ":" << client->get_peer_port() << std::endl;
+	};
+	std::function<void(std::shared_ptr<TCPSocket>)> onDisconnect = [](std::shared_ptr<TCPSocket> client)
+	{
+		std::cout << "Client disconnected " << client->get_peer_ip() << ":" << client->get_peer_port() << std::endl;
+	};
+	std::function<void(std::shared_ptr<TCPSocket>, std::string &)> onData = [](std::shared_ptr<TCPSocket> client, std::string &data)
+	{
+		std::cout << "Data received from " << client->get_peer_ip() << ":" << client->get_peer_port() << " : " << data << std::endl;
+	};
+
+	TCPServer server(100);
+	server.setOnConnect(onConnect);
+	server.setOnDisconnect(onDisconnect);
+	server.setOnData(onData);
+	server.start(client_endpoint.ip, client_endpoint.port);
+
+	// Parse user input
+	while (true)
+	{
+		std::string input;
+		if (std::cin.peek() != EOF) // check if there is input
+		{
+			std::getline(std::cin >> std::ws, input);
+			if (input == "quit")
+			{
+				break;
+			}
+		}
+		try
+		{
+			process_input(input, tracker, my_id, client_endpoint);
+		}
+		catch (const ConnectionClosedError &e)
+		{
+			std::cerr << e.what() << '\n';
+			std::cerr << "Failed to send or receive data. Reconnecting..." << std::endl;
+			tracker = TCPSocket(); // Create a new socket
+			if (!connect_to_tracker(tracker))
+			{
+				std::cerr << "Failed to reconnect" << std::endl;
+				exit(1);
+			}
+		}
+	}
+
+	std::cout << "Shutting down server..." << std::endl;
+	server.stop();
 }
 
 /**
@@ -87,33 +142,14 @@ int main(int argc, char *argv[])
 
 	std::cout << "My ID: " << my_id << std::endl;
 
-	// Parse user input
-	while (true)
+	try
 	{
-		std::string input;
-		if (std::cin.peek() != EOF) // check if there is input
-		{
-			std::getline(std::cin >> std::ws, input);
-			if (input == "quit")
-			{
-				break;
-			}
-		}
-		try
-		{
-			process_input(input, tracker, my_id, client_endpoint);
-		}
-		catch (const ConnectionClosedError &e)
-		{
-			std::cerr << e.what() << '\n';
-			std::cerr << "Failed to send or receive data. Reconnecting..." << std::endl;
-			tracker = TCPSocket(); // Create a new socket
-			if (!connect_to_tracker(tracker))
-			{
-				std::cerr << "Failed to reconnect" << std::endl;
-				exit(1);
-			}
-		}
+		loop(client_endpoint, tracker, my_id);
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
+		return 1;
 	}
 
 	return 0;
