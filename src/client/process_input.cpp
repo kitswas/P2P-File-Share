@@ -19,6 +19,7 @@ std::unique_ptr<FileInfo> get_file_info(const std::string &file_path)
 	if (fd == -1)
 	{
 		std::cerr << "Error opening file" << strerror(errno) << std::endl;
+		std::cerr << "Check that filepath does not have spaces.\n" << std::endl;
 		return nullptr;
 	}
 	// get file size
