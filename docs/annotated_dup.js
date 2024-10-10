@@ -3,6 +3,7 @@ var annotated_dup =
     [ "always_false", "structalways__false.html", null ],
     [ "ConnectionClosedError", "classConnectionClosedError.html", null ],
     [ "Endpoint", "structEndpoint.html", "structEndpoint" ],
+    [ "File", "classFile.html", "classFile" ],
     [ "FileInfo", "classFileInfo.html", "classFileInfo" ],
     [ "Group", "classGroup.html", "classGroup" ],
     [ "GroupDB", "classGroupDB.html", "classGroupDB" ],

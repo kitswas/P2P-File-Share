@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['origin_0',['origin',['../structTransaction.html#a13bdb2613c2582ba149834cc5b8c403b',1,'Transaction']]],
-  ['outcome_1',['outcome',['../structTransaction.html#aee12fd022e23ad1dbd3b6e45178a464d',1,'Transaction']]]
+  ['ip_0',['ip',['../structEndpoint.html#a2f1b635a2000dbd7573a6c681f6ff34b',1,'Endpoint']]]
 ];

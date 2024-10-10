@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ip_0',['ip',['../structEndpoint.html#a2f1b635a2000dbd7573a6c681f6ff34b',1,'Endpoint']]]
+  ['file_5finfo_0',['file_info',['../classFile.html#ac2e25b9694f7ebf648c76f7da66f99e2',1,'File']]]
 ];

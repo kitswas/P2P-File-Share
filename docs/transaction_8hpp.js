@@ -4,7 +4,12 @@ var transaction_8hpp =
     [ "Result", "structResult.html", "structResult" ],
     [ "always_false< T >", "structalways__false.html", null ],
     [ "Transaction", "structTransaction.html", "structTransaction" ],
-    [ "Request", "transaction_8hpp.html#ae73e6e2e1ea31f71185c81b6b4b385e0", null ],
+    [ "Request", "transaction_8hpp.html#a8f6920bb0e95d9a247826d16c49d59d4", null ],
+    [ "FileRequest", "transaction_8hpp.html#a07153c95f1b70003a5a07909850d2939", [
+      [ "LIST", "transaction_8hpp.html#a07153c95f1b70003a5a07909850d2939a298cb25408234de02baf2085803a464a", null ],
+      [ "UPLOAD", "transaction_8hpp.html#a07153c95f1b70003a5a07909850d2939a8dff5f89b87ebf91a1ecc1dbed3a6fbb", null ],
+      [ "DOWNLOAD", "transaction_8hpp.html#a07153c95f1b70003a5a07909850d2939a631152daefc8201c641fa7a37c397dce", null ]
+    ] ],
     [ "GroupRequest", "transaction_8hpp.html#a907ba723346762d9b92c2bf51f6d610f", [
       [ "CREATE", "transaction_8hpp.html#a907ba723346762d9b92c2bf51f6d610fa294ce20cdefa29be3be0735cb62e715d", null ],
       [ "JOIN", "transaction_8hpp.html#a907ba723346762d9b92c2bf51f6d610faa6fa1cdf9c1a71978751b35b88763f8f", null ],

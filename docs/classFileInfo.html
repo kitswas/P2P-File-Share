@@ -135,15 +135,11 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a30f4d09e7ea013513af2e87f93e4654b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7ca79d64107bc69032ac3a8c25b4402" id="r_aa7ca79d64107bc69032ac3a8c25b4402"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa7ca79d64107bc69032ac3a8c25b4402">to_string</a> () const</td></tr>
 <tr class="separator:aa7ca79d64107bc69032ac3a8c25b4402"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acba457cee0346a82729d7aa29e8383aa" id="r_acba457cee0346a82729d7aa29e8383aa"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acba457cee0346a82729d7aa29e8383aa">bencoded</a> () const</td></tr>
-<tr class="memdesc:acba457cee0346a82729d7aa29e8383aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bencoding format available at: <a href="https://www.bittorrent.org/beps/bep_0003.html#bencoding">https://www.bittorrent.org/beps/bep_0003.html#bencoding</a>.  <br /></td></tr>
-<tr class="separator:acba457cee0346a82729d7aa29e8383aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a3010a88d8c7921271dc30d8f9ba6c5c7" id="r_a3010a88d8c7921271dc30d8f9ba6c5c7"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classFileInfo.html">FileInfo</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3010a88d8c7921271dc30d8f9ba6c5c7">from_bencoded</a> (std::string bencode)</td></tr>
-<tr class="memdesc:a3010a88d8c7921271dc30d8f9ba6c5c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a bencoded string to create a <a class="el" href="classFileInfo.html">FileInfo</a> object.  <br /></td></tr>
-<tr class="separator:a3010a88d8c7921271dc30d8f9ba6c5c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bc3a10f17522acc8a1d4cdcdde63e52" id="r_a3bc3a10f17522acc8a1d4cdcdde63e52"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classFileInfo.html">FileInfo</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3bc3a10f17522acc8a1d4cdcdde63e52">from_string</a> (const std::string &amp;str)</td></tr>
+<tr class="separator:a3bc3a10f17522acc8a1d4cdcdde63e52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -206,8 +202,8 @@ Friends</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="acba457cee0346a82729d7aa29e8383aa" name="acba457cee0346a82729d7aa29e8383aa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acba457cee0346a82729d7aa29e8383aa">&#9670;&#160;</a></span>bencoded()</h2>
+<a id="a3bc3a10f17522acc8a1d4cdcdde63e52" name="a3bc3a10f17522acc8a1d4cdcdde63e52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bc3a10f17522acc8a1d4cdcdde63e52">&#9670;&#160;</a></span>from_string()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -216,43 +212,9 @@ Friends</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::string FileInfo::bencoded </td>
+          <td class="memname">static <a class="el" href="classFileInfo.html">FileInfo</a> FileInfo::from_string </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Bencoding format available at: <a href="https://www.bittorrent.org/beps/bep_0003.html#bencoding">https://www.bittorrent.org/beps/bep_0003.html#bencoding</a>. </p>
-<ul>
-<li>Strings are length-prefixed base ten followed by a colon and the string. For example 4:spam corresponds to 'spam'.</li>
-<li>Integers are represented by an 'i' followed by the number in base 10 followed by an 'e'. For example i3e corresponds to 3 and i-3e corresponds to -3. Integers have no size limitation. i-0e is invalid. All encodings with a leading zero, such as i03e, are invalid, other than i0e, which of course corresponds to 0.</li>
-<li>Lists are encoded as an 'l' followed by their elements (also bencoded) followed by an 'e'. For example l4:spam4:eggse corresponds to ['spam', 'eggs'].</li>
-<li>Dictionaries are encoded as a 'd' followed by a list of alternating keys and their corresponding values followed by an 'e'. For example, d3:cow3:moo4:spam4:eggse corresponds to {'cow': 'moo', 'spam': 'eggs'} and d4:spaml1:a1:bee corresponds to {'spam': ['a', 'b']}. Keys must be strings and appear in sorted order (sorted as raw strings, not alphanumerics).</li>
-</ul>
-<dl class="section return"><dt>Returns</dt><dd>A bencoded string representing the file info. e.g. <code>d4:name8:filename4:sizei1024e6:piecesl20:hash1...e4:hash20:hash2...e</code> </dd></dl>
-
-</div>
-</div>
-<a id="a3010a88d8c7921271dc30d8f9ba6c5c7" name="a3010a88d8c7921271dc30d8f9ba6c5c7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3010a88d8c7921271dc30d8f9ba6c5c7">&#9670;&#160;</a></span>from_bencoded()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static <a class="el" href="classFileInfo.html">FileInfo</a> FileInfo::from_bencoded </td>
-          <td>(</td>
-          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>bencode</em></span></td><td>)</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>str</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -262,16 +224,6 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Parse a bencoded string to create a <a class="el" href="classFileInfo.html">FileInfo</a> object. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">bencode</td><td>The bencoded string </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="classFileInfo.html">FileInfo</a> object </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#acba457cee0346a82729d7aa29e8383aa" title="Bencoding format available at: https://www.bittorrent.org/beps/bep_0003.html#bencoding.">FileInfo::bencoded</a> </dd></dl>
 
 </div>
 </div>

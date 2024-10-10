@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['trackerrequest_0',['TrackerRequest',['../transaction_8hpp.html#a692cac3b6ab660fc983549fae223fb45',1,'transaction.hpp']]]
+  ['requesttype_0',['RequestType',['../transaction_8hpp.html#ae10b07f2d0feb103db7fe4cfd192e5af',1,'transaction.hpp']]]
 ];

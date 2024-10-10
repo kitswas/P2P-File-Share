@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['data_0',['data',['../structTransaction.html#a20e8a13c557c5f08f63ae625d4810de0',1,'Transaction']]]
+  ['block_5fsize_0',['block_size',['../process__input_8cpp.html#a397ea42caab3b262340b2d7987ac1225',1,'process_input.cpp']]]
 ];

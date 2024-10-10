@@ -134,6 +134,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a3464f7defc7ee8d4e77803b04e2284cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6c394eb74b1ecae1156223202857b40" id="r_ad6c394eb74b1ecae1156223202857b40"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classUser.html">User</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad6c394eb74b1ecae1156223202857b40">get_owner</a> () const</td></tr>
 <tr class="separator:ad6c394eb74b1ecae1156223202857b40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27520499a74a2ab17a68d09c77e8cc22" id="r_a27520499a74a2ab17a68d09c77e8cc22"><td class="memItemLeft" align="right" valign="top">std::unordered_set&lt; std::shared_ptr&lt; <a class="el" href="classFile.html">File</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a27520499a74a2ab17a68d09c77e8cc22">get_files</a> () const</td></tr>
+<tr class="separator:a27520499a74a2ab17a68d09c77e8cc22"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a99cc94536acfd5313b4fb841534f2179" id="r_a99cc94536acfd5313b4fb841534f2179"><td class="memItemLeft" align="right" valign="top">std::unordered_set&lt; std::shared_ptr&lt; <a class="el" href="classUser.html">User</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a99cc94536acfd5313b4fb841534f2179">get_users</a> () const</td></tr>
 <tr class="separator:a99cc94536acfd5313b4fb841534f2179"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6dff2b3fc74aac696da47c86141845e" id="r_af6dff2b3fc74aac696da47c86141845e"><td class="memItemLeft" align="right" valign="top">std::unordered_set&lt; std::shared_ptr&lt; <a class="el" href="classUser.html">User</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af6dff2b3fc74aac696da47c86141845e">get_join_requests</a> () const</td></tr>
@@ -148,6 +150,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a316a06b32110790eb11a0004193687e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aea4e2809cfdf841680903c8f8efe818a" id="r_aea4e2809cfdf841680903c8f8efe818a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea4e2809cfdf841680903c8f8efe818a">remove_join_request</a> (std::shared_ptr&lt; <a class="el" href="classUser.html">User</a> &gt; user)</td></tr>
 <tr class="separator:aea4e2809cfdf841680903c8f8efe818a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a128ca75fa528b024078b8b3d479781c6" id="r_a128ca75fa528b024078b8b3d479781c6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a128ca75fa528b024078b8b3d479781c6">add_file</a> (std::shared_ptr&lt; <a class="el" href="classFile.html">File</a> &gt; file)</td></tr>
+<tr class="separator:a128ca75fa528b024078b8b3d479781c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a609ea189f5aa0be9d0c1451b71a3d66d" name="a609ea189f5aa0be9d0c1451b71a3d66d"></a>
@@ -180,6 +184,31 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a128ca75fa528b024078b8b3d479781c6" name="a128ca75fa528b024078b8b3d479781c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a128ca75fa528b024078b8b3d479781c6">&#9670;&#160;</a></span>add_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Group::add_file </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classFile.html">File</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>file</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a316a06b32110790eb11a0004193687e1" name="a316a06b32110790eb11a0004193687e1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a316a06b32110790eb11a0004193687e1">&#9670;&#160;</a></span>add_join_request()</h2>
 
@@ -219,6 +248,31 @@ Public Member Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classUser.html">User</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>user</em></span></td><td>)</td>
           <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a27520499a74a2ab17a68d09c77e8cc22" name="a27520499a74a2ab17a68d09c77e8cc22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27520499a74a2ab17a68d09c77e8cc22">&#9670;&#160;</a></span>get_files()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unordered_set&lt; std::shared_ptr&lt; <a class="el" href="classFile.html">File</a> &gt; &gt; Group::get_files </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
         </tr>
       </table>
   </td>

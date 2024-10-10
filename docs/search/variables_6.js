@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['pieces_0',['pieces',['../classFileInfo.html#adb92aba99bdaef1557964c571fc8303b',1,'FileInfo']]],
-  ['port_1',['port',['../structEndpoint.html#a149c5c60bc003012cbfe6daa60267eaa',1,'Endpoint']]]
+  ['message_0',['message',['../structResult.html#a47e40f6efbda07f255548806d92150f5',1,'Result']]]
 ];
