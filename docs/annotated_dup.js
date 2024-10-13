@@ -10,6 +10,7 @@ var annotated_dup =
     [ "File", "classFile.html", "classFile" ],
     [ "file_id", "structfile__id.html", "structfile__id" ],
     [ "FileInfo", "classFileInfo.html", "classFileInfo" ],
+    [ "FilesDB", "classFilesDB.html", "classFilesDB" ],
     [ "Group", "classGroup.html", "classGroup" ],
     [ "GroupDB", "classGroupDB.html", "classGroupDB" ],
     [ "NetworkError", "classNetworkError.html", null ],

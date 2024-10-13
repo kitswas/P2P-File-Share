@@ -139,6 +139,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a5fa1a104bad874b08bb43ece0452c0b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af1f6be19bfbd81dd24986be10dac9eaf" id="r_af1f6be19bfbd81dd24986be10dac9eaf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af1f6be19bfbd81dd24986be10dac9eaf">removeFile</a> (<a class="el" href="endpoint_8hpp.html#a3e154fa78f0e54fb3943193a72c1d3ca">EndpointID</a> peer_id, const std::string &amp;group_id, const std::string &amp;file_name)</td></tr>
 <tr class="separator:af1f6be19bfbd81dd24986be10dac9eaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fb7f8b134b134af14531984c134e2a1" id="r_a1fb7f8b134b134af14531984c134e2a1"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; <a class="el" href="classPeer.html">Peer</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1fb7f8b134b134af14531984c134e2a1">getPeers</a> (const std::string &amp;group_id, const std::string &amp;file_name)</td></tr>
+<tr class="memdesc:a1fb7f8b134b134af14531984c134e2a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a list of peers that have the file.  <br /></td></tr>
+<tr class="separator:a1fb7f8b134b134af14531984c134e2a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A thread-safe database of peers. </p>
@@ -187,6 +190,37 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1fb7f8b134b134af14531984c134e2a1" name="a1fb7f8b134b134af14531984c134e2a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fb7f8b134b134af14531984c134e2a1">&#9670;&#160;</a></span>getPeers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::shared_ptr&lt; <a class="el" href="classPeer.html">Peer</a> &gt; &gt; PeerDB::getPeers </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>group_id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>file_name</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get a list of peers that have the file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">group_id</td><td>The group id of the file. </td></tr>
+    <tr><td class="paramname">file_name</td><td>The name of the file. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>std::vector&lt;std::shared_ptr&lt;Peer&gt;&gt; A list of peers that have the file. </dd></dl>
 
 </div>
 </div>

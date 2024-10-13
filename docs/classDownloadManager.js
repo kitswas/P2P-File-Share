@@ -1,6 +1,6 @@
 var classDownloadManager =
 [
-    [ "DownloadManager", "classDownloadManager.html#adcb4841779544637e751ed9debf3830d", null ],
+    [ "DownloadManager", "classDownloadManager.html#af39f12b766984efbc6f50aa988bc9250", null ],
     [ "~DownloadManager", "classDownloadManager.html#abb67275a951d706a3108a0d307ea9113", null ],
     [ "DownloadManager", "classDownloadManager.html#a238ecd87c6a9e070b22394465ee518d0", null ],
     [ "DownloadManager", "classDownloadManager.html#a50cb5dca4176a31adbea63c9038a46da", null ],

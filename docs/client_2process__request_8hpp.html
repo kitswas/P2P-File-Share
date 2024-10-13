@@ -126,11 +126,12 @@ $(function(){initNavTree('client_2process__request_8hpp.html',''); initResizable
 <code>#include &lt;string&gt;</code><br />
 <code>#include &quot;<a class="el" href="endpoint_8hpp.html">../models/endpoint.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="tcp__socket_8hpp.html">../network/tcp_socket.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="filesdb_8hpp.html">filesdb.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="peerdb_8hpp.html">peerdb.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for process_request.hpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="client_2process__request_8hpp__incl.svg" width="1127" height="344"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="client_2process__request_8hpp__incl.svg" width="1599" height="344"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
@@ -140,12 +141,12 @@ This graph shows which files directly or indirectly include this file:</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a9f9a48e04ba4b1a0fee409f4eeb8a25d" id="r_a9f9a48e04ba4b1a0fee409f4eeb8a25d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f9a48e04ba4b1a0fee409f4eeb8a25d">process_request</a> (std::shared_ptr&lt; <a class="el" href="classTCPSocket.html">TCPSocket</a> &gt; client, <a class="el" href="classPeerDB.html">PeerDB</a> &amp;peer_db, const std::string &amp;request, const <a class="el" href="endpoint_8hpp.html#a3e154fa78f0e54fb3943193a72c1d3ca">EndpointID</a> &amp;my_id)</td></tr>
-<tr class="separator:a9f9a48e04ba4b1a0fee409f4eeb8a25d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11c7b20cc587494ed0533073fdf09f24" id="r_a11c7b20cc587494ed0533073fdf09f24"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a11c7b20cc587494ed0533073fdf09f24">process_request</a> (std::shared_ptr&lt; <a class="el" href="classTCPSocket.html">TCPSocket</a> &gt; client, <a class="el" href="classPeerDB.html">PeerDB</a> &amp;peer_db, <a class="el" href="classFilesDB.html">FilesDB</a> &amp;my_files, const std::string &amp;request, const <a class="el" href="endpoint_8hpp.html#a3e154fa78f0e54fb3943193a72c1d3ca">EndpointID</a> &amp;my_id)</td></tr>
+<tr class="separator:a11c7b20cc587494ed0533073fdf09f24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a9f9a48e04ba4b1a0fee409f4eeb8a25d" name="a9f9a48e04ba4b1a0fee409f4eeb8a25d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9f9a48e04ba4b1a0fee409f4eeb8a25d">&#9670;&#160;</a></span>process_request()</h2>
+<a id="a11c7b20cc587494ed0533073fdf09f24" name="a11c7b20cc587494ed0533073fdf09f24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11c7b20cc587494ed0533073fdf09f24">&#9670;&#160;</a></span>process_request()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -159,6 +160,11 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="classPeerDB.html">PeerDB</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>peer_db</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classFilesDB.html">FilesDB</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>my_files</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>

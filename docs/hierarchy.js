@@ -8,6 +8,7 @@ var hierarchy =
     [ "File", "classFile.html", null ],
     [ "file_id", "structfile__id.html", null ],
     [ "FileInfo", "classFileInfo.html", null ],
+    [ "FilesDB", "classFilesDB.html", null ],
     [ "Group", "classGroup.html", null ],
     [ "GroupDB", "classGroupDB.html", null ],
     [ "std::hash< file_id >", "structstd_1_1hash_3_01file__id_01_4.html", null ],

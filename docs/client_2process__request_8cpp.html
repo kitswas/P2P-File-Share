@@ -123,21 +123,26 @@ $(function(){initNavTree('client_2process__request_8cpp.html',''); initResizable
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="client_2process__request_8hpp.html">process_request.hpp</a>&quot;</code><br />
+<code>#include &lt;fcntl.h&gt;</code><br />
 <code>#include &lt;sstream&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;unistd.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for process_request.cpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="client_2process__request_8cpp__incl.svg" width="1203" height="418"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="client_2process__request_8cpp__incl.svg" width="1738" height="418"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a9f9a48e04ba4b1a0fee409f4eeb8a25d" id="r_a9f9a48e04ba4b1a0fee409f4eeb8a25d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f9a48e04ba4b1a0fee409f4eeb8a25d">process_request</a> (std::shared_ptr&lt; <a class="el" href="classTCPSocket.html">TCPSocket</a> &gt; client, <a class="el" href="classPeerDB.html">PeerDB</a> &amp;peer_db, const std::string &amp;request, const <a class="el" href="endpoint_8hpp.html#a3e154fa78f0e54fb3943193a72c1d3ca">EndpointID</a> &amp;my_id)</td></tr>
-<tr class="separator:a9f9a48e04ba4b1a0fee409f4eeb8a25d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21851c82a6ce058eee5ce77e898412a0" id="r_a21851c82a6ce058eee5ce77e898412a0"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a21851c82a6ce058eee5ce77e898412a0">read_piece_from_file</a> (const std::string &amp;file_path, size_t block_index, size_t <a class="el" href="fileinfo_8hpp.html#ad2372f74095e1316bbeb542235fbd821">block_size</a>)</td></tr>
+<tr class="separator:a21851c82a6ce058eee5ce77e898412a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11c7b20cc587494ed0533073fdf09f24" id="r_a11c7b20cc587494ed0533073fdf09f24"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a11c7b20cc587494ed0533073fdf09f24">process_request</a> (std::shared_ptr&lt; <a class="el" href="classTCPSocket.html">TCPSocket</a> &gt; client, <a class="el" href="classPeerDB.html">PeerDB</a> &amp;peer_db, <a class="el" href="classFilesDB.html">FilesDB</a> &amp;my_files, const std::string &amp;request, const <a class="el" href="endpoint_8hpp.html#a3e154fa78f0e54fb3943193a72c1d3ca">EndpointID</a> &amp;my_id)</td></tr>
+<tr class="separator:a11c7b20cc587494ed0533073fdf09f24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a9f9a48e04ba4b1a0fee409f4eeb8a25d" name="a9f9a48e04ba4b1a0fee409f4eeb8a25d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9f9a48e04ba4b1a0fee409f4eeb8a25d">&#9670;&#160;</a></span>process_request()</h2>
+<a id="a11c7b20cc587494ed0533073fdf09f24" name="a11c7b20cc587494ed0533073fdf09f24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11c7b20cc587494ed0533073fdf09f24">&#9670;&#160;</a></span>process_request()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -155,12 +160,43 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="classFilesDB.html">FilesDB</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>my_files</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>request</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const <a class="el" href="endpoint_8hpp.html#a3e154fa78f0e54fb3943193a72c1d3ca">EndpointID</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>my_id</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a21851c82a6ce058eee5ce77e898412a0" name="a21851c82a6ce058eee5ce77e898412a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21851c82a6ce058eee5ce77e898412a0">&#9670;&#160;</a></span>read_piece_from_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string read_piece_from_file </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>file_path</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>block_index</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>block_size</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">

@@ -9,7 +9,7 @@ var searchData=
   ['documentation_6',['Generating and Viewing Documentation',['../index.html#generating-and-viewing-documentation',1,'']]],
   ['download_7',['DOWNLOAD',['../transaction_8hpp.html#a07153c95f1b70003a5a07909850d2939a631152daefc8201c641fa7a37c397dce',1,'transaction.hpp']]],
   ['downloaded_5fpieces_8',['downloaded_pieces',['../classPartFile.html#a9416495277144e88e59d5cc158e360ef',1,'PartFile']]],
-  ['downloadmanager_9',['DownloadManager',['../classDownloadManager.html',1,'DownloadManager'],['../classDownloadManager.html#adcb4841779544637e751ed9debf3830d',1,'DownloadManager::DownloadManager(PeerDB &amp;peer_db, const Endpoint &amp;client_endpoint, const EndpointID &amp;my_id)'],['../classDownloadManager.html#a238ecd87c6a9e070b22394465ee518d0',1,'DownloadManager::DownloadManager(const DownloadManager &amp;)=delete'],['../classDownloadManager.html#a50cb5dca4176a31adbea63c9038a46da',1,'DownloadManager::DownloadManager(DownloadManager &amp;&amp;)=delete']]],
+  ['downloadmanager_9',['DownloadManager',['../classDownloadManager.html',1,'DownloadManager'],['../classDownloadManager.html#af39f12b766984efbc6f50aa988bc9250',1,'DownloadManager::DownloadManager(FilesDB &amp;files_db, PeerDB &amp;peer_db, const Endpoint &amp;client_endpoint, const EndpointID &amp;my_id)'],['../classDownloadManager.html#a238ecd87c6a9e070b22394465ee518d0',1,'DownloadManager::DownloadManager(const DownloadManager &amp;)=delete'],['../classDownloadManager.html#a50cb5dca4176a31adbea63c9038a46da',1,'DownloadManager::DownloadManager(DownloadManager &amp;&amp;)=delete']]],
   ['downloadmanager_2ecpp_10',['downloadmanager.cpp',['../downloadmanager_8cpp.html',1,'']]],
   ['downloadmanager_2ehpp_11',['downloadmanager.hpp',['../downloadmanager_8hpp.html',1,'']]]
 ];
