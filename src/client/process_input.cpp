@@ -74,6 +74,11 @@ bool process_input(const std::string &input, TCPSocket &tracker, EndpointID my_i
 		ss >> destination_path;
 		request += command + " " + group_id + " " + file_name;
 	}
+	else if (command == "show_downloads")
+	{
+		std::cout << download_manager.list_downloads() << std::endl;
+		return true;
+	}
 	else
 	{
 		request += input;

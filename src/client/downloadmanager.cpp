@@ -55,6 +55,10 @@ bool DownloadManager::dequeue_download(const std::string &group_id, const std::s
 
 std::string DownloadManager::list_downloads() const
 {
+	if (downloads.empty())
+	{
+		return "Nothing to show\n";
+	}
 	std::string list = "";
 	for (const auto &part_file : downloads)
 	{
