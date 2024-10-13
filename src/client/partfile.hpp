@@ -12,44 +12,22 @@ public:
 	const std::string group_id;
 	const std::shared_ptr<FileInfo> file_info;
 	const size_t PieceCount;
-	const std::string output_file_path;
+	const std::string file_path;
 	std::unordered_set<std::string> downloaded_pieces;
 	std::unordered_set<std::string> remaining_pieces;
 
-	explicit PartFile(const std::string &group_id, std::shared_ptr<FileInfo> file_info, const std::string &output_file_path)
-		: group_id(group_id), file_info(file_info), PieceCount(file_info->pieces.size()), output_file_path(output_file_path)
-	{
-		for (const auto &piece : file_info->pieces)
-		{
-			remaining_pieces.insert(piece);
-		}
-	}
+	explicit PartFile(const std::string &group_id, std::shared_ptr<FileInfo> file_info, const std::string &file_path);
 
 	PartFile() = delete;
 	PartFile(const PartFile &src) = default;
 	PartFile &operator=(const PartFile &src) = default;
 	PartFile(PartFile &&src) = default;
 
-	bool is_complete() const
-	{
-		return remaining_pieces.empty();
-	}
+	bool is_complete() const;
 
-	bool has_piece(const std::string &piece) const
-	{
-		return downloaded_pieces.find(piece) != downloaded_pieces.end();
-	}
+	bool has_piece(const std::string &piece) const;
 
-	bool mark_downloaded(const std::string &piece)
-	{
-		if (downloaded_pieces.find(piece) != downloaded_pieces.end())
-		{
-			return false;
-		}
-		downloaded_pieces.insert(piece);
-		remaining_pieces.erase(piece);
-		return true;
-	}
+	bool mark_downloaded(const std::string &piece);
 
 	friend bool operator==(const PartFile &lhs, const PartFile &rhs)
 	{
