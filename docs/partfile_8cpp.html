@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>P2P-File-Share: Class Members - Variables</title>
+<title>P2P-File-Share: src/client/partfile.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -91,7 +91,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('functions_vars.html',''); initResizable(true); });
+$(function(){initNavTree('partfile_8cpp.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -116,37 +116,25 @@ $(function(){initNavTree('functions_vars.html',''); initResizable(true); });
 </div>
 </div>
 
+<div class="header">
+  <div class="headertitle"><div class="title">partfile.cpp File Reference</div></div>
+</div><!--header-->
 <div class="contents">
-<div class="textblock">Here is a list of all variables with links to the classes they belong to:</div><ul>
-<li>data&#160;:&#160;<a class="el" href="structTransaction.html#a20e8a13c557c5f08f63ae625d4810de0">Transaction</a></li>
-<li>downloaded_pieces&#160;:&#160;<a class="el" href="classPartFile.html#a9416495277144e88e59d5cc158e360ef">PartFile</a></li>
-<li>endpoint&#160;:&#160;<a class="el" href="classPeer.html#a2dc07dd333f31c5eb7bff50c8c656667">Peer</a></li>
-<li>file_info&#160;:&#160;<a class="el" href="classFile.html#ac685c0c2cb1144bf3a9b5c3701e03035">File</a>, <a class="el" href="classPartFile.html#a2d431082f42ce37dab9daea840b7a2c1">PartFile</a></li>
-<li>file_name&#160;:&#160;<a class="el" href="structfile__id.html#a1d16f216d39695f8eda3818e15458914">file_id</a></li>
-<li>file_path&#160;:&#160;<a class="el" href="classPartFile.html#a64372cf5760766f9a27fab0d4452c16d">PartFile</a></li>
-<li>files&#160;:&#160;<a class="el" href="classPeer.html#a25f6c7bc2903716373283cc01e6f55c4">Peer</a></li>
-<li>group_id&#160;:&#160;<a class="el" href="classFile.html#a45455826abd575bc84e8eb41cba46d3a">File</a>, <a class="el" href="structfile__id.html#aa3df1baf990cd9889324f7c93bd6c8d9">file_id</a>, <a class="el" href="classPartFile.html#a4e1bc8ffffc3a8434c444ec413d19321">PartFile</a></li>
-<li>hash&#160;:&#160;<a class="el" href="classFileInfo.html#adca31447dc85da53ae5329fdd37e079d">FileInfo</a></li>
-<li>id&#160;:&#160;<a class="el" href="classPeer.html#a21d8c85216d5f8fece6a6d91d7f73593">Peer</a></li>
-<li>ip&#160;:&#160;<a class="el" href="structEndpoint.html#a2f1b635a2000dbd7573a6c681f6ff34b">Endpoint</a></li>
-<li>message&#160;:&#160;<a class="el" href="structResult.html#a47e40f6efbda07f255548806d92150f5">Result</a></li>
-<li>name&#160;:&#160;<a class="el" href="classFileInfo.html#a945c1651b55b80af8918d2875b82c9a5">FileInfo</a></li>
-<li>origin&#160;:&#160;<a class="el" href="structTransaction.html#a13bdb2613c2582ba149834cc5b8c403b">Transaction</a></li>
-<li>outcome&#160;:&#160;<a class="el" href="structTransaction.html#aee12fd022e23ad1dbd3b6e45178a464d">Transaction</a></li>
-<li>PieceCount&#160;:&#160;<a class="el" href="classPartFile.html#a828a93292b17c173263d2cc837f57506">PartFile</a></li>
-<li>pieces&#160;:&#160;<a class="el" href="classFileInfo.html#adb92aba99bdaef1557964c571fc8303b">FileInfo</a></li>
-<li>port&#160;:&#160;<a class="el" href="structEndpoint.html#a149c5c60bc003012cbfe6daa60267eaa">Endpoint</a></li>
-<li>remaining_pieces&#160;:&#160;<a class="el" href="classPartFile.html#a78320341871217ca8e5aa7fd17de5383">PartFile</a></li>
-<li>request&#160;:&#160;<a class="el" href="structTransaction.html#a16c7afc2fbd23fc6d44aa31064da5a96">Transaction</a></li>
-<li>seeders&#160;:&#160;<a class="el" href="classFile.html#a1bb8349de650b4eb043a7b0627508402">File</a></li>
-<li>size&#160;:&#160;<a class="el" href="classFileInfo.html#a92dda230ccf13e8ea7eb7fa663f6748f">FileInfo</a></li>
-<li>success&#160;:&#160;<a class="el" href="structResult.html#a849cf2825b5abc2411876ac92d41920d">Result</a></li>
-</ul>
-</div><!-- contents -->
+<div class="textblock"><code>#include &lt;cstring&gt;</code><br />
+<code>#include &lt;fcntl.h&gt;</code><br />
+<code>#include &lt;unistd.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="partfile_8hpp.html">partfile.hpp</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for partfile.cpp:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="partfile_8cpp__incl.svg" width="676" height="256"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_6908ff505388a07996d238c763adbdab.html">client</a></li><li class="navelem"><a class="el" href="partfile_8cpp.html">partfile.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>

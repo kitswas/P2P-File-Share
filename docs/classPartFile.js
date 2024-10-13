@@ -1,6 +1,6 @@
 var classPartFile =
 [
-    [ "PartFile", "classPartFile.html#a3a955f0c96df4a777165d787b979fe48", null ],
+    [ "PartFile", "classPartFile.html#a2d8f87a2ca746792a9de33cdf0e8f87f", null ],
     [ "PartFile", "classPartFile.html#a4f3a418ec56c2237be718d03a87e9b43", null ],
     [ "PartFile", "classPartFile.html#a673b8fd1163db278f51cac30eed3df86", null ],
     [ "PartFile", "classPartFile.html#a5f048a689bafed7c73c941c4f1d3430e", null ],
@@ -11,8 +11,8 @@ var classPartFile =
     [ "operator==", "classPartFile.html#a0d70606a36526cbe607f3bb70267a7ae", null ],
     [ "downloaded_pieces", "classPartFile.html#a9416495277144e88e59d5cc158e360ef", null ],
     [ "file_info", "classPartFile.html#a2d431082f42ce37dab9daea840b7a2c1", null ],
+    [ "file_path", "classPartFile.html#a64372cf5760766f9a27fab0d4452c16d", null ],
     [ "group_id", "classPartFile.html#a4e1bc8ffffc3a8434c444ec413d19321", null ],
-    [ "output_file_path", "classPartFile.html#a126b98616879c5580b499bd31bc20a53", null ],
     [ "PieceCount", "classPartFile.html#a828a93292b17c173263d2cc837f57506", null ],
     [ "remaining_pieces", "classPartFile.html#a78320341871217ca8e5aa7fd17de5383", null ]
 ];

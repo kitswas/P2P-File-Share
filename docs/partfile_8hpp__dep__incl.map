@@ -1,7 +1,9 @@
 <map id="src/client/partfile.hpp" name="src/client/partfile.hpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="60,5,219,31"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="169,5,328,31"/>
 <area shape="rect" id="Node000002" href="$downloadmanager_8hpp.html" title=" " alt="" coords="23,79,256,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="142,44,142,79,137,79,137,44"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="221,40,159,81,156,76,218,36"/>
+<area shape="rect" id="Node000007" href="$partfile_8cpp.html" title=" " alt="" coords="280,79,439,104"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="280,36,343,76,340,81,277,40"/>
 <area shape="rect" id="Node000003" href="$client_8cpp.html" title="The entrypoint to the client." alt="" coords="11,247,159,273"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="71,111,39,128,14,153,9,166,9,178,22,204,45,227,68,245,65,249,41,231,18,207,4,180,3,165,9,151,35,124,68,106"/>
 <area shape="rect" id="Node000004" href="$downloadmanager_8cpp.html" title=" " alt="" coords="23,159,255,185"/>

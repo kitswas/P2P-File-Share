@@ -5,6 +5,7 @@ var dir_6908ff505388a07996d238c763adbdab =
     [ "downloadmanager.hpp", "downloadmanager_8hpp.html", "downloadmanager_8hpp" ],
     [ "hash.cpp", "hash_8cpp.html", "hash_8cpp" ],
     [ "hash.hpp", "hash_8hpp.html", "hash_8hpp" ],
+    [ "partfile.cpp", "partfile_8cpp.html", null ],
     [ "partfile.hpp", "partfile_8hpp.html", "partfile_8hpp" ],
     [ "peerdb.cpp", "peerdb_8cpp.html", null ],
     [ "peerdb.hpp", "peerdb_8hpp.html", "peerdb_8hpp" ],
