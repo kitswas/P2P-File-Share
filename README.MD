@@ -27,8 +27,8 @@ If you are using the command line, you can run the following commands:
 ```bash
 cmake -B build
 cmake --build build --config Release
-./build/tracker/tracker ./build/tracker_info.txt 1     # to run the tracker
-./build/client/client ignored ./build/tracker_info.txt # to run the client, while the tracker is running
+./build/tracker/tracker ./build/tracker_info.txt 1            # run the tracker first
+./build/client/client 127.0.0.1:9999 ./build/tracker_info.txt # and then the client
 ```
 
 ## Generating and Viewing Documentation
