@@ -10,6 +10,7 @@
 #include "../models/file.hpp"
 #include "../models/fileinfo.hpp"
 #include "../network/tcp_socket.hpp"
+#include "filesdb.hpp"
 #include "partfile.hpp"
 #include "peerdb.hpp"
 
@@ -21,6 +22,7 @@
 class DownloadManager
 {
 private:
+	FilesDB &files_db;
 	PeerDB &peer_db;
 	const Endpoint client_endpoint;
 	const EndpointID my_id;
@@ -39,8 +41,13 @@ private:
 
 	std::deque<std::unique_ptr<PartFile>> downloads;
 
+	/**
+	 * @brief The function that the download_thread runs.
+	 */
+	void download_thread_function();
+
 public:
-	DownloadManager(PeerDB &peer_db, const Endpoint &client_endpoint, const EndpointID &my_id);
+	DownloadManager(FilesDB &files_db, PeerDB &peer_db, const Endpoint &client_endpoint, const EndpointID &my_id);
 	~DownloadManager();
 	DownloadManager(const DownloadManager &) = delete;
 	DownloadManager &operator=(const DownloadManager &) = delete;

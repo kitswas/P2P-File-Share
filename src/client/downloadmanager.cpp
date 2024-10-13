@@ -4,8 +4,34 @@
 #include "downloadmanager.hpp"
 #include "hash.hpp"
 
-DownloadManager::DownloadManager(PeerDB &peer_db, const Endpoint &client_endpoint, const EndpointID &my_id)
-	: peer_db(peer_db), client_endpoint(client_endpoint), my_id(my_id), running(false)
+void DownloadManager::download_thread_function()
+{
+	while (running)
+	{
+		if (downloads.empty())
+		{
+			std::this_thread::sleep_for(std::chrono::milliseconds(500));
+			continue;
+		}
+		for (auto &part_file : downloads)
+		{
+			if (part_file->is_complete())
+			{
+				continue;
+			}
+			// Get a list of peers that have the file
+			auto peers = peer_db.getPeers(part_file->group_id, part_file->file_info->hash);
+			if (peers.empty())
+			{
+				std::this_thread::sleep_for(std::chrono::seconds(1));
+				continue;
+			}
+		}
+	}
+}
+
+DownloadManager::DownloadManager(FilesDB &files_db, PeerDB &peer_db, const Endpoint &client_endpoint, const EndpointID &my_id)
+	: files_db(files_db), peer_db(peer_db), client_endpoint(client_endpoint), my_id(my_id), running(false)
 {
 }
 
@@ -40,6 +66,7 @@ bool DownloadManager::enqueue_download(const std::string &group_id, const std::s
 		}
 	}
 	downloads.emplace_back(std::make_unique<PartFile>(group_id, file_info, output_file_path));
+	files_db.add_partfile(group_id, file_info, output_file_path);
 	return true;
 }
 

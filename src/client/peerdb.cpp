@@ -47,3 +47,17 @@ bool PeerDB::removeFile(EndpointID peer_id, const std::string &group_id, const s
 	peers[peer_id]->files.erase({group_id, file_name});
 	return true;
 }
+
+std::vector<std::shared_ptr<Peer>> PeerDB::getPeers(const std::string &group_id, const std::string &file_name)
+{
+	std::scoped_lock lock(mutex);
+	std::vector<std::shared_ptr<Peer>> result;
+	for (const auto &[id, peer] : peers)
+	{
+		if (peer->files.find({group_id, file_name}) != peer->files.end())
+		{
+			result.push_back(peer);
+		}
+	}
+	return result;
+}

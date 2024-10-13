@@ -11,7 +11,7 @@
 #include "hash.hpp"
 #include "process_input.hpp"
 
-std::unique_ptr<FileInfo> get_file_info(const std::string &file_path)
+std::shared_ptr<FileInfo> get_file_info(const std::string &file_path)
 {
 	// get filename
 	std::string filename = basename(file_path.c_str());
@@ -41,10 +41,10 @@ std::unique_ptr<FileInfo> get_file_info(const std::string &file_path)
 	}
 	// close file
 	close(fd);
-	return std::make_unique<FileInfo>(filename, file_size, pieces, hash);
+	return std::make_shared<FileInfo>(filename, file_size, pieces, hash);
 }
 
-bool process_input(const std::string &input, TCPSocket &tracker, EndpointID my_id, const Endpoint &client_endpoint, DownloadManager &download_manager)
+bool process_input(const std::string &input, TCPSocket &tracker, EndpointID my_id, const Endpoint &client_endpoint, DownloadManager &download_manager, FilesDB &my_files)
 {
 	std::string request = "1" + std::to_string(my_id) + " ";
 	std::stringstream ss(input);
@@ -63,6 +63,7 @@ bool process_input(const std::string &input, TCPSocket &tracker, EndpointID my_i
 		}
 		std::cout << file_info->to_string() << std::endl;
 		request += command + " " + group_id + " " + client_endpoint.to_string() + " " + file_info->to_string();
+		my_files.add_partfile(group_id, file_info, file_path);
 	}
 	else if (command == "download_file")
 	{
