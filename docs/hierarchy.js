@@ -1,13 +1,19 @@
 var hierarchy =
 [
+    [ "DownloadManager", "classDownloadManager.html", null ],
     [ "Endpoint", "structEndpoint.html", null ],
     [ "std::false_type", null, [
       [ "always_false< T >", "structalways__false.html", null ]
     ] ],
     [ "File", "classFile.html", null ],
+    [ "file_id", "structfile__id.html", null ],
     [ "FileInfo", "classFileInfo.html", null ],
     [ "Group", "classGroup.html", null ],
     [ "GroupDB", "classGroupDB.html", null ],
+    [ "std::hash< file_id >", "structstd_1_1hash_3_01file__id_01_4.html", null ],
+    [ "PartFile", "classPartFile.html", null ],
+    [ "Peer", "classPeer.html", null ],
+    [ "PeerDB", "classPeerDB.html", null ],
     [ "Result", "structResult.html", null ],
     [ "std::runtime_error", null, [
       [ "NetworkError", "classNetworkError.html", [

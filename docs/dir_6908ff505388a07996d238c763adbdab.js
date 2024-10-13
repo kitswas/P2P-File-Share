@@ -1,8 +1,15 @@
 var dir_6908ff505388a07996d238c763adbdab =
 [
     [ "client.cpp", "client_8cpp.html", "client_8cpp" ],
+    [ "downloadmanager.cpp", "downloadmanager_8cpp.html", null ],
+    [ "downloadmanager.hpp", "downloadmanager_8hpp.html", "downloadmanager_8hpp" ],
     [ "hash.cpp", "hash_8cpp.html", "hash_8cpp" ],
     [ "hash.hpp", "hash_8hpp.html", "hash_8hpp" ],
+    [ "partfile.hpp", "partfile_8hpp.html", "partfile_8hpp" ],
+    [ "peerdb.cpp", "peerdb_8cpp.html", null ],
+    [ "peerdb.hpp", "peerdb_8hpp.html", "peerdb_8hpp" ],
     [ "process_input.cpp", "process__input_8cpp.html", "process__input_8cpp" ],
-    [ "process_input.hpp", "process__input_8hpp.html", "process__input_8hpp" ]
+    [ "process_input.hpp", "process__input_8hpp.html", "process__input_8hpp" ],
+    [ "process_request.cpp", "client_2process__request_8cpp.html", "client_2process__request_8cpp" ],
+    [ "process_request.hpp", "client_2process__request_8hpp.html", "client_2process__request_8hpp" ]
 ];

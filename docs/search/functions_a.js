@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['operator_3d_0',['operator=',['../classTCPServer.html#a67c8efa54b6a75d276538b0a78d9f6ad',1,'TCPServer::operator=()'],['../classTCPSocket.html#ada2746f66c27567541588bd9401aea1a',1,'TCPSocket::operator=(const TCPSocket &amp;)=delete'],['../classTCPSocket.html#a855ae3a69b6eb18be2583010d3e6efe8',1,'TCPSocket::operator=(TCPSocket &amp;&amp;src) noexcept']]]
+  ['main_0',['main',['../client_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;client.cpp'],['../tracker_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;tracker.cpp']]],
+  ['mark_5fdownloaded_1',['mark_downloaded',['../classPartFile.html#a2c94bb77bdae332fa781ebf8299b3721',1,'PartFile']]],
+  ['mirror_2',['mirror',['../tracker_8cpp.html#a5cfbfb3cd6dc613728c387689d57b54b',1,'tracker.cpp']]]
 ];

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['origin_0',['origin',['../structTransaction.html#a13bdb2613c2582ba149834cc5b8c403b',1,'Transaction']]],
-  ['outcome_1',['outcome',['../structTransaction.html#aee12fd022e23ad1dbd3b6e45178a464d',1,'Transaction']]]
+  ['name_0',['name',['../classFileInfo.html#a945c1651b55b80af8918d2875b82c9a5',1,'FileInfo']]]
 ];

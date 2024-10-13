@@ -1,11 +1,8 @@
 var searchData=
 [
-  ['send_5fdata_0',['send_data',['../classTCPSocket.html#a004c59211398062acd9ea674df8d81fe',1,'TCPSocket']]],
-  ['set_5fnon_5fblocking_1',['set_non_blocking',['../classTCPSocket.html#a8163332bb04894dc1813f599a73bacb6',1,'TCPSocket']]],
-  ['setonconnect_2',['setOnConnect',['../classTCPServer.html#a9409c53fbf7a949c80973b183faad352',1,'TCPServer']]],
-  ['setondata_3',['setOnData',['../classTCPServer.html#a2fc46d09a97fb633fdb0f5e96f34de49',1,'TCPServer']]],
-  ['setondisconnect_4',['setOnDisconnect',['../classTCPServer.html#a015f86f12593df209e5a2b3e1a2d0430',1,'TCPServer']]],
-  ['start_5',['start',['../classTCPServer.html#aea988e3a25edbb7076c2082714def427',1,'TCPServer']]],
-  ['stop_6',['stop',['../classTCPServer.html#a9c0f55968624ea4dd49467b656e23807',1,'TCPServer']]],
-  ['sync_5fwith_5fonline_5ftrackers_7',['sync_with_online_trackers',['../tracker_8cpp.html#aa857cd05c00cc616013ed05cdf639350',1,'tracker.cpp']]]
+  ['receive_5fdata_0',['receive_data',['../classTCPSocket.html#a0d398727b4c387fc58d63986bde5be44',1,'TCPSocket']]],
+  ['remove_5fjoin_5frequest_1',['remove_join_request',['../classGroup.html#aea4e2809cfdf841680903c8f8efe818a',1,'Group']]],
+  ['remove_5fuser_2',['remove_user',['../classGroup.html#aa4ac01d33e48e66414f94e128ff31ca8',1,'Group']]],
+  ['removefile_3',['removeFile',['../classPeerDB.html#af1f6be19bfbd81dd24986be10dac9eaf',1,'PeerDB']]],
+  ['removepeer_4',['removePeer',['../classPeerDB.html#aa51b4674a63e276783bfde868461ecd3',1,'PeerDB']]]
 ];

@@ -23,7 +23,7 @@ var searchData=
   ['group_20',['GROUP',['../transaction_8hpp.html#ae10b07f2d0feb103db7fe4cfd192e5afa720909a4b948fc9e33633b61960d6b3c',1,'transaction.hpp']]],
   ['group_21',['Group',['../classGroup.html',1,'Group'],['../classGroup.html#a609ea189f5aa0be9d0c1451b71a3d66d',1,'Group::Group()']]],
   ['group_2ehpp_22',['group.hpp',['../group_8hpp.html',1,'']]],
-  ['group_5fid_23',['group_id',['../classFile.html#a45455826abd575bc84e8eb41cba46d3a',1,'File']]],
+  ['group_5fid_23',['group_id',['../classPartFile.html#a4e1bc8ffffc3a8434c444ec413d19321',1,'PartFile::group_id'],['../structfile__id.html#aa3df1baf990cd9889324f7c93bd6c8d9',1,'file_id::group_id'],['../classFile.html#a45455826abd575bc84e8eb41cba46d3a',1,'File::group_id']]],
   ['groupdb_24',['GroupDB',['../classGroupDB.html',1,'GroupDB'],['../classGroupDB.html#afe01d8993af557ce65e33e87e6e88ba7',1,'GroupDB::GroupDB()']]],
   ['groupdb_2ecpp_25',['groupdb.cpp',['../groupdb_8cpp.html',1,'']]],
   ['groupdb_2ehpp_26',['groupdb.hpp',['../groupdb_8hpp.html',1,'']]],

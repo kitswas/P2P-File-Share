@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['endpoint_0',['Endpoint',['../structEndpoint.html',1,'']]]
+  ['downloadmanager_0',['DownloadManager',['../classDownloadManager.html',1,'']]]
 ];

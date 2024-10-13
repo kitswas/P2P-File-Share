@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['unknownrequest_0',['UnknownRequest',['../classUnknownRequest.html',1,'']]],
-  ['user_1',['User',['../classUser.html',1,'']]],
-  ['userdb_2',['UserDB',['../classUserDB.html',1,'']]]
+  ['partfile_0',['PartFile',['../classPartFile.html',1,'']]],
+  ['peer_1',['Peer',['../classPeer.html',1,'']]],
+  ['peerdb_2',['PeerDB',['../classPeerDB.html',1,'']]]
 ];

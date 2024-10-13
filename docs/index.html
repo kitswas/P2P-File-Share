@@ -137,8 +137,8 @@ How to run</h1>
  If you are using the command line, you can run the following commands:</p>
 <div class="fragment"><div class="line">cmake -B build</div>
 <div class="line">cmake --build build --config Release</div>
-<div class="line">./build/tracker/tracker ./build/tracker_info.txt 1     # to run the tracker</div>
-<div class="line">./build/client/client ignored ./build/tracker_info.txt # to run the client, while the tracker is running</div>
+<div class="line">./build/tracker/tracker ./build/tracker_info.txt 1            # run the tracker first</div>
+<div class="line">./build/client/client 127.0.0.1:9999 ./build/tracker_info.txt # and then the client</div>
 </div><!-- fragment --><h1><a class="anchor" id="generating-and-viewing-documentation"></a>
 Generating and Viewing Documentation</h1>
 <p>This project uses <a href="https://www.doxygen.nl/index.html">Doxygen</a> to generate documentation. <br  />

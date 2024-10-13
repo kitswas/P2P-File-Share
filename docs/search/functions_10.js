@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['_7etcpserver_0',['~TCPServer',['../classTCPServer.html#abc497ac52355e53986a6a1bd1acb9581',1,'TCPServer']]],
-  ['_7etcpsocket_1',['~TCPSocket',['../classTCPSocket.html#af357e6923a0f8adbbb8e46fab4523991',1,'TCPSocket']]]
+  ['user_0',['User',['../classUser.html#a893ae29cc2c67781c014c41dd20cd8b1',1,'User']]],
+  ['userdb_1',['UserDB',['../classUserDB.html#ae3529b8e3ec35af9ed2c4e86e5173920',1,'UserDB']]]
 ];

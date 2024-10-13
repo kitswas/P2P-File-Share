@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['wouldblockerror_0',['WouldBlockError',['../classWouldBlockError.html',1,'']]]
+  ['result_0',['Result',['../structResult.html',1,'']]]
 ];

@@ -30,6 +30,9 @@ var NAVTREE =
     [ "How to run", "index.html#how-to-run", null ],
     [ "Generating and Viewing Documentation", "index.html#generating-and-viewing-documentation", null ],
     [ "Common Source Files", "md_src_2common_2readme.html", null ],
+    [ "Namespaces", "namespaces.html", [
+      [ "Namespace List", "namespaces.html", "namespaces_dup" ]
+    ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
@@ -57,7 +60,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"annotated.html"
+"annotated.html",
+"transaction_8hpp.html#a907ba723346762d9b92c2bf51f6d610fa294ce20cdefa29be3be0735cb62e715d"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

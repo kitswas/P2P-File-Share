@@ -1,0 +1,12 @@
+<map id="src/client/downloadmanager.hpp" name="src/client/downloadmanager.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="23,5,256,31"/>
+<area shape="rect" id="Node000002" href="$client_8cpp.html" title="The entrypoint to the client." alt="" coords="11,174,159,199"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="71,38,39,55,14,80,9,93,9,105,22,131,45,154,68,172,65,176,41,158,18,134,4,106,3,92,9,77,35,51,68,33"/>
+<area shape="rect" id="Node000003" href="$downloadmanager_8cpp.html" title=" " alt="" coords="23,86,255,111"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="142,44,142,86,137,86,137,44"/>
+<area shape="rect" id="Node000004" href="$process__input_8hpp.html" title=" " alt="" coords="280,79,415,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="183,33,298,76,296,81,181,38"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="277,126,120,177,119,171,276,120"/>
+<area shape="rect" id="Node000005" href="$process__input_8cpp.html" title=" " alt="" coords="280,167,415,207"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="350,133,350,166,345,166,345,133"/>
+</map>

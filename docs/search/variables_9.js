@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['pieces_0',['pieces',['../classFileInfo.html#adb92aba99bdaef1557964c571fc8303b',1,'FileInfo']]],
-  ['port_1',['port',['../structEndpoint.html#a149c5c60bc003012cbfe6daa60267eaa',1,'Endpoint']]]
+  ['origin_0',['origin',['../structTransaction.html#a13bdb2613c2582ba149834cc5b8c403b',1,'Transaction']]],
+  ['outcome_1',['outcome',['../structTransaction.html#aee12fd022e23ad1dbd3b6e45178a464d',1,'Transaction']]],
+  ['output_5ffile_5fpath_2',['output_file_path',['../classPartFile.html#a126b98616879c5580b499bd31bc20a53',1,'PartFile']]]
 ];
