@@ -70,6 +70,10 @@ void DownloadManager::download_thread_function()
 				continue;
 			}
 			download_piece(part_file, *(part_file->remaining_pieces.begin()));
+			if (part_file->is_complete())
+			{
+				on_download_complete(part_file->group_id, part_file->file_info->name);
+			}
 		}
 	}
 }
@@ -162,4 +166,9 @@ std::string DownloadManager::list_downloads() const
 		list += status + "\n";
 	}
 	return list;
+}
+
+void DownloadManager::set_on_download_complete(std::function<void(const std::string &group_id, const std::string &file_name)> on_download_complete)
+{
+	this->on_download_complete = on_download_complete;
 }

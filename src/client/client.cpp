@@ -52,6 +52,12 @@ void loop(const Endpoint &client_endpoint, TCPSocket &tracker, const EndpointID 
 	FilesDB my_files;
 	PeerDB peer_db;
 	DownloadManager download_manager(my_files, peer_db, client_endpoint, my_id);
+	download_manager.set_on_download_complete(
+		[](const std::string &group_id, const std::string &file_name)
+		{
+			std::cout << "Download complete: " << group_id << " " << file_name << std::endl;
+			std::cout << "You should start seeding with the command upload_file" << std::endl;
+		});
 
 	std::function<void(std::shared_ptr<TCPSocket>)> onConnect = [](std::shared_ptr<TCPSocket> client)
 	{

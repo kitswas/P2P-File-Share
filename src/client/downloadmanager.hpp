@@ -59,5 +59,6 @@ public:
 	bool dequeue_download(const std::string &group_id, const std::string &file_name);
 	bool start_downloads();
 	bool pause_downloads();
+	void set_on_download_complete(std::function<void(const std::string &group_id, const std::string &file_name)> on_download_complete);
 	std::string list_downloads() const;
 };
