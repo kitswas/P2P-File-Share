@@ -61,8 +61,7 @@ void DownloadManager::download_thread_function()
 	{
 		if (downloads.empty())
 		{
-			std::this_thread::sleep_for(std::chrono::milliseconds(500));
-			continue;
+			break; // No more downloads, don't waste CPU cycles
 		}
 		for (auto &part_file : downloads)
 		{
@@ -70,10 +69,7 @@ void DownloadManager::download_thread_function()
 			{
 				continue;
 			}
-			for (auto const &missing_piece : part_file->remaining_pieces)
-			{
-				download_piece(part_file, missing_piece);
-			}
+			download_piece(part_file, *(part_file->remaining_pieces.begin()));
 		}
 	}
 }
