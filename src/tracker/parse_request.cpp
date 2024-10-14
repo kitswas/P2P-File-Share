@@ -47,11 +47,11 @@ std::shared_ptr<Transaction> parse_request(const std::string &data)
 	{
 		req = GroupRequest::LIST;
 	}
-	else if (request == "list_join_requests")
+	else if (request == "list_requests")
 	{
 		req = GroupRequest::LIST_JOIN_REQUESTS;
 	}
-	else if (request == "accept_join_request")
+	else if (request == "accept_request")
 	{
 		req = GroupRequest::ACCEPT_JOIN_REQUEST;
 	}

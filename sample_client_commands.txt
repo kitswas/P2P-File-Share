@@ -3,4 +3,4 @@ login swas 123
 create_group pdfs
 upload_file libc.pdf pdfs
 list_files pdfs
-accept_join_request pdfs user
+accept_request pdfs user
