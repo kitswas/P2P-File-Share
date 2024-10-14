@@ -55,6 +55,11 @@ size_t get_piece_index(const std::shared_ptr<FileInfo> &file_info, std::string_v
 	return piece_index;
 }
 
+bool is_piece_valid(std::string_view hash, std::string_view data)
+{
+	return hash == get_sha1(reinterpret_cast<const int8_t *>(data.data()), data.size());
+}
+
 std::string read_piece_from_file(const std::string &file_path, size_t block_index, size_t block_size)
 {
 	int fd = open(file_path.c_str(), O_RDONLY);
@@ -77,4 +82,27 @@ std::string read_piece_from_file(const std::string &file_path, size_t block_inde
 	}
 
 	return std::string(buffer, bytes_read);
+}
+
+ssize_t write_piece_to_file(const std::string &file_path, size_t block_index, size_t block_size, const std::string &data)
+{
+	int fd = open(file_path.c_str(), O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+	if (fd == -1)
+	{
+		throw std::runtime_error("Error opening file");
+	}
+
+	// Seek to the start of the piece
+	lseek(fd, block_index * block_size, SEEK_SET);
+
+	// Write the piece
+	ssize_t bytes_written = write(fd, data.c_str(), data.size());
+	close(fd);
+
+	if (bytes_written == -1)
+	{
+		throw std::runtime_error("Error writing to file");
+	}
+
+	return bytes_written;
 }

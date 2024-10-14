@@ -50,6 +50,8 @@ public:
 		std::string group_id;
 		ss >> group_id;
 		FileInfo file_info = FileInfo::from_string(ss.str().substr(ss.tellg()));
-		return File(std::make_shared<FileInfo>(file_info), group_id);
+		File file(std::make_shared<FileInfo>(file_info), group_id);
+		file.seeders = seeders;
+		return file;
 	}
 };

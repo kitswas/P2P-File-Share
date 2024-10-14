@@ -46,6 +46,8 @@ private:
 	 */
 	void download_thread_function();
 
+	void download_piece(std::unique_ptr<PartFile> &part_file, const std::string &missing_piece);
+
 public:
 	DownloadManager(FilesDB &files_db, PeerDB &peer_db, const Endpoint &client_endpoint, const EndpointID &my_id);
 	~DownloadManager();

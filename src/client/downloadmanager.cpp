@@ -1,8 +1,59 @@
 #include <cstring>
 #include <fcntl.h>
 
+#include "../network/network_errors.hpp"
 #include "downloadmanager.hpp"
+#include "file_io.hpp"
 #include "hash.hpp"
+
+void DownloadManager::download_piece(std::unique_ptr<PartFile> &part_file, const std::string &missing_piece)
+{
+	// Get a list of peers that have the file
+	auto peers = peer_db.getPeers(part_file->group_id, part_file->file_info->hash);
+
+	for (auto const &peer : peers)
+	{
+		// Ask the peer for the piece
+		std::string request = "get " + part_file->group_id + " " + part_file->file_info->name + " " + missing_piece;
+		try
+		{
+			TCPSocket peer_socket;
+			peer_socket.connect(peer->endpoint.ip, peer->endpoint.port);
+			peer_socket.send_data(request);
+			std::string response = peer_socket.receive_data();
+			std::stringstream ss(response);
+			int status;
+			ss >> status;
+			if (status == 1)
+			{
+				// Write the piece to the file
+				std::string piece_data = response.substr(2);
+				// Check if the piece is correct
+				if (!is_piece_valid(missing_piece, piece_data))
+				{
+					continue;
+				}
+				write_piece_to_file(
+					part_file->file_path,
+					get_piece_index(part_file->file_info, missing_piece),
+					block_size,
+					piece_data);
+				part_file->mark_downloaded(missing_piece);
+				break;
+			}
+			else
+			{
+				// Peer does not have the piece
+				continue;
+			}
+		}
+		catch (const ConnectionClosedError &_)
+		{
+			// Peer is not available
+			continue;
+		}
+	}
+}
 
 void DownloadManager::download_thread_function()
 {
@@ -19,12 +70,9 @@ void DownloadManager::download_thread_function()
 			{
 				continue;
 			}
-			// Get a list of peers that have the file
-			auto peers = peer_db.getPeers(part_file->group_id, part_file->file_info->hash);
-			if (peers.empty())
+			for (auto const &missing_piece : part_file->remaining_pieces)
 			{
-				std::this_thread::sleep_for(std::chrono::seconds(1));
-				continue;
+				download_piece(part_file, missing_piece);
 			}
 		}
 	}
@@ -78,6 +126,28 @@ bool DownloadManager::dequeue_download(const std::string &group_id, const std::s
 					 return part_file->group_id == group_id && part_file->file_info->name == file_name;
 				 });
 	return false;
+}
+
+bool DownloadManager::start_downloads()
+{
+	if (running)
+	{
+		return false;
+	}
+	running = true;
+	download_thread = std::thread(&DownloadManager::download_thread_function, this);
+	return true;
+}
+
+bool DownloadManager::pause_downloads()
+{
+	if (!running)
+	{
+		return false;
+	}
+	running = false;
+	download_thread.join();
+	return true;
 }
 
 std::string DownloadManager::list_downloads() const

@@ -10,7 +10,6 @@
 #include <cstring>
 #include <iostream>
 
-#include "../common/generate_id.cpp"
 #include "../common/load_tracker_info.cpp"
 #include "../models/endpoint.hpp"
 #include "../network/network_errors.hpp"
@@ -88,7 +87,7 @@ void loop(const Endpoint &client_endpoint, TCPSocket &tracker, const EndpointID 
 		}
 		try
 		{
-			process_input(input, tracker, my_id, client_endpoint, download_manager, my_files);
+			process_input(input, tracker, my_id, client_endpoint, download_manager, my_files, peer_db);
 		}
 		catch (const ConnectionClosedError &e)
 		{
@@ -105,6 +104,8 @@ void loop(const Endpoint &client_endpoint, TCPSocket &tracker, const EndpointID 
 
 	std::cout << "Shutting down server..." << std::endl;
 	server.stop();
+	std::cout << "Stopping downloads..." << std::endl;
+	download_manager.pause_downloads();
 }
 
 /**
@@ -128,7 +129,7 @@ int main(int argc, char *argv[])
 	try
 	{
 		client_endpoint = Endpoint::from_string(client_endpoint_str);
-		my_id = generate_id(client_endpoint);
+		my_id = Endpoint::generate_id(client_endpoint);
 	}
 	catch (const std::invalid_argument &e)
 	{

@@ -27,7 +27,6 @@
 #include <unistd.h>
 #include <thread>
 
-#include "../common/generate_id.cpp"
 #include "../common/load_tracker_info.cpp"
 #include "../network/network_errors.hpp"
 #include "../network/tcp_server.hpp"
@@ -42,7 +41,7 @@ void mirror(const Transaction &transaction, const std::vector<Endpoint> &tracker
 {
 	for (const auto &tracker : trackers)
 	{
-		if (generate_id(tracker) == my_id)
+		if (Endpoint::generate_id(tracker) == my_id)
 		{
 			continue;
 		}
@@ -99,7 +98,7 @@ bool sync_with_online_trackers(const std::vector<Endpoint> &trackers)
 	TCPSocket tracker;
 	for (auto const &t : trackers)
 	{
-		if (generate_id(t) == my_id)
+		if (Endpoint::generate_id(t) == my_id)
 		{
 			continue;
 		}
@@ -200,7 +199,7 @@ int main(int argc, char *argv[])
 	}
 
 	std::vector<Endpoint> trackers = load_tracker_info(file_path);
-	my_id = generate_id(trackers.at(n - 1));
+	my_id = Endpoint::generate_id(trackers.at(n - 1));
 	std::cout << "My ID: " << my_id << std::endl;
 	sync_with_online_trackers(trackers);
 	try
