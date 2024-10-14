@@ -7,7 +7,10 @@ var searchData=
   ['hash_4',['hash',['../classFileInfo.html#adca31447dc85da53ae5329fdd37e079d',1,'FileInfo']]],
   ['hash_2ecpp_5',['hash.cpp',['../hash_8cpp.html',1,'']]],
   ['hash_2ehpp_6',['hash.hpp',['../hash_8hpp.html',1,'']]],
-  ['hash_3c_20file_5fid_20_3e_7',['hash&lt; file_id &gt;',['../structstd_1_1hash_3_01file__id_01_4.html',1,'std']]],
-  ['how_20it_20works_8',['How it works',['../index.html#how-it-works',1,'']]],
-  ['how_20to_20run_9',['How to run',['../index.html#how-to-run',1,'']]]
+  ['hash_3c_20endpoint_20_3e_7',['hash&lt; Endpoint &gt;',['../structstd_1_1hash_3_01Endpoint_01_4.html',1,'std']]],
+  ['hash_3c_20file_5fid_20_3e_8',['hash&lt; file_id &gt;',['../structstd_1_1hash_3_01file__id_01_4.html',1,'std']]],
+  ['hash_3c_20partfile_20_2a_20_3e_9',['hash&lt; PartFile * &gt;',['../structstd_1_1hash_3_01PartFile_01_5_01_4.html',1,'std']]],
+  ['hash_3c_20partfile_20_3e_10',['hash&lt; PartFile &gt;',['../structstd_1_1hash_3_01PartFile_01_4.html',1,'std']]],
+  ['how_20it_20works_11',['How it works',['../index.html#how-it-works',1,'']]],
+  ['how_20to_20run_12',['How to run',['../index.html#how-to-run',1,'']]]
 ];

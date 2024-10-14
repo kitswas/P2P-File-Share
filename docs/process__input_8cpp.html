@@ -131,41 +131,22 @@ $(function(){initNavTree('process__input_8cpp.html',''); initResizable(true); })
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &quot;<a class="el" href="file_8hpp.html">../models/file.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="fileinfo_8hpp.html">../models/fileinfo.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="hash_8hpp.html">hash.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="file__io_8hpp.html">file_io.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="process__input_8hpp.html">process_input.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for process_input.cpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="process__input_8cpp__incl.svg" width="2210" height="491"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="process__input_8cpp__incl.svg" width="2262" height="491"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a31e4b675767a43e3c86d16b7311f14bd" id="r_a31e4b675767a43e3c86d16b7311f14bd"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classFileInfo.html">FileInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a31e4b675767a43e3c86d16b7311f14bd">get_file_info</a> (const std::string &amp;file_path)</td></tr>
-<tr class="separator:a31e4b675767a43e3c86d16b7311f14bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b603b7d1989f69eae05a9f236087db7" id="r_a8b603b7d1989f69eae05a9f236087db7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b603b7d1989f69eae05a9f236087db7">process_input</a> (const std::string &amp;input, <a class="el" href="classTCPSocket.html">TCPSocket</a> &amp;tracker, <a class="el" href="endpoint_8hpp.html#a3e154fa78f0e54fb3943193a72c1d3ca">EndpointID</a> my_id, const <a class="el" href="structEndpoint.html">Endpoint</a> &amp;client_endpoint, <a class="el" href="classDownloadManager.html">DownloadManager</a> &amp;download_manager, <a class="el" href="classFilesDB.html">FilesDB</a> &amp;my_files)</td></tr>
-<tr class="separator:a8b603b7d1989f69eae05a9f236087db7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d3a3f139ee788e839b9409ef9ca60e8" id="r_a4d3a3f139ee788e839b9409ef9ca60e8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d3a3f139ee788e839b9409ef9ca60e8">process_input</a> (const std::string &amp;input, <a class="el" href="classTCPSocket.html">TCPSocket</a> &amp;tracker, <a class="el" href="endpoint_8hpp.html#a3e154fa78f0e54fb3943193a72c1d3ca">EndpointID</a> my_id, const <a class="el" href="structEndpoint.html">Endpoint</a> &amp;client_endpoint, <a class="el" href="classDownloadManager.html">DownloadManager</a> &amp;download_manager, <a class="el" href="classFilesDB.html">FilesDB</a> &amp;my_files, <a class="el" href="classPeerDB.html">PeerDB</a> &amp;peer_db)</td></tr>
+<tr class="separator:a4d3a3f139ee788e839b9409ef9ca60e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a31e4b675767a43e3c86d16b7311f14bd" name="a31e4b675767a43e3c86d16b7311f14bd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a31e4b675767a43e3c86d16b7311f14bd">&#9670;&#160;</a></span>get_file_info()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::shared_ptr&lt; <a class="el" href="classFileInfo.html">FileInfo</a> &gt; get_file_info </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>file_path</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a8b603b7d1989f69eae05a9f236087db7" name="a8b603b7d1989f69eae05a9f236087db7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8b603b7d1989f69eae05a9f236087db7">&#9670;&#160;</a></span>process_input()</h2>
+<a id="a4d3a3f139ee788e839b9409ef9ca60e8" name="a4d3a3f139ee788e839b9409ef9ca60e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d3a3f139ee788e839b9409ef9ca60e8">&#9670;&#160;</a></span>process_input()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -198,7 +179,12 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classFilesDB.html">FilesDB</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>my_files</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="classFilesDB.html">FilesDB</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>my_files</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classPeerDB.html">PeerDB</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>peer_db</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">

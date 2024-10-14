@@ -141,9 +141,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a63e27703843be76a9c8f2b2d06fccd97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a22b0c7598fde4b90d0fb60d0c3e83b0d" id="r_a22b0c7598fde4b90d0fb60d0c3e83b0d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a22b0c7598fde4b90d0fb60d0c3e83b0d">FilesDB</a> (<a class="el" href="classFilesDB.html">FilesDB</a> &amp;&amp;)=delete</td></tr>
 <tr class="separator:a22b0c7598fde4b90d0fb60d0c3e83b0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a83bbbeb67c13ff8f8550ba257862ea13" id="r_a83bbbeb67c13ff8f8550ba257862ea13"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a83bbbeb67c13ff8f8550ba257862ea13">add_partfile</a> (const std::string &amp;group_id, std::shared_ptr&lt; <a class="el" href="classFileInfo.html">FileInfo</a> &gt; file_info, const std::string &amp;file_path)</td></tr>
-<tr class="memdesc:a83bbbeb67c13ff8f8550ba257862ea13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a partfile to the database.  <br /></td></tr>
-<tr class="separator:a83bbbeb67c13ff8f8550ba257862ea13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5be4d8540d8866deaede22599abad55" id="r_aa5be4d8540d8866deaede22599abad55"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa5be4d8540d8866deaede22599abad55">add_partfile</a> (const std::string &amp;group_id, std::shared_ptr&lt; <a class="el" href="classFileInfo.html">FileInfo</a> &gt; file_info, const std::string &amp;file_path, bool all_downloaded)</td></tr>
+<tr class="memdesc:aa5be4d8540d8866deaede22599abad55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a partfile to the database.  <br /></td></tr>
+<tr class="separator:aa5be4d8540d8866deaede22599abad55"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad0722c6eff3580a95b84788bcb8a6baa" id="r_ad0722c6eff3580a95b84788bcb8a6baa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad0722c6eff3580a95b84788bcb8a6baa">remove_partfile</a> (const std::string &amp;group_id, const std::string &amp;file_name)</td></tr>
 <tr class="memdesc:ad0722c6eff3580a95b84788bcb8a6baa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a partfile from the database.  <br /></td></tr>
 <tr class="separator:ad0722c6eff3580a95b84788bcb8a6baa"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -263,8 +263,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a83bbbeb67c13ff8f8550ba257862ea13" name="a83bbbeb67c13ff8f8550ba257862ea13"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a83bbbeb67c13ff8f8550ba257862ea13">&#9670;&#160;</a></span>add_partfile()</h2>
+<a id="aa5be4d8540d8866deaede22599abad55" name="aa5be4d8540d8866deaede22599abad55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5be4d8540d8866deaede22599abad55">&#9670;&#160;</a></span>add_partfile()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -282,7 +282,12 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>file_path</em></span>&#160;)</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>file_path</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>all_downloaded</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">

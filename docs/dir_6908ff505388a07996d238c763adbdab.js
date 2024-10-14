@@ -4,6 +4,8 @@ var dir_6908ff505388a07996d238c763adbdab =
     [ "downloadmanager.cpp", "downloadmanager_8cpp.html", null ],
     [ "downloadmanager.hpp", "downloadmanager_8hpp.html", "downloadmanager_8hpp" ],
     [ "file_id.hpp", "file__id_8hpp.html", "file__id_8hpp" ],
+    [ "file_io.cpp", "file__io_8cpp.html", "file__io_8cpp" ],
+    [ "file_io.hpp", "file__io_8hpp.html", "file__io_8hpp" ],
     [ "filesdb.cpp", "filesdb_8cpp.html", null ],
     [ "filesdb.hpp", "filesdb_8hpp.html", "filesdb_8hpp" ],
     [ "hash.cpp", "hash_8cpp.html", "hash_8cpp" ],

@@ -4,7 +4,7 @@ var classFilesDB =
     [ "~FilesDB", "classFilesDB.html#ac782013a22d4bbb413f1a7a6a815b843", null ],
     [ "FilesDB", "classFilesDB.html#aa0b087cb30040e36f7b2eba1546c7537", null ],
     [ "FilesDB", "classFilesDB.html#a22b0c7598fde4b90d0fb60d0c3e83b0d", null ],
-    [ "add_partfile", "classFilesDB.html#a83bbbeb67c13ff8f8550ba257862ea13", null ],
+    [ "add_partfile", "classFilesDB.html#aa5be4d8540d8866deaede22599abad55", null ],
     [ "get_partfile", "classFilesDB.html#a9b048544d872a1146e4551cb3e4d3f79", null ],
     [ "has_file", "classFilesDB.html#abe0df0640e6cd4f4503ba7c316c19ebb", null ],
     [ "has_piece", "classFilesDB.html#a7b06cf755d1f005217f931298d4cbd58", null ],

@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['_7edownloadmanager_0',['~DownloadManager',['../classDownloadManager.html#abb67275a951d706a3108a0d307ea9113',1,'DownloadManager']]],
-  ['_7efilesdb_1',['~FilesDB',['../classFilesDB.html#ac782013a22d4bbb413f1a7a6a815b843',1,'FilesDB']]],
-  ['_7etcpserver_2',['~TCPServer',['../classTCPServer.html#abc497ac52355e53986a6a1bd1acb9581',1,'TCPServer']]],
-  ['_7etcpsocket_3',['~TCPSocket',['../classTCPSocket.html#af357e6923a0f8adbbb8e46fab4523991',1,'TCPSocket']]]
+  ['write_5fpiece_5fto_5ffile_0',['write_piece_to_file',['../file__io_8cpp.html#a2d40ce40b7b1a4d0316cb91a258edae6',1,'write_piece_to_file(const std::string &amp;file_path, size_t block_index, size_t block_size, const std::string &amp;data):&#160;file_io.cpp'],['../file__io_8hpp.html#a2d40ce40b7b1a4d0316cb91a258edae6',1,'write_piece_to_file(const std::string &amp;file_path, size_t block_index, size_t block_size, const std::string &amp;data):&#160;file_io.cpp']]]
 ];
