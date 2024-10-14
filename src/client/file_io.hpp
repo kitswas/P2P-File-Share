@@ -3,7 +3,6 @@
 #include <memory>
 
 #include "../models/file.hpp"
-#include "../models/fileinfo.hpp"
 
 std::shared_ptr<FileInfo> get_file_info(const std::string &file_path);
 

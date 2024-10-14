@@ -3,15 +3,10 @@
 #include <atomic>
 #include <deque>
 #include <functional>
-#include <string>
 #include <thread>
 
-#include "../models/endpoint.hpp"
-#include "../models/file.hpp"
-#include "../models/fileinfo.hpp"
 #include "../network/tcp_socket.hpp"
 #include "filesdb.hpp"
-#include "partfile.hpp"
 #include "peerdb.hpp"
 
 /**

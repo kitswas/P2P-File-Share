@@ -3,10 +3,6 @@
 #include <errno.h>
 #include <fcntl.h>
 #include <iostream>
-#include <string>
-#include <sys/socket.h>
-#include <unistd.h>
-#include <vector>
 
 #include "network_errors.hpp"
 #include "tcp_socket.hpp"

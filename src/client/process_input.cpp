@@ -6,7 +6,6 @@
 #include <unistd.h>
 #include <vector>
 
-#include "../models/file.hpp"
 #include "../models/fileinfo.hpp"
 #include "file_io.hpp"
 #include "process_input.hpp"

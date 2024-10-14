@@ -1,13 +1,9 @@
 #pragma once
 
-#include <memory>
 #include <mutex>
-#include <string>
 #include <unordered_map>
 
-#include "../models/endpoint.hpp"
 #include "../models/file.hpp"
-#include "../models/fileinfo.hpp"
 #include "file_id.hpp"
 
 class Peer

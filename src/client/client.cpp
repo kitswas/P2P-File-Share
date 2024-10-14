@@ -7,17 +7,9 @@
  * @copyright Copyright (c) 2024
  */
 
-#include <cstring>
-#include <iostream>
-
 #include "../common/load_tracker_info.cpp"
-#include "../models/endpoint.hpp"
 #include "../network/network_errors.hpp"
-#include "../network/tcp_socket.hpp"
 #include "../network/tcp_server.hpp"
-#include "downloadmanager.hpp"
-#include "filesdb.hpp"
-#include "peerdb.hpp"
 #include "process_input.hpp"
 #include "process_request.hpp"
 

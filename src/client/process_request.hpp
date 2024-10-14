@@ -1,9 +1,5 @@
 #pragma once
 
-#include <memory>
-#include <string>
-
-#include "../models/endpoint.hpp"
 #include "../network/tcp_socket.hpp"
 #include "filesdb.hpp"
 #include "peerdb.hpp"
