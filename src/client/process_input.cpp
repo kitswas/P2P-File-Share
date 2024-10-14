@@ -43,6 +43,10 @@ bool process_input(const std::string &input, TCPSocket &tracker, EndpointID my_i
 		ss >> file_name;
 		std::string destination_path;
 		ss >> destination_path;
+		if (destination_path.empty())
+		{
+			return false; // Destination path is required
+		}
 		request += command + " " + group_id + " " + file_name;
 		tracker.send_data(request);
 		std::string response = tracker.receive_data();
