@@ -215,7 +215,7 @@ ssize_t TCPSocket::send_data(const std::string &data)
 
 std::string TCPSocket::receive_data(bool peek)
 {
-	constexpr size_t buffer_size = 1024;
+	constexpr ssize_t buffer_size = 1024;
 	std::vector<char> buffer(buffer_size);
 	std::string data = "";
 	ssize_t data_read = 0;
