@@ -9,5 +9,6 @@ var classDownloadManager =
     [ "list_downloads", "classDownloadManager.html#ad4d24ea6cfad1c7c1e4bf142249ad031", null ],
     [ "operator=", "classDownloadManager.html#a746988459afea05a4043b1d4448cda2c", null ],
     [ "pause_downloads", "classDownloadManager.html#aa948ace5fc59cae46e5427198e93a5a8", null ],
+    [ "set_on_download_complete", "classDownloadManager.html#ab9edab8dd811dcd628e1f34a5f29c74e", null ],
     [ "start_downloads", "classDownloadManager.html#ac25d73a2416de8347a494d2a2239fb8f", null ]
 ];

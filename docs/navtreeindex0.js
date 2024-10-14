@@ -9,8 +9,9 @@ var NAVTREEINDEX0 =
 "classDownloadManager.html#a746988459afea05a4043b1d4448cda2c":[6,0,3,7],
 "classDownloadManager.html#aa268d5597010922d70ed66517838a02b":[6,0,3,4],
 "classDownloadManager.html#aa948ace5fc59cae46e5427198e93a5a8":[6,0,3,8],
+"classDownloadManager.html#ab9edab8dd811dcd628e1f34a5f29c74e":[6,0,3,9],
 "classDownloadManager.html#abb67275a951d706a3108a0d307ea9113":[6,0,3,1],
-"classDownloadManager.html#ac25d73a2416de8347a494d2a2239fb8f":[6,0,3,9],
+"classDownloadManager.html#ac25d73a2416de8347a494d2a2239fb8f":[6,0,3,10],
 "classDownloadManager.html#ad4d24ea6cfad1c7c1e4bf142249ad031":[6,0,3,6],
 "classDownloadManager.html#af39f12b766984efbc6f50aa988bc9250":[6,0,3,0],
 "classFile.html":[6,0,5],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "structstd_1_1hash_3_01PartFile_01_5_01_4.html":[5,0,0,2],
 "structstd_1_1hash_3_01PartFile_01_5_01_4.html":[6,0,0,2],
 "structstd_1_1hash_3_01PartFile_01_5_01_4.html#a47eea3f8248cca51934ac61cc27c8c76":[5,0,0,2,0],
-"structstd_1_1hash_3_01PartFile_01_5_01_4.html#a47eea3f8248cca51934ac61cc27c8c76":[6,0,0,2,0],
-"structstd_1_1hash_3_01file__id_01_4.html":[5,0,0,1]
+"structstd_1_1hash_3_01PartFile_01_5_01_4.html#a47eea3f8248cca51934ac61cc27c8c76":[6,0,0,2,0]
 };
