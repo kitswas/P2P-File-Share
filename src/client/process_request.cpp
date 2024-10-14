@@ -1,49 +1,11 @@
 #include "../models/fileinfo.hpp"
+#include "file_io.hpp"
 #include "process_request.hpp"
 
 #include <fcntl.h>
 #include <sstream>
 #include <string>
 #include <unistd.h>
-
-std::string read_piece_from_file(const std::string &file_path, size_t block_index, size_t block_size)
-{
-	int fd = open(file_path.c_str(), O_RDONLY);
-	if (fd == -1)
-	{
-		throw std::runtime_error("Error opening file");
-	}
-
-	// Seek to the start of the piece
-	lseek(fd, block_index * block_size, SEEK_SET);
-
-	// Read the piece
-	char buffer[block_size];
-	ssize_t bytes_read = read(fd, buffer, block_size);
-	close(fd);
-
-	if (bytes_read == -1)
-	{
-		throw std::runtime_error("Error reading file");
-	}
-
-	return std::string(buffer, bytes_read);
-}
-
-size_t get_piece_index(const std::shared_ptr<FileInfo> &file_info, std::string_view piece)
-{
-	size_t piece_index = -1;
-	for (size_t i = 0; i < file_info->pieces.size(); i++)
-	{
-		if (file_info->pieces[i] == piece)
-		{
-			piece_index = i;
-			break;
-		}
-	}
-
-	return piece_index;
-}
 
 void process_request(std::shared_ptr<TCPSocket> client, PeerDB &peer_db, FilesDB &my_files, const std::string &request, const EndpointID &my_id)
 {

@@ -2,6 +2,7 @@ set(CLIENT_SOURCES
 	client.cpp
 	downloadmanager.cpp
 	hash.cpp
+	file_io.cpp
 	filesdb.cpp
 	partfile.cpp
 	peerdb.cpp
