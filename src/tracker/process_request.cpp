@@ -29,6 +29,11 @@ Result process_user_request(EndpointID origin, UserRequest request, std::strings
 		std::string username;
 		std::string password;
 		datastream >> username >> password;
+		if (username.empty() || password.empty())
+		{
+			result.message = "Username or password cannot be empty\n";
+			return result;
+		}
 
 		// Create user
 		if (userDB.createUser(username, password))
@@ -73,6 +78,11 @@ Result process_user_request(EndpointID origin, UserRequest request, std::strings
 		std::string username;
 		std::string password;
 		datastream >> username >> password;
+		if (username.empty() || password.empty())
+		{
+			result.message = "Username or password cannot be empty\n";
+			return result;
+		}
 		auto user = userDB.getUser(username);
 		if (is_logged_in(origin))
 		{
