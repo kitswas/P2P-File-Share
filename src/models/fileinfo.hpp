@@ -6,7 +6,7 @@
 #include <vector>
 
 // 512KB
-constexpr size_t block_size = 16;
+constexpr size_t block_size = 512 * 1024;
 
 class FileInfo
 {
