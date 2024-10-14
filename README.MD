@@ -1,12 +1,72 @@
 # P2P-File-Share
 
 A simple peer-to-peer file sharing system using TCP sockets.  
+This project was created for an assignment in a graduate course on Operating Systems.  
 For educational purposes.
 
 > [!CAUTION]
 > Warranty NOT included. Use at your own risk.
 
 ## How it works
+
+The system consists of two components:
+
+1. **Tracker**:  
+   A server that keeps track of the files available on the network.  
+   It listens for incoming connections from clients and other trackers.  
+   It also responds to queries from clients and other trackers.
+
+2. **Client**:
+   A client that connects to the tracker to get a list of files available on the network.  
+   It can download files from other clients on the network.  
+   It can also upload files to other clients on the network.
+
+### Tracker
+
+The tracker is a server that listens for incoming connections from clients and other trackers.  
+Every request to the tracker is saved as a Transaction.  
+Whenever a new tracker joins the network, it sends a list of all the successful transactions it has saved.  
+The new tracker then executes these transactions to get up to date with the network.
+
+[![Tracker Multithreading Architecture](../TrackerMultithreadingArchitecture.svg)](../TrackerMultithreadingArchitecture.svg)
+
+### Client
+
+The client connects to the tracker to get a list of files available on the network.
+It can download files from other clients on the network.
+
+[![Client Multithreading Architecture](../ClientMultithreadingArchitecture.svg)](../ClientMultithreadingArchitecture.svg)
+
+### Other Important Components
+
+There are 2 daemon-type components that run in the background.
+
+#### The Download Manager
+
+The DownloadManager is responsible for downloading files from other clients on the network.  
+The user of the class can enqueue a download request, and the DownloadManager will download the file in the background.  
+The user can either poll the status of the downloads or register a callback to be notified when the download is complete.
+
+#### The TCP Server
+
+This is a part of our custom networking library.
+
+The TCP Server is a high-level abstraction over TCP socket, which in turn is a high-level abstraction over the POSIX socket API.  
+The TCPServer class is loosely based on the [QTcpServer](https://doc.qt.io/qt-6/qtcpserver.html) class from the Qt framework. TCPSocket is similarly based on [QTcpSocket](https://doc.qt.io/qt-6/qtcpsocket.html).
+
+### Things to Note
+
+- The default block size for files is 512 KB.  
+  This can be changed by modifying the `block_size` constant in fileinfo.hpp.
+  
+- TCP Server uses the `select` system call to handle multiple connections.  
+  As a result, the maximum number of connections it can handle is limited.  
+  The system will not scale well, and has problems handling files with many pieces.  
+  When I created it, I was not aware of the existence of the improved `poll` and `epoll` system calls.  
+  Honestly, `select()` should be deprecated by now.
+  See:
+  - [StackOverflow - Difference between poll and select](https://stackoverflow.com/q/970979/8659747)
+  - [StackOverflow - epoll vs select](https://stackoverflow.com/a/2033785/8659747)
 
 ## Setting up your workspace
 
