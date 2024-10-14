@@ -239,7 +239,8 @@ std::string TCPSocket::receive_data(bool peek)
 		{
 			data.append(buffer.data(), valread);
 			data_read += valread;
-			if (valread < buffer_size || receive_data(true).empty()) // For blocking sockets
+			// Note, please recurse only once, program can crash if the data is too large
+			if (peek || valread < buffer_size || receive_data(true).empty()) // For blocking sockets
 			{
 				break; // No more data to read
 			}
