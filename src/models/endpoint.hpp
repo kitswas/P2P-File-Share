@@ -36,3 +36,16 @@ struct Endpoint
 		return std::hash<std::string>{}(endpoint.to_string());
 	}
 };
+
+// Enable hashing for Endpoint
+namespace std
+{
+	template <>
+	struct hash<Endpoint>
+	{
+		std::size_t operator()(const Endpoint &endpoint) const
+		{
+			return Endpoint::generate_id(endpoint);
+		}
+	};
+}
