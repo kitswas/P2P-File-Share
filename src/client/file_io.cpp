@@ -40,6 +40,21 @@ std::shared_ptr<FileInfo> get_file_info(const std::string &file_path)
 	return std::make_shared<FileInfo>(filename, file_size, pieces, hash);
 }
 
+size_t get_piece_index(const std::shared_ptr<FileInfo> &file_info, std::string_view piece)
+{
+	size_t piece_index = -1;
+	for (size_t i = 0; i < file_info->pieces.size(); i++)
+	{
+		if (file_info->pieces[i] == piece)
+		{
+			piece_index = i;
+			break;
+		}
+	}
+
+	return piece_index;
+}
+
 std::string read_piece_from_file(const std::string &file_path, size_t block_index, size_t block_size)
 {
 	int fd = open(file_path.c_str(), O_RDONLY);
@@ -62,19 +77,4 @@ std::string read_piece_from_file(const std::string &file_path, size_t block_inde
 	}
 
 	return std::string(buffer, bytes_read);
-}
-
-size_t get_piece_index(const std::shared_ptr<FileInfo> &file_info, std::string_view piece)
-{
-	size_t piece_index = -1;
-	for (size_t i = 0; i < file_info->pieces.size(); i++)
-	{
-		if (file_info->pieces[i] == piece)
-		{
-			piece_index = i;
-			break;
-		}
-	}
-
-	return piece_index;
 }
