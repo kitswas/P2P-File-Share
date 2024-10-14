@@ -16,7 +16,7 @@ public:
 	std::unordered_set<std::string> downloaded_pieces;
 	std::unordered_set<std::string> remaining_pieces;
 
-	explicit PartFile(const std::string &group_id, std::shared_ptr<FileInfo> file_info, const std::string &file_path);
+	explicit PartFile(const std::string &group_id, std::shared_ptr<FileInfo> file_info, const std::string &file_path, bool all_downloaded);
 
 	PartFile() = delete;
 	PartFile(const PartFile &src) = default;

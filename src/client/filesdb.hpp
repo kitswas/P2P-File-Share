@@ -31,7 +31,7 @@ public:
 	 * @return true If the partfile was added successfully.
 	 * @return false If the partfile was not added successfully.
 	 */
-	bool add_partfile(const std::string &group_id, std::shared_ptr<FileInfo> file_info, const std::string &file_path);
+	bool add_partfile(const std::string &group_id, std::shared_ptr<FileInfo> file_info, const std::string &file_path, bool all_downloaded);
 
 	/**
 	 * @brief Remove a partfile from the database.
@@ -40,7 +40,7 @@ public:
 	 * @return false If the partfile was not removed successfully.
 	 */
 	bool remove_partfile(const std::string &group_id, const std::string &file_name);
-	
+
 	PartFile get_partfile(const std::string &group_id, const std::string &file_name);
 
 	/**

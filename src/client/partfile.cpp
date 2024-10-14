@@ -4,12 +4,22 @@
 
 #include "partfile.hpp"
 
-PartFile::PartFile(const std::string &group_id, std::shared_ptr<FileInfo> file_info, const std::string &file_path)
+PartFile::PartFile(const std::string &group_id, std::shared_ptr<FileInfo> file_info, const std::string &file_path, bool all_downloaded)
 	: group_id(group_id), file_info(file_info), PieceCount(file_info->pieces.size()), file_path(file_path)
 {
-	for (const auto &piece : file_info->pieces)
+	if (all_downloaded)
 	{
-		remaining_pieces.insert(piece);
+		for (const auto &piece : file_info->pieces)
+		{
+			downloaded_pieces.insert(piece);
+		}
+	}
+	else
+	{
+		for (const auto &piece : file_info->pieces)
+		{
+			remaining_pieces.insert(piece);
+		}
 	}
 }
 

@@ -1,3 +1,4 @@
+#include "../models/fileinfo.hpp"
 #include "process_request.hpp"
 
 #include <fcntl.h>
@@ -29,6 +30,21 @@ std::string read_piece_from_file(const std::string &file_path, size_t block_inde
 	return std::string(buffer, bytes_read);
 }
 
+size_t get_piece_index(const std::shared_ptr<FileInfo> &file_info, std::string_view piece)
+{
+	size_t piece_index = -1;
+	for (size_t i = 0; i < file_info->pieces.size(); i++)
+	{
+		if (file_info->pieces[i] == piece)
+		{
+			piece_index = i;
+			break;
+		}
+	}
+
+	return piece_index;
+}
+
 void process_request(std::shared_ptr<TCPSocket> client, PeerDB &peer_db, FilesDB &my_files, const std::string &request, const EndpointID &my_id)
 {
 	Endpoint client_endpoint = {client->get_peer_ip(), client->get_peer_port()};
@@ -53,7 +69,17 @@ void process_request(std::shared_ptr<TCPSocket> client, PeerDB &peer_db, FilesDB
 		}
 		else
 		{
+			// Get the file info
+			PartFile part_file = my_files.get_partfile(group_id, file_name);
 
+			// Get the piece index
+			size_t piece_index = get_piece_index(part_file.file_info, piece);
+
+			// Get the piece from the file
+			std::string piece_data = read_piece_from_file(part_file.file_path, piece_index, block_size);
+
+			// Send the piece to the client
+			client->send_data("1 " + piece_data);
 		}
 	}
 	else

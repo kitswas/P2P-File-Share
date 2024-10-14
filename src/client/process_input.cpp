@@ -63,7 +63,7 @@ bool process_input(const std::string &input, TCPSocket &tracker, EndpointID my_i
 		}
 		std::cout << file_info->to_string() << std::endl;
 		request += command + " " + group_id + " " + client_endpoint.to_string() + " " + file_info->to_string();
-		my_files.add_partfile(group_id, file_info, file_path);
+		my_files.add_partfile(group_id, file_info, file_path, true);
 	}
 	else if (command == "download_file")
 	{

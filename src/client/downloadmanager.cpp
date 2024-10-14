@@ -55,7 +55,7 @@ bool DownloadManager::enqueue_download(const std::string &group_id, const std::s
 
 	if (downloads.empty())
 	{
-		downloads.emplace_back(std::make_unique<PartFile>(group_id, file_info, output_file_path));
+		downloads.emplace_back(std::make_unique<PartFile>(group_id, file_info, output_file_path, false));
 		return true;
 	}
 	for (const auto &part_file : downloads)
@@ -65,8 +65,8 @@ bool DownloadManager::enqueue_download(const std::string &group_id, const std::s
 			return false;
 		}
 	}
-	downloads.emplace_back(std::make_unique<PartFile>(group_id, file_info, output_file_path));
-	files_db.add_partfile(group_id, file_info, output_file_path);
+	downloads.emplace_back(std::make_unique<PartFile>(group_id, file_info, output_file_path, false));
+	files_db.add_partfile(group_id, file_info, output_file_path, false);
 	return true;
 }
 

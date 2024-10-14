@@ -1,6 +1,6 @@
 #include "filesdb.hpp"
 
-bool FilesDB::add_partfile(const std::string &group_id, std::shared_ptr<FileInfo> file_info, const std::string &file_path)
+bool FilesDB::add_partfile(const std::string &group_id, std::shared_ptr<FileInfo> file_info, const std::string &file_path, bool all_downloaded)
 {
 	std::scoped_lock lock(mutex);
 	file_id key = {group_id, file_info->name};
@@ -9,7 +9,7 @@ bool FilesDB::add_partfile(const std::string &group_id, std::shared_ptr<FileInfo
 		return false;
 	}
 
-	files[key] = std::make_unique<PartFile>(group_id, file_info, file_path);
+	files[key] = std::make_unique<PartFile>(group_id, file_info, file_path, all_downloaded);
 	return true;
 }
 
