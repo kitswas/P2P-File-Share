@@ -34,3 +34,25 @@ public:
 		return lhs.group_id == rhs.group_id && *(lhs.file_info) == *(rhs.file_info);
 	}
 };
+
+// Enable hashing for PartFile
+namespace std
+{
+	template <>
+	struct hash<PartFile>
+	{
+		std::size_t operator()(const PartFile &part_file) const
+		{
+			return std::hash<std::string>()(part_file.group_id) ^ std::hash<std::string>()(part_file.file_info->hash);
+		}
+	};
+	
+	template <>
+	struct hash<PartFile*>
+	{
+		std::size_t operator()(const PartFile* part_file) const
+		{
+			return std::hash<std::string>()(part_file->group_id) ^ std::hash<std::string>()(part_file->file_info->hash);
+		}
+	};
+}
