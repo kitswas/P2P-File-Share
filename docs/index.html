@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>P2P-File-Share: P2P-File-Share</title>
+<title>P2P File Share: P2P-File-Share</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -47,9 +47,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">P2P-File-Share
+   <div id="projectname">P2P File Share
    </div>
-   <div id="projectbrief">A simple peer-to-peer file sharing system using TCP sockets.</div>
+   <div id="projectbrief">A simple peer-to-peer file sharing system.</div>
   </td>
  </tr>
  </tbody>
@@ -122,10 +122,60 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md_README"></a></p>
 <p>A simple peer-to-peer file sharing system using TCP sockets. <br  />
+ This project was created for an assignment in a graduate course on Operating Systems. <br  />
  For educational purposes.</p>
 <dl class="section attention"><dt>Attention</dt><dd>Warranty NOT included. Use at your own risk.</dd></dl>
 <h1><a class="anchor" id="how-it-works"></a>
 How it works</h1>
+<p>The system consists of two components:</p>
+<ol type="1">
+<li><b>Tracker</b>: <br  />
+ A server that keeps track of the files available on the network. <br  />
+ It listens for incoming connections from clients and other trackers. <br  />
+ It also responds to queries from clients and other trackers.</li>
+<li><b>Client</b>: A client that connects to the tracker to get a list of files available on the network. <br  />
+ It can download files from other clients on the network. <br  />
+ It can also upload files to other clients on the network.</li>
+</ol>
+<h2><a class="anchor" id="tracker"></a>
+Tracker</h2>
+<p>The tracker is a server that listens for incoming connections from clients and other trackers. <br  />
+ Every request to the tracker is saved as a <a class="el" href="structTransaction.html" title="Every request is a transaction.">Transaction</a>. <br  />
+ Whenever a new tracker joins the network, it sends a list of all the successful transactions it has saved. <br  />
+ The new tracker then executes these transactions to get up to date with the network.</p>
+<p><a href="../TrackerMultithreadingArchitecture.svg"><img src="../TrackerMultithreadingArchitecture.svg" alt="Tracker Multithreading Architecture" style="pointer-events: none;" class="inline"/></a></p>
+<h2><a class="anchor" id="client"></a>
+Client</h2>
+<p>The client connects to the tracker to get a list of files available on the network. It can download files from other clients on the network.</p>
+<p><a href="../ClientMultithreadingArchitecture.svg"><img src="../ClientMultithreadingArchitecture.svg" alt="Client Multithreading Architecture" style="pointer-events: none;" class="inline"/></a></p>
+<h2><a class="anchor" id="other-important-components"></a>
+Other Important Components</h2>
+<p>There are 2 daemon-type components that run in the background.</p>
+<h3><a class="anchor" id="the-download-manager"></a>
+The Download Manager</h3>
+<p>The <a class="el" href="classDownloadManager.html" title="If you need a file downloaded, ask the professional.">DownloadManager</a> is responsible for downloading files from other clients on the network. <br  />
+ The user of the class can enqueue a download request, and the <a class="el" href="classDownloadManager.html" title="If you need a file downloaded, ask the professional.">DownloadManager</a> will download the file in the background. <br  />
+ The user can either poll the status of the downloads or register a callback to be notified when the download is complete.</p>
+<h3><a class="anchor" id="the-tcp-server"></a>
+The TCP Server</h3>
+<p>This is a part of our custom networking library.</p>
+<p>The TCP Server is a high-level abstraction over TCP socket, which in turn is a high-level abstraction over the POSIX socket API. <br  />
+ The <a class="el" href="classTCPServer.html">TCPServer</a> class is loosely based on the <a href="https://doc.qt.io/qt-6/qtcpserver.html">QTcpServer</a> class from the Qt framework. <a class="el" href="classTCPSocket.html" title="A class representing a TCP socket.">TCPSocket</a> is similarly based on <a href="https://doc.qt.io/qt-6/qtcpsocket.html">QTcpSocket</a>.</p>
+<h2><a class="anchor" id="things-to-note"></a>
+Things to Note</h2>
+<ul>
+<li>The default block size for files is 512 KB. <br  />
+ This can be changed by modifying the <code>block_size</code> constant in <a class="el" href="fileinfo_8hpp.html">fileinfo.hpp</a>.</li>
+<li>TCP Server uses the <code>select</code> system call to handle multiple connections. <br  />
+ As a result, the maximum number of connections it can handle is limited. <br  />
+ The system will not scale well, and has problems handling files with many pieces. <br  />
+ When I created it, I was not aware of the existence of the improved <code>poll</code> and <code>epoll</code> system calls. <br  />
+ Honestly, <code>select()</code> should be deprecated by now. See:<ul>
+<li><a href="https://stackoverflow.com/q/970979/8659747">StackOverflow - Difference between poll and select</a></li>
+<li><a href="https://stackoverflow.com/a/2033785/8659747">StackOverflow - epoll vs select</a></li>
+</ul>
+</li>
+</ul>
 <h1><a class="anchor" id="setting-up-your-workspace"></a>
 Setting up your workspace</h1>
 <p>This project has a <a href="https://editorconfig.org/">.editorconfig file</a> to enforce project level coding standards. <br  />

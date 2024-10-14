@@ -24,11 +24,8 @@
 */
 var NAVTREE =
 [
-  [ "P2P-File-Share", "index.html", [
-    [ "How it works", "index.html#how-it-works", null ],
-    [ "Setting up your workspace", "index.html#setting-up-your-workspace", null ],
-    [ "How to run", "index.html#how-to-run", null ],
-    [ "Generating and Viewing Documentation", "index.html#generating-and-viewing-documentation", null ],
+  [ "P2P File Share", "index.html", [
+    [ "P2P-File-Share", "index.html", "index" ],
     [ "Common Source Files", "md_src_2common_2readme.html", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ]
@@ -60,8 +57,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"annotated.html",
-"structstd_1_1hash_3_01file__id_01_4.html"
+"ClientMultithreadingArchitecture_8svg.html",
+"structstd_1_1hash_3_01PartFile_01_4.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
