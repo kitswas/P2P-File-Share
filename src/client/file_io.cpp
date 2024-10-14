@@ -35,6 +35,7 @@ std::shared_ptr<FileInfo> get_file_info(const std::string &file_path)
 		pieces.push_back(piece);
 		hash += piece;
 	}
+	std::clog << "Piece count " << pieces.size() << std::endl;
 	// close file
 	close(fd);
 	return std::make_shared<FileInfo>(filename, file_size, pieces, hash);
