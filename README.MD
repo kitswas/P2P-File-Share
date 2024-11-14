@@ -28,14 +28,14 @@ Every request to the tracker is saved as a Transaction.
 Whenever a new tracker joins the network, it sends a list of all the successful transactions it has saved.  
 The new tracker then executes these transactions to get up to date with the network.
 
-[![Tracker Multithreading Architecture](../TrackerMultithreadingArchitecture.svg)](../TrackerMultithreadingArchitecture.svg)
+[![Tracker Multithreading Architecture](./TrackerMultithreadingArchitecture.svg)](./TrackerMultithreadingArchitecture.svg)
 
 ### Client
 
 The client connects to the tracker to get a list of files available on the network.
 It can download files from other clients on the network.
 
-[![Client Multithreading Architecture](../ClientMultithreadingArchitecture.svg)](../ClientMultithreadingArchitecture.svg)
+[![Client Multithreading Architecture](./ClientMultithreadingArchitecture.svg)](./ClientMultithreadingArchitecture.svg)
 
 ### Other Important Components
 
