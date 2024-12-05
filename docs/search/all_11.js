@@ -16,11 +16,10 @@ var searchData=
   ['tracker_13',['Tracker',['../index.html#tracker',1,'']]],
   ['tracker_20commands_14',['Tracker commands',['../index.html#tracker-commands',1,'']]],
   ['tracker_2ecpp_15',['tracker.cpp',['../tracker_8cpp.html',1,'']]],
-  ['trackermultithreadingarchitecture_2esvg_16',['TrackerMultithreadingArchitecture.svg',['../TrackerMultithreadingArchitecture_8svg.html',1,'']]],
-  ['trackerrequest_17',['TrackerRequest',['../transaction_8hpp.html#a692cac3b6ab660fc983549fae223fb45',1,'transaction.hpp']]],
-  ['transaction_18',['Transaction',['../structTransaction.html',1,'']]],
-  ['transaction_2ehpp_19',['transaction.hpp',['../transaction_8hpp.html',1,'']]],
-  ['transactionsrecord_20',['TransactionsRecord',['../classTransactionsRecord.html',1,'TransactionsRecord'],['../classTransactionsRecord.html#a3fec2fac52a3bed4813694c209cb0385',1,'TransactionsRecord::TransactionsRecord()']]],
-  ['transactionsrecord_2ecpp_21',['transactionsrecord.cpp',['../transactionsrecord_8cpp.html',1,'']]],
-  ['transactionsrecord_2ehpp_22',['transactionsrecord.hpp',['../transactionsrecord_8hpp.html',1,'']]]
+  ['trackerrequest_16',['TrackerRequest',['../transaction_8hpp.html#a692cac3b6ab660fc983549fae223fb45',1,'transaction.hpp']]],
+  ['transaction_17',['Transaction',['../structTransaction.html',1,'']]],
+  ['transaction_2ehpp_18',['transaction.hpp',['../transaction_8hpp.html',1,'']]],
+  ['transactionsrecord_19',['TransactionsRecord',['../classTransactionsRecord.html',1,'TransactionsRecord'],['../classTransactionsRecord.html#a3fec2fac52a3bed4813694c209cb0385',1,'TransactionsRecord::TransactionsRecord()']]],
+  ['transactionsrecord_2ecpp_20',['transactionsrecord.cpp',['../transactionsrecord_8cpp.html',1,'']]],
+  ['transactionsrecord_2ehpp_21',['transactionsrecord.hpp',['../transactionsrecord_8hpp.html',1,'']]]
 ];

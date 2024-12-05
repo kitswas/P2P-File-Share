@@ -57,8 +57,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"ClientMultithreadingArchitecture_8svg.html",
-"structstd_1_1hash_3_01Endpoint_01_4.html"
+"annotated.html",
+"structstd_1_1hash_3_01Endpoint_01_4.html#ad14e4260da90b40c52bd426577969154"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

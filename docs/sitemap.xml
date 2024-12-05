@@ -5,9 +5,6 @@
   xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
       http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
-    <loc>https://github.com/kitswas/P2P-File-Share/ClientMultithreadingArchitecture_8svg.html</loc>
-  </url>
-  <url>
     <loc>https://github.com/kitswas/P2P-File-Share/README_8MD.html</loc>
   </url>
   <url>
@@ -135,9 +132,6 @@
   </url>
   <url>
     <loc>https://github.com/kitswas/P2P-File-Share/userdb_8hpp.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/kitswas/P2P-File-Share/TrackerMultithreadingArchitecture_8svg.html</loc>
   </url>
   <url>
     <loc>https://github.com/kitswas/P2P-File-Share/md_src_2common_2readme.html</loc>
