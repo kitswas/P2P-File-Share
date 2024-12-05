@@ -10,6 +10,11 @@ var index =
       [ "Things to Note", "index.html#things-to-note", null ]
     ] ],
     [ "Setting up your workspace", "index.html#setting-up-your-workspace", null ],
-    [ "How to run", "index.html#how-to-run", null ],
+    [ "How to run", "index.html#how-to-run", [
+      [ "Usage", "index.html#usage", [
+        [ "Tracker commands", "index.html#tracker-commands", null ],
+        [ "Client commands", "index.html#client-commands", null ]
+      ] ]
+    ] ],
     [ "Generating and Viewing Documentation", "index.html#generating-and-viewing-documentation", null ]
 ];

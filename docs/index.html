@@ -121,8 +121,8 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md_README"></a></p>
-<p>A simple peer-to-peer file sharing system using TCP sockets. <br  />
- This project was created for an assignment in a graduate course on Operating Systems. <br  />
+<p>A simple peer-to-peer file sharing system using TCP sockets. <a href="https://github.com/kitswas/P2P-File-Share">View Source.</a> <br  />
+ This was made for an assignment in a graduate course on Operating Systems. <br  />
  For educational purposes.</p>
 <dl class="section attention"><dt>Attention</dt><dd>Warranty NOT included. Use at your own risk.</dd></dl>
 <h1><a class="anchor" id="how-it-works"></a>
@@ -160,7 +160,7 @@ The Download Manager</h3>
 The TCP Server</h3>
 <p>This is a part of our custom networking library.</p>
 <p>The TCP Server is a high-level abstraction over TCP socket, which in turn is a high-level abstraction over the POSIX socket API. <br  />
- The <a class="el" href="classTCPServer.html">TCPServer</a> class is loosely based on the <a href="https://doc.qt.io/qt-6/qtcpserver.html">QTcpServer</a> class from the Qt framework. <a class="el" href="classTCPSocket.html" title="A class representing a TCP socket.">TCPSocket</a> is similarly based on <a href="https://doc.qt.io/qt-6/qtcpsocket.html">QTcpSocket</a>.</p>
+ The <a class="el" href="classTCPServer.html">TCPServer</a> class is loosely based on the <a href="https://doc.qt.io/qt-6/qtcpserver.html">QTcpServer</a> class from the Qt framework. <a class="el" href="classTCPSocket.html" title="A class representing a TCP socket.">TCPSocket</a> is similarly modelled after <a href="https://doc.qt.io/qt-6/qtcpsocket.html">QTcpSocket</a>.</p>
 <h2><a class="anchor" id="things-to-note"></a>
 Things to Note</h2>
 <ul>
@@ -189,7 +189,32 @@ How to run</h1>
 <div class="line">cmake --build build --config Release</div>
 <div class="line">./build/tracker/tracker ./build/tracker_info.txt 1            # run the tracker first</div>
 <div class="line">./build/client/client 127.0.0.1:9999 ./build/tracker_info.txt # and then the client</div>
-</div><!-- fragment --><h1><a class="anchor" id="generating-and-viewing-documentation"></a>
+</div><!-- fragment --><h2><a class="anchor" id="usage"></a>
+Usage</h2>
+<h3><a class="anchor" id="tracker-commands"></a>
+Tracker commands</h3>
+<ol type="1">
+<li><code>quit</code></li>
+</ol>
+<h3><a class="anchor" id="client-commands"></a>
+Client commands</h3>
+<ol type="1">
+<li><code>quit</code></li>
+<li><code>create_user &lt;user_id&gt; &lt;passwd&gt;</code></li>
+<li><code>login &lt;user_id&gt; &lt;passwd&gt;</code></li>
+<li><code>logout</code></li>
+<li><code>create_group &lt;group_id&gt;</code></li>
+<li><code>join_group &lt;group_id&gt;</code></li>
+<li><code>leave_group &lt;group_id&gt;</code></li>
+<li><code>list_requests &lt;group_id&gt;</code></li>
+<li><code>accept_request &lt;group_id&gt; &lt;user_id&gt;</code></li>
+<li><code>list_groups</code></li>
+<li><code>list_files &lt;group_id&gt;</code></li>
+<li><code>upload_file &lt;file_path&gt; &lt;group_id&gt;</code></li>
+<li><code>download_file &lt;group_id&gt; &lt;file_name&gt; &lt;destination_path&gt;</code></li>
+<li><code>show_downloads</code></li>
+</ol>
+<h1><a class="anchor" id="generating-and-viewing-documentation"></a>
 Generating and Viewing Documentation</h1>
 <p>This project uses <a href="https://www.doxygen.nl/index.html">Doxygen</a> to generate documentation. <br  />
  If Doxygen is available on your system, <br  />

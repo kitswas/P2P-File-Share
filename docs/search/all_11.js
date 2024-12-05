@@ -14,11 +14,12 @@ var searchData=
   ['to_20run_11',['How to run',['../index.html#how-to-run',1,'']]],
   ['to_5fstring_12',['to_string',['../structfile__id.html#a65930a5b55b2284a3bde4f63c7e40a0b',1,'file_id::to_string()'],['../structEndpoint.html#a19ddc0ec17ac4e497ab44fbb1ab6c4d8',1,'Endpoint::to_string()'],['../classFile.html#a07ff0dc78dffa1812055f129ea101ec2',1,'File::to_string()'],['../classFileInfo.html#aa7ca79d64107bc69032ac3a8c25b4402',1,'FileInfo::to_string()'],['../structTransaction.html#a202340e306c17b3b5969a2c04c989ce9',1,'Transaction::to_string()']]],
   ['tracker_13',['Tracker',['../index.html#tracker',1,'']]],
-  ['tracker_2ecpp_14',['tracker.cpp',['../tracker_8cpp.html',1,'']]],
-  ['trackerrequest_15',['TrackerRequest',['../transaction_8hpp.html#a692cac3b6ab660fc983549fae223fb45',1,'transaction.hpp']]],
-  ['transaction_16',['Transaction',['../structTransaction.html',1,'']]],
-  ['transaction_2ehpp_17',['transaction.hpp',['../transaction_8hpp.html',1,'']]],
-  ['transactionsrecord_18',['TransactionsRecord',['../classTransactionsRecord.html',1,'TransactionsRecord'],['../classTransactionsRecord.html#a3fec2fac52a3bed4813694c209cb0385',1,'TransactionsRecord::TransactionsRecord()']]],
-  ['transactionsrecord_2ecpp_19',['transactionsrecord.cpp',['../transactionsrecord_8cpp.html',1,'']]],
-  ['transactionsrecord_2ehpp_20',['transactionsrecord.hpp',['../transactionsrecord_8hpp.html',1,'']]]
+  ['tracker_20commands_14',['Tracker commands',['../index.html#tracker-commands',1,'']]],
+  ['tracker_2ecpp_15',['tracker.cpp',['../tracker_8cpp.html',1,'']]],
+  ['trackerrequest_16',['TrackerRequest',['../transaction_8hpp.html#a692cac3b6ab660fc983549fae223fb45',1,'transaction.hpp']]],
+  ['transaction_17',['Transaction',['../structTransaction.html',1,'']]],
+  ['transaction_2ehpp_18',['transaction.hpp',['../transaction_8hpp.html',1,'']]],
+  ['transactionsrecord_19',['TransactionsRecord',['../classTransactionsRecord.html',1,'TransactionsRecord'],['../classTransactionsRecord.html#a3fec2fac52a3bed4813694c209cb0385',1,'TransactionsRecord::TransactionsRecord()']]],
+  ['transactionsrecord_2ecpp_20',['transactionsrecord.cpp',['../transactionsrecord_8cpp.html',1,'']]],
+  ['transactionsrecord_2ehpp_21',['transactionsrecord.hpp',['../transactionsrecord_8hpp.html',1,'']]]
 ];

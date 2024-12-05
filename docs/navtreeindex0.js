@@ -197,6 +197,7 @@ var NAVTREEINDEX0 =
 "index.html":[],
 "index.html":[0],
 "index.html#client":[0,0,1],
+"index.html#client-commands":[0,2,0,1],
 "index.html#generating-and-viewing-documentation":[0,3],
 "index.html#how-it-works":[0,0],
 "index.html#how-to-run":[0,2],
@@ -206,6 +207,8 @@ var NAVTREEINDEX0 =
 "index.html#the-tcp-server":[0,0,2,1],
 "index.html#things-to-note":[0,0,3],
 "index.html#tracker":[0,0,0],
+"index.html#tracker-commands":[0,2,0,0],
+"index.html#usage":[0,2,0],
 "load__tracker__info_8cpp.html":[4,0,0,1,0],
 "load__tracker__info_8cpp.html#a48d8c5eb3b7a59f55b46c6f85da18048":[4,0,0,1,0,0],
 "md_src_2common_2readme.html":[1],
@@ -246,8 +249,5 @@ var NAVTREEINDEX0 =
 "structfile__id.html#a850d84a640ba84e0975009b89eb22cf5":[3,0,6,2],
 "structfile__id.html#aa3df1baf990cd9889324f7c93bd6c8d9":[3,0,6,4],
 "structfile__id.html#ab14f88f02f7a8d55cfa3fa2ecdcdf5f5":[3,0,6,0],
-"structstd_1_1hash_3_01Endpoint_01_4.html":[2,0,0,0],
-"structstd_1_1hash_3_01Endpoint_01_4.html":[3,0,0,0],
-"structstd_1_1hash_3_01Endpoint_01_4.html#ad14e4260da90b40c52bd426577969154":[2,0,0,0,0],
-"structstd_1_1hash_3_01Endpoint_01_4.html#ad14e4260da90b40c52bd426577969154":[3,0,0,0,0]
+"structstd_1_1hash_3_01Endpoint_01_4.html":[2,0,0,0]
 };
