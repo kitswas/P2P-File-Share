@@ -1,7 +1,8 @@
 # P2P-File-Share
 
-A simple peer-to-peer file sharing system using TCP sockets.  
-This project was created for an assignment in a graduate course on Operating Systems.  
+A simple peer-to-peer file sharing system using TCP sockets.
+[View Source.](https://github.com/kitswas/P2P-File-Share)  
+This was made for an assignment in a graduate course on Operating Systems.  
 For educational purposes.
 
 > [!CAUTION]
@@ -52,7 +53,8 @@ The user can either poll the status of the downloads or register a callback to b
 This is a part of our custom networking library.
 
 The TCP Server is a high-level abstraction over TCP socket, which in turn is a high-level abstraction over the POSIX socket API.  
-The TCPServer class is loosely based on the [QTcpServer](https://doc.qt.io/qt-6/qtcpserver.html) class from the Qt framework. TCPSocket is similarly based on [QTcpSocket](https://doc.qt.io/qt-6/qtcpsocket.html).
+The TCPServer class is loosely based on the [QTcpServer](https://doc.qt.io/qt-6/qtcpserver.html) class from the Qt framework.
+TCPSocket is similarly modelled after [QTcpSocket](https://doc.qt.io/qt-6/qtcpsocket.html).
 
 ### Things to Note
 
@@ -90,6 +92,29 @@ cmake --build build --config Release
 ./build/tracker/tracker ./build/tracker_info.txt 1            # run the tracker first
 ./build/client/client 127.0.0.1:9999 ./build/tracker_info.txt # and then the client
 ```
+
+### Usage
+
+#### Tracker commands
+
+1. `quit`
+
+#### Client commands
+
+1. `quit`
+2. `create_user <user_id> <passwd>`
+3. `login <user_id> <passwd>`
+4. `logout`
+5. `create_group <group_id>`
+6. `join_group <group_id>`
+7. `leave_group <group_id>`
+8. `list_requests <group_id>`
+9. `accept_request <group_id> <user_id>`
+10. `list_groups`
+11. `list_files <group_id>`
+12. `upload_file <file_path> <group_id>`
+13. `download_file <group_id> <file_name> <destination_path>`
+14. `show_downloads`
 
 ## Generating and Viewing Documentation
 
