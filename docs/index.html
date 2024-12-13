@@ -141,7 +141,8 @@ How it works</h1>
 Tracker</h2>
 <p>The tracker is a server that listens for incoming connections from clients and other trackers. <br  />
  Every request to the tracker is saved as a <a class="el" href="structTransaction.html" title="Every request is a transaction.">Transaction</a>. <br  />
- Whenever a new tracker joins the network, it sends a list of all the successful transactions it has saved. <br  />
+ Atleast one tracker must be online at any point in time. <br  />
+ Whenever a new tracker joins the network, it receives a list of all the successful transactions from the others. <br  />
  The new tracker then executes these transactions to get up to date with the network.</p>
 <p><a href="./TrackerMultithreadingArchitecture.svg"><img src="./TrackerMultithreadingArchitecture.svg" alt="Tracker Multithreading Architecture" style="pointer-events: none;" class="inline"/></a></p>
 <h2><a class="anchor" id="client"></a>
