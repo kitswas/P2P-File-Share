@@ -26,7 +26,8 @@ The system consists of two components:
 
 The tracker is a server that listens for incoming connections from clients and other trackers.  
 Every request to the tracker is saved as a Transaction.  
-Whenever a new tracker joins the network, it sends a list of all the successful transactions it has saved.  
+Atleast one tracker must be online at any point in time.  
+Whenever a new tracker joins the network, it receives a list of all the successful transactions from the others.  
 The new tracker then executes these transactions to get up to date with the network.
 
 [![Tracker Multithreading Architecture](./TrackerMultithreadingArchitecture.svg)](./TrackerMultithreadingArchitecture.svg)
